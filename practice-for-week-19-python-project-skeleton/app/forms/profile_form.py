@@ -21,7 +21,6 @@ class ProfileForm(FlaskForm):
   drinker = SelectField('Drinker', choices=['', 'Drinks often', 'Drinks sometimes', "Doesn't drink"])
   marijuana = SelectField('Marijuana', choices=['', 'Smokes marijuana often', 'Smokes marijuana sometimes', 'Never smokes marijuana'])
   zodiac = SelectField('Zodiac', choices=['', 'Aquarius', 'Pisces', 'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn'])
-  income = SelectField('Yearly Income', choices=['', '10k-19k', '20k-29k', '30k-39k', '40k-49k', '50k-59k', '60k-69k', '70k-79k', '80k-89k', '90k-99k', '100k-109k', '110k-119k', '120k-129k', '130k-139k', '140k-149k', '150k+', ])
   relationship = SelectField('Relationship', choices=['', 'Monogamous', 'Non-monogamous', 'Open to either', ])
   ethnicity = SelectField('Ethnicity', choices=['', 'Asian', 'Black', 'Hispanic/Latin', 'Indian', 'Middle Eastern', 'Native American', 'Pacific Islander', 'White', 'Other ethnicity', ])
   body_type = SelectField('Body Type', choices=['', 'Thin', 'Overweight', 'Average build', 'Fit', 'Jacked', 'A little extra', 'Curvy', 'Full figured'])

@@ -7,11 +7,11 @@ likes = db.Table(
     db.Column("like_receiver_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")))
 )
-# if environment == "production":
-#     likes.schema = SCHEMA
-
 if environment == "production":
-    __table_args__ = {'schema': SCHEMA}
+    likes.schema = SCHEMA
+
+# if environment == "production":
+#     __table_args__ = {'schema': SCHEMA}
 
 
 # class Like(db.Model):

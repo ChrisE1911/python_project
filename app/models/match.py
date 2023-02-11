@@ -8,10 +8,10 @@ matches = db.Table(
     db.Column("matched_2", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")))
 )
-# if environment == "production":
-#     matches.schema = SCHEMA
 if environment == "production":
-    __table_args__ = {'schema': SCHEMA}
+    matches.schema = SCHEMA
+# if environment == "production":
+#     __table_args__ = {'schema': SCHEMA}
 
 
 # class Dislike(db.Model):

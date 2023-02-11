@@ -8,15 +8,13 @@ class Dislike(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     hater_id = db.Column(
-        db.Integer, db.ForeignKey('users.id'), nullable=False)
+        db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     hate_receiver_id = db.Column(
-        db.Integer, db.ForeignKey('users.id'), nullable=False)
+        db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     # relationships
     haters = db.relationship('User', back_populates='hater')
-    add_prefix_for_prod(haters)
     hate_receivers = db.relationship('User', back_populates='hate_receiver')
-    add_prefix_for_prod(hate_receivers)
 
     def to_dict(self):
         return {

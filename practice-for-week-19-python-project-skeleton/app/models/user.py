@@ -3,6 +3,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 
+likes = db.Table(
+    "likes",
+    db.Column("admirer_id", db.Integer, db.ForeignKey("users.id")),
+    db.Column("like_receiver_id", db.Integer, db.ForeignKey("users.id"))
+)
+
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -30,18 +37,29 @@ class User(db.Model, UserMixin):
 
     # relationships
     profile = db.relationship('Profile', back_populates='users')
-    add_prefix_for_prod(profile)
-    admirer = db.relationship('Like', back_populates='admirers')
-    add_prefix_for_prod(admirer)
+    admirer = db.relationship(
+        'Like', back_populates='admirers', secondary=likes)
     like_receiver = db.relationship('Like', back_populates='like_receivers')
-    add_prefix_for_prod(like_receiver)
     hater = db.relationship('Dislike', back_populates='haters')
-    add_prefix_for_prod(hater)
     hate_receiver = db.relationship('Dislike', back_populates='hate_receivers')
-    add_prefix_for_prod(hate_receiver)
     question = db.relationship(
         'Question', secondary='answers', back_populates='user')
-    add_prefix_for_prod(question)
+
+    # class User(db.Model):
+    # __tablename__ = "users"
+    # id = db.Column(db.Integer, primary_key=True)
+    # # columns
+    # followers = db.relationship(
+    #     "User",
+    #     secondary=follows,
+    #     primaryjoin=(follows.c.follower_id == id),
+    #     secondaryjoin=(follows.c.followed_id == id),
+    #     backref=db.backref("following", lazy="dynamic"),
+    #     lazy="dynamic"
+    # )
+    # this relationship allows you to access both the collection of users
+    # that follow a given user (with user.followers), and the collection
+    # of users that a user follows (with user.following)
 
     def to_dict(self):
         return {

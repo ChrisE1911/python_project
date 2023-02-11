@@ -10,7 +10,8 @@ class Profile(db.Model):
     # add relationship
     id = db.Column(db.Integer, primary_key=True)
     # add relationship
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod('users.id')), nullable=False)
     city = db.Column(db.String(50), nullable=False)
     state = db.Column(db.String(50), nullable=False)
     occupation = db.Column(db.String(50))
@@ -34,7 +35,6 @@ class Profile(db.Model):
 
     # relationships
     users = db.relationship('User', back_populates='profile')
-    add_prefix_for_prod(users)
     pictures = db.relationship('Picture', back_populates='profile')
 
     def to_dict(self):

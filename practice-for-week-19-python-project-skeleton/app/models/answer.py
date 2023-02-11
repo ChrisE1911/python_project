@@ -7,8 +7,9 @@ class Answer(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    question_id = db.Column(db.Integer, db.ForeighKey(
+    user_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod('users.id')), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey(
         'questions.id'), nullable=False)
     yes_or_no = db.Column(db.Boolean)
 

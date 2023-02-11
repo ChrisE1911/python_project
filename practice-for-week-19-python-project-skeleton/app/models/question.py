@@ -11,7 +11,6 @@ class Question(db.Model):
 
     user = db.relationship('User', secondary='answers',
                            back_populates='question')
-    add_prefix_for_prod(user)
 
     def to_dict(self):
         return {

@@ -8,14 +8,13 @@ class Picture(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    profile_id = db.Column(db.Integer, db.ForeignKey(
-        'profiles.id'), nullable=False)
-    picture_url = db.Column(db.String(255), nullable=False)
+    profile_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('profiles.id')
+                                                     ), nullable=False)
+    picture_url = db.Column(db.String(1000), nullable=False)
     is_profile_pic = db.Column(db.Boolean)
 
     # relationships
     profile = db.relationship('Profile', back_populates='pictures')
-    add_prefix_for_prod(profile)
 
     def to_dict(self):
         return {

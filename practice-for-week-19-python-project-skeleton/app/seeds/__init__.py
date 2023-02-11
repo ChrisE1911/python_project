@@ -25,12 +25,12 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
     seed_users()
-    seed_profiles()
-    seed_pictures()
-    seed_likes()
-    seed_dislikes()
-    seed_answers()
-    seed_questions()
+    # seed_profiles()
+    # seed_pictures()
+    # seed_likes()
+    # seed_dislikes()
+    # seed_answers()
+    # seed_questions()
     # Add other seed functions here
 
 

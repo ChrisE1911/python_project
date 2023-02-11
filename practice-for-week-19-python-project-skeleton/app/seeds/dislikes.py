@@ -1,4 +1,4 @@
-from app.models import db, Dislike, environment, SCHEMA
+from app.models import db, environment, SCHEMA
 
 def seed_dislikes():
     demo_dislike_1 = Dislike(

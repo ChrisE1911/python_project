@@ -7,10 +7,11 @@ likes = db.Table(
     db.Column("like_receiver_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")))
 )
+# if environment == "production":
+#     likes.schema = SCHEMA
+
 if environment == "production":
-    likes.schema = SCHEMA
-
-
+    __table_args__ = {'schema': SCHEMA}
 
 
 # class Like(db.Model):
@@ -35,7 +36,7 @@ if environment == "production":
 #             'like_receiver_id': self.like_receiver_id
 #         }
 
-## Reworked code for self-referencing Many-to-Many. See user.py for corresponding code
+# Reworked code for self-referencing Many-to-Many. See user.py for corresponding code
 #
 # class Like(db.Model):
 #     __tablename__ = 'likes'

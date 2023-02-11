@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
-    # add to shema
+    # add to schema
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     firstname = db.Column(db.String(255), nullable=False)
@@ -45,21 +45,7 @@ class User(db.Model, UserMixin):
     question = db.relationship(
         'Question', secondary='answers', back_populates='user')
 
-    # class User(db.Model):
-    # __tablename__ = "users"
-    # id = db.Column(db.Integer, primary_key=True)
-    # # columns
-    # followers = db.relationship(
-    #     "User",
-    #     secondary=follows,
-    #     primaryjoin=(follows.c.follower_id == id),
-    #     secondaryjoin=(follows.c.followed_id == id),
-    #     backref=db.backref("following", lazy="dynamic"),
-    #     lazy="dynamic"
-    # )
-    # this relationship allows you to access both the collection of users
-    # that follow a given user (with user.followers), and the collection
-    # of users that a user follows (with user.following)
+
 
     def to_dict(self):
         return {
@@ -69,3 +55,26 @@ class User(db.Model, UserMixin):
             'firstname': self.firstname,
             'lastname': self.lastname
         }
+
+# # Reworked code for self-referencing Many-to-Many. See like.py and dislike.py for corresponding code
+# # class User(db.Model):
+# # __tablename__ = "users"
+# # id = db.Column(db.Integer, primary_key=True)
+
+# # liker = db.relationship(
+#       "User",
+#       secondary=likes,
+#       primaryjoin=(likes.c.admirer_id == id),
+#       secondaryjoin=(likes.c.like_receiver_id == id),
+#       backref=db.backref("liked", lazy="dynamic"),
+#       lazy="dynamic"
+#   )
+
+# disliker = db.relationship(
+#     "User",
+#     secondary=dislikes,
+#     primaryjoin=(dislikes.c.hater_id == id),
+#     secondaryjoin=(dislikes.c.hate_receiver_id == id),
+#     backref=db.backref("disliked", lazy="dynamic"),
+#     lazy="dynamic"
+#   )

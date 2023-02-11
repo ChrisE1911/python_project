@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
 from .like import likes
-from .matches import matches
+from .match import matches
 
 
 class User(db.Model, UserMixin):
@@ -50,12 +50,12 @@ class User(db.Model, UserMixin):
         backref=db.backref("outgoing", lazy="dynamic"),
         lazy="dynamic"
     )
-    friends_list1 = db.relationship(
+    matchlist_1 = db.relationship(
         "User",
         secondary=matches,
         primaryjoin=(matches.c.matched_1 == id),
         secondaryjoin=(matches.c.matched_2 == id),
-        backref=db.backref("matches", lazy="dynamic"),
+        backref=db.backref("matchlist_2", lazy="dynamic"),
         lazy="dynamic"
     )
 

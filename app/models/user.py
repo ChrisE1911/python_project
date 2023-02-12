@@ -41,7 +41,7 @@ class User(db.Model, UserMixin):
     # hater = db.relationship('Dislike', back_populates='haters')
     # hate_receiver = db.relationship('Dislike', back_populates='hate_receivers')
     question = db.relationship(
-        'Question', secondary='answers', back_populates='user', foreign_keys=[Answer.user_id])
+        'Question', secondary=Answer, back_populates='user')
     # Joint relationships
     like_requests = db.relationship(
         "User",

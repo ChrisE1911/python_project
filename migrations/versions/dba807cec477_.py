@@ -27,6 +27,8 @@ def upgrade():
                         length=255), nullable=True),
                     sa.PrimaryKeyConstraint('id')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('users',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('username', sa.String(
@@ -42,6 +44,8 @@ def upgrade():
                     sa.UniqueConstraint('email'),
                     sa.UniqueConstraint('username')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('answers',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -52,6 +56,8 @@ def upgrade():
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('likes',
                     sa.Column('admirer_id', sa.Integer(), nullable=True),
                     sa.Column('like_receiver_id', sa.Integer(), nullable=True),
@@ -59,12 +65,16 @@ def upgrade():
                     sa.ForeignKeyConstraint(
                         ['like_receiver_id'], ['users.id'], )
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('matches',
                     sa.Column('matched_1', sa.Integer(), nullable=True),
                     sa.Column('matched_2', sa.Integer(), nullable=True),
                     sa.ForeignKeyConstraint(['matched_1'], ['users.id'], ),
                     sa.ForeignKeyConstraint(['matched_2'], ['users.id'], )
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('profiles',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -98,6 +108,8 @@ def upgrade():
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('pictures',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('profile_id', sa.Integer(), nullable=False),
@@ -107,9 +119,9 @@ def upgrade():
                     sa.ForeignKeyConstraint(['profile_id'], ['profiles.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
-    # ### end Alembic commands ###
     if environment == "production":
         op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+    # ### end Alembic commands ###
 
 
 def downgrade():

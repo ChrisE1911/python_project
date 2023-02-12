@@ -11,7 +11,7 @@ class Question(db.Model):
     quest_txt = db.Column(db.String(255))
 
     user = db.relationship('User', secondary='answers',
-                           back_populates='question', foreign_keys=[Answer.question_id])
+                           back_populates='question')
 
     def to_dict(self):
         return {

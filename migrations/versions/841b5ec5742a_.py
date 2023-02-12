@@ -1,19 +1,19 @@
 """empty message
 
-Revision ID: dba807cec477
+Revision ID: 841b5ec5742a
 Revises:
-Create Date: 2023-02-11 16:13:43.201167
+Create Date: 2023-02-11 18:49:43.119928
 
 """
 from alembic import op
 import sqlalchemy as sa
-
 import os
-environment = os.getenv('FLASK_ENV')
-SCHEMA = os.environ.get('SCHEMA')
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
-revision = 'dba807cec477'
+revision = '841b5ec5742a'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -68,10 +68,11 @@ def upgrade():
     if environment == "production":
         op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
     op.create_table('matches',
-                    sa.Column('matched_1', sa.Integer(), nullable=True),
-                    sa.Column('matched_2', sa.Integer(), nullable=True),
+                    sa.Column('matched_1', sa.Integer(), nullable=False),
+                    sa.Column('matched_2', sa.Integer(), nullable=False),
                     sa.ForeignKeyConstraint(['matched_1'], ['users.id'], ),
-                    sa.ForeignKeyConstraint(['matched_2'], ['users.id'], )
+                    sa.ForeignKeyConstraint(['matched_2'], ['users.id'], ),
+                    sa.PrimaryKeyConstraint('matched_1', 'matched_2')
                     )
     if environment == "production":
         op.execute(f"ALTER TABLE matches SET SCHEMA {SCHEMA};")

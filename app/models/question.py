@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .answer import Answer
 
 
 class Question(db.Model):
@@ -10,7 +11,7 @@ class Question(db.Model):
     quest_txt = db.Column(db.String(255))
 
     user = db.relationship('User', secondary='answers',
-                           back_populates='question')
+                           back_populates='question', foreign_keys=[Answer.question_id])
 
     def to_dict(self):
         return {

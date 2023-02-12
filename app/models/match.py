@@ -5,9 +5,9 @@ matches = db.Table(
     "matches",
     db.Model.metadata,
     db.Column("matched_1", db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id"))),
+        add_prefix_for_prod("users.id")), primary_key=True),
     db.Column("matched_2", db.Integer, db.ForeignKey(
-        add_prefix_for_prod("users.id")))
+        add_prefix_for_prod("users.id")), primary_key=True)
 )
 if environment == "production":
     matches.schema = SCHEMA

@@ -78,7 +78,7 @@ def upgrade():
                     sa.Column('height', sa.String(length=50), nullable=True),
                     sa.Column('religion', sa.String(length=50), nullable=True),
                     sa.Column('political_affiliation',
-                              sa.String(length=50), nullable=True),
+                    sa.String(length=50), nullable=True),
                     sa.Column('language', sa.String(length=50), nullable=True),
                     sa.Column('kids', sa.String(length=50), nullable=True),
                     sa.Column('pets', sa.String(length=50), nullable=True),

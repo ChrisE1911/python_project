@@ -28,7 +28,7 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id')
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE questions SET SCHEMA {SCHEMA};")
     op.create_table('users',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('username', sa.String(
@@ -57,7 +57,7 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id')
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE answers SET SCHEMA {SCHEMA};")
     op.create_table('likes',
                     sa.Column('admirer_id', sa.Integer(), nullable=True),
                     sa.Column('like_receiver_id', sa.Integer(), nullable=True),
@@ -66,7 +66,7 @@ def upgrade():
                         ['like_receiver_id'], ['users.id'], )
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
     op.create_table('matches',
                     sa.Column('matched_1', sa.Integer(), nullable=True),
                     sa.Column('matched_2', sa.Integer(), nullable=True),
@@ -74,7 +74,7 @@ def upgrade():
                     sa.ForeignKeyConstraint(['matched_2'], ['users.id'], )
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE matches SET SCHEMA {SCHEMA};")
     op.create_table('profiles',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -109,7 +109,7 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id')
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE profiles SET SCHEMA {SCHEMA};")
     op.create_table('pictures',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('profile_id', sa.Integer(), nullable=False),
@@ -120,7 +120,7 @@ def upgrade():
                     sa.PrimaryKeyConstraint('id')
                     )
     if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE pictures SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

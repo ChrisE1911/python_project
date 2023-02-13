@@ -29,24 +29,3 @@ def create_likes():
     db.session.commit()
 
     return admirer.to_dict()
-
-    # if not admirer:
-    #     return "User not found."
-    # res = like_receiver.create_likes(admirer)
-    # like_receiver.outgoing = res.outgoing
-    # db.session.commit()
-    # return {'message': f'Success {admirer_id}'}
-
-
-# @request_routes.route("/<int:invitee_id>", methods=["POST"])
-# @login_required
-# def create_request(invitee_id):
-#     invitee = User.query.get(invitee_id)
-#     inviter = get_user_model(current_user, User)
-#     if not invitee:
-#         raise NotFoundError("User not found.")
-#     res = inviter.create_request(invitee)
-#     inviter.outgoing = res.outgoing
-
-#     db.session.commit()
-#     return {"message": f"Successfully Friend Requested {invitee_id}", "statusCode": 201}

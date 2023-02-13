@@ -38,7 +38,7 @@ def queue():
 
 
 @discover_routes.route('/', methods=['POST'])
-@login_required
+# @login_required
 def create_likes():
 
     # like_receiver_id = request.json['like_receiver_id']

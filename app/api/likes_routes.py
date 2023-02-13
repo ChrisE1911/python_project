@@ -23,33 +23,19 @@ def create_likes():
     admirer = User.query.get(admirer_id)
     like_receiver = User.query.get(like_receiver_id)
 
-    if not admirer:
-        return "User not found."
-    res = like_receiver.create_likes(admirer)
-    like_receiver.outgoing = res.outgoing
+    if like_receiver not in admirer.like_requests:
+        admirer.like_requests.append(like_receiver)
+    db.session.add(admirer)
     db.session.commit()
-    return {'message': f'Success {admirer_id}'}
 
+    return admirer.to_dict()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # if not admirer:
+    #     return "User not found."
+    # res = like_receiver.create_likes(admirer)
+    # like_receiver.outgoing = res.outgoing
+    # db.session.commit()
+    # return {'message': f'Success {admirer_id}'}
 
 
 # @request_routes.route("/<int:invitee_id>", methods=["POST"])

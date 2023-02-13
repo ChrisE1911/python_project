@@ -8,14 +8,14 @@ const createLikeAction = (data) => ({
 
 export const thunkCreateLike =
 	(like_receiver_id, admirer_id) => async (dispatch) => {
-		const response = await fetch(`/api/likes/`, {
+		const response = await fetch(`/api/discover`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				like_receiver_id,
 				admirer_id,
+				like_receiver_id,
 			}),
 		});
 		console.log(response, "RESPONSE");

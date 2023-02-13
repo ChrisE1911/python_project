@@ -1,7 +1,3 @@
-// like reducer
-import { csrfFetch } from "./csrf";
-// import { csrfFetch } from "./";
-
 const CREATE_LIKE = "/create_likes";
 
 const createLikeAction = (data) => ({
@@ -11,7 +7,7 @@ const createLikeAction = (data) => ({
 
 export const thunkCreateLike =
 	(like_receiver_id, admirer_id) => async (dispatch) => {
-		const response = await csrfFetch(`/api/discover`, {
+		const response = await fetch(`/api/discover`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

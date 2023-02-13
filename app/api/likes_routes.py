@@ -28,4 +28,6 @@ def create_likes():
     db.session.add(admirer)
     db.session.commit()
 
+    print(admirer, 'admirer')
+
     return admirer.to_dict()

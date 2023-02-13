@@ -77,6 +77,18 @@ class User(db.Model, UserMixin):
             'lastname': self.lastname,
         }
 
+    def to_dict_profile(self):
+        profile = self.profile
+        print('HIIIIII', profile)
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'firstname': self.firstname,
+            'lastname': self.lastname,
+            'profile': self.profile[0].to_dict()
+        }
+
 # # Reworked code for self-referencing Many-to-Many. See like.py and dislike.py for corresponding code
 # # class User(db.Model):
 # # __tablename__ = "users"

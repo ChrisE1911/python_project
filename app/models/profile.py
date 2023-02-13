@@ -60,5 +60,6 @@ class Profile(db.Model):
             'ethnicity': self.ethnicity,
             'body_type': self.body_type,
             'education_level': self.education_level,
-            'bio': self.bio
+            'bio': self.bio,
+            'userImages': [user_image.to_dict() for user_image in self.pictures]
         }

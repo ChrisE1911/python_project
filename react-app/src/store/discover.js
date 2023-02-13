@@ -1,4 +1,3 @@
-
 const ALL_UNMARKED_USERS = "unmarked/all";
 
 const discoverUserAction = (discoverUsers) => ({
@@ -38,27 +37,3 @@ export default function reducer(state = initialState, action) {
 			return state;
 	}
 }
-
-// const fetch_unlikes = (ansObj) => ({
-//   type: FETCH_MY_UNLIKES,
-//   payload: ansObj
-// })
-
-// export const fetchUnliked = () => async (dispatch) => {
-//   const response = await fetch('/api/users/notlikes',
-//       {
-//           headers: {
-//               'Content-Type': 'application/json'
-
-//           }
-//       });
-//   if (response.ok) {
-//       const data = await response.json();
-//       if (data.errors) {
-//           return { 'errors': 'Sorry, something went wrong!' };
-//       }
-//       await dispatch(fetch_unlikes(data))
-//       return data
-//   }
-
-// }

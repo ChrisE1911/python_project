@@ -4,6 +4,7 @@ from flask_login import UserMixin
 
 from .like import likes
 from .match import matches
+from .dislike import dislikes
 
 
 class User(db.Model, UserMixin):
@@ -48,6 +49,14 @@ class User(db.Model, UserMixin):
         primaryjoin=(likes.c.admirer_id == id),
         secondaryjoin=(likes.c.like_receiver_id == id),
         backref=db.backref("outgoing", lazy="dynamic"),
+        lazy="dynamic"
+    )
+    dislike_requests = db.relationship(
+        "User",
+        secondary=dislikes,
+        primaryjoin=(dislikes.c.hater_id == id),
+        secondaryjoin=(likes.c.hate_receiver_id == id),
+        backref=db.backref("hate_outgoing", lazy="dynamic"),
         lazy="dynamic"
     )
     matchlist_1 = db.relationship(

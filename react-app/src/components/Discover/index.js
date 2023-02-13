@@ -16,10 +16,6 @@ export default function Discover() {
 	console.log(singleProfile, "SINGLEUSER");
 	console.log(discoverUsers_arr, "allUSERS");
 
-	// let i = 0;
-	// const incrementI = (i) => {
-	// 	i++;
-	// };
 	const handleClick = (e) => {
 		console.log("CLICKED");
 	};

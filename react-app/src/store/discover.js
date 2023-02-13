@@ -1,7 +1,8 @@
-const DISCOVER_USERS = "discover/DISCOVER_USERS";
+const ALL_UNMARKED_USERS = "unmarked/all";
+
 
 const discoverUserAction = (discoverUsers) => ({
-	type: DISCOVER_USERS,
+	type: ALL_UNMARKED_USERS,
 	payload: discoverUsers,
 });
 
@@ -28,7 +29,7 @@ const normalize = (arr) => {
 
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
-		case DISCOVER_USERS:
+		case ALL_UNMARKED_USERS:
 			return normalize(action.payload.discover_users);
 
 		default:

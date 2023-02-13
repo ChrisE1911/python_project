@@ -20,7 +20,7 @@ def create_likes():
     admirer_id = request.json['admirer_id']
     like_receiver_id = request.json['like_receiver_id']
 
-    admirer = User.query.get(admirer_id)
+    admirer = User.query.get(int(admirer_id))
     like_receiver = User.query.get(like_receiver_id)
 
     if like_receiver not in admirer.like_requests:

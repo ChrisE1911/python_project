@@ -66,7 +66,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'firstname': self.firstname,
             'lastname': self.lastname,
-            "like_requests": self.like_requests
         }
 
 # # Reworked code for self-referencing Many-to-Many. See like.py and dislike.py for corresponding code

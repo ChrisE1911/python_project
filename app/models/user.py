@@ -4,6 +4,7 @@ from flask_login import UserMixin
 
 from .like import likes
 from .match import matches
+from .dislike import dislikes
 
 
 class User(db.Model, UserMixin):
@@ -50,6 +51,14 @@ class User(db.Model, UserMixin):
         backref=db.backref("outgoing", lazy="dynamic"),
         lazy="dynamic"
     )
+    dislike_requests = db.relationship(
+        "User",
+        secondary=dislikes,
+        primaryjoin=(dislikes.c.hater_id == id),
+        secondaryjoin=(dislikes.c.hate_receiver_id == id),
+        backref=db.backref("hate_outgoing", lazy="dynamic"),
+        lazy="dynamic"
+    )
     matchlist_1 = db.relationship(
         "User",
         secondary=matches,
@@ -65,7 +74,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'firstname': self.firstname,
-            'lastname': self.lastname
+            'lastname': self.lastname,
         }
 
 # # Reworked code for self-referencing Many-to-Many. See like.py and dislike.py for corresponding code
@@ -90,14 +99,6 @@ class User(db.Model, UserMixin):
 #     backref=db.backref("disliked", lazy="dynamic"),
 #     lazy="dynamic"
 #   )
-
-
-
-
-
-
-
-
 
 
 # def upgrade():

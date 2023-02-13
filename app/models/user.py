@@ -55,7 +55,7 @@ class User(db.Model, UserMixin):
         "User",
         secondary=dislikes,
         primaryjoin=(dislikes.c.hater_id == id),
-        secondaryjoin=(likes.c.hate_receiver_id == id),
+        secondaryjoin=(dislikes.c.hate_receiver_id == id),
         backref=db.backref("hate_outgoing", lazy="dynamic"),
         lazy="dynamic"
     )

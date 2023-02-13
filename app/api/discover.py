@@ -12,17 +12,26 @@ def queue():
     """
     Query for all users, filtering out current user and those the user has already liked/disliked
     """
+
+    """
+    we are filtering out user who we liked and disliked
+    """
     self_id = current_user.id
     user = User.query.get(self_id)
     likes = user.like_requests.all()
     likes_dicted = [ele.to_dict() for ele in likes]
     likes_id = [like['id'] for like in likes_dicted]
 
+    dislikes = user.dislike_requests.all()
+    dislikes_dicted = [ele.to_dict() for ele in dislikes]
+    dislikes_id = [dislike['id'] for dislike in dislikes_dicted]
+
     all_users = User.query.filter(User.id != self_id).all()
-    unliked_users = [user.to_dict()
-                     for user in all_users if user.id not in likes_id]
-    print('PRINTTTTTT', all_users)
+    unmarked_users = [user.to_dict_profile()
+                      for user in all_users if user.id not in likes_id and user.id not in dislikes_id]
+
     # return jsonify({"filtered": [ele.to_dict() for ele in filtered]})
     return {
-        'discover_users': unliked_users
+        'unmarked_users': unmarked_users,
+
     }

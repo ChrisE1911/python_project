@@ -24,5 +24,5 @@ def queue():
     print('PRINTTTTTT', all_users)
     # return jsonify({"filtered": [ele.to_dict() for ele in filtered]})
     return {
-        'unliked_users': unliked_users
+        'discover_users': unliked_users
     }

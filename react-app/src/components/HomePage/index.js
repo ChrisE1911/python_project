@@ -1,11 +1,12 @@
-import './HomePage.css'
+import Discover from "../Discover";
+import "./HomePage.css";
 
 function HomePage() {
-    return (
-        <>
-        <h1>MidCupid HomePage</h1>
-        </>
-    )
+	return (
+		<>
+			<Discover />
+		</>
+	);
 }
 
 export default HomePage;

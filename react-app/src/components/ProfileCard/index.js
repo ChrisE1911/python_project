@@ -1,10 +1,16 @@
+import { useDispatch, useSelector } from "react-redux";
+import { thunkCreateLike } from "../../store/like";
 export default function ProfileCard({ user, updateUserNumber }) {
-	console.log(user, "USER");
+	const admirer_id = useSelector((state) => state.session.user);
+	const like_receiver_id = user.id;
+
+	const dispatch = useDispatch();
 
 	function handleLike(e) {
 		// update Like Table
 		e.preventDefault();
 		updateUserNumber();
+		dispatch(thunkCreateLike(like_receiver_id, admirer_id));
 	}
 	function handlePass(e) {
 		// update Dislke Table

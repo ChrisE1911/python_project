@@ -13,8 +13,7 @@ export default function Discover() {
 	useEffect(() => {
 		dispatch(thunk_discoverUsers()).then(() => setLoaded(true));
 	}, [dispatch, loaded]);
-	console.log(singleProfileToShow, "SINGLEUSER");
-	console.log(discoverUsers_arr, "allUSERS");
+	// console.log(discoverUsers_arr, "allUSERS");
 
 	const updateUserNumber = async () => {
 		setLoaded(false);
@@ -29,17 +28,10 @@ export default function Discover() {
 
 	return loaded ? (
 		<>
-			<nav>
-				<li>Discover (NAVIGATION)</li>
-				<li>Likes</li>
-			</nav>
-			<h1>Main HomePage</h1>
-			{/* <button onClick={updateUserNumber}>Like</button> */}
 			<ProfileCard
 				user={singleProfileToShow}
 				updateUserNumber={updateUserNumber}
 			/>
-			{/* <p>{singleProfileToShow.firstname}</p> */}
 		</>
 	) : (
 		<h1 className='loading-message'>Loading...</h1>

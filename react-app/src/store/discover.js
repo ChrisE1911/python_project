@@ -8,12 +8,14 @@ const discoverUserAction = (discoverUsers) => ({
 export const thunk_discoverUsers = () => async (dispatch) => {
 	const response = await fetch("/api/discover/");
 	console.log("INSIDE THUNK");
+	console.log(response, "RESPONSE");
 	if (response.ok) {
 		const discoverUsers = await response.json();
 		console.log(discoverUsers, "HELLO");
 		dispatch(discoverUserAction(discoverUsers));
 		return discoverUsers;
 	}
+	console.log("ERROOOOORRRR");
 };
 
 const initialState = {

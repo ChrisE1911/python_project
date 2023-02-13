@@ -34,8 +34,11 @@ export default function Discover() {
 				<li>Likes</li>
 			</nav>
 			<h1>Main HomePage</h1>
-			<button onClick={updateUserNumber}>Like</button>
-			<ProfileCard user={singleProfileToShow} />
+			{/* <button onClick={updateUserNumber}>Like</button> */}
+			<ProfileCard
+				user={singleProfileToShow}
+				updateUserNumber={updateUserNumber}
+			/>
 			{/* <p>{singleProfileToShow.firstname}</p> */}
 		</>
 	) : (

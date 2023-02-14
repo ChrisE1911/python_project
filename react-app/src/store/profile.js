@@ -14,11 +14,23 @@ export const thunkCreateProfile = (data) => async (dispatch) => {
 		},
     body: JSON.stringify(data)
   })
-  console.log(response)
   if(response.ok){
-    const data = await response.json();
-    dispatch(createProfileAction(data))
-    return data;
+    const profileData = await response.json();
+    const addPicture = await fetch('/api/picture/create', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data)
+    })
+    console.log(data.picture_url)
+    if(addPicture.ok){
+      const newPicture = await addPicture.json()
+      const newObj= {...profileData, ...newPicture}
+      console.log(newObj)
+      dispatch(createProfileAction(newObj))
+      return newObj;
+    }
   }
 }
 

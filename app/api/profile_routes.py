@@ -47,16 +47,16 @@ def create_profile():
           body_type=form.data['body_type'],
           education_level=form.data['education_level'],
           bio=form.data['bio'],
-          age=form.data['age'],
+          age=form.data['age']
         )
-        user_picture = Picture(
-          user_id=current_user.id,
-          picture_url=form.data['picture_url'],
-          is_profile_pic=True
-        )
+        # user_picture = Picture(
+        #   user_id=current_user.id,
+        #   picture_url=form.data['picture_url'],
+        #   is_profile_pic=True
+        # )
         db.session.add(user_profile)
-        db.session.add(user_picture)
+        # db.session.add(user_picture)
         db.session.commit()
-
+        print('HELLO', user_profile)
         return user_profile.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

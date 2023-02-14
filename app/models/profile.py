@@ -31,7 +31,7 @@ class Profile(db.Model):
     ethnicity = db.Column(db.String(50))
     body_type = db.Column(db.String(50))
     education_level = db.Column(db.String(50))
-    bio = db.Column(db.String(50))
+    bio = db.Column(db.String(500))
     age = db.Column(db.Integer, nullable=False)
 
     # relationships

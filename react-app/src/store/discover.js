@@ -6,7 +6,7 @@ const discoverUserAction = (discoverUsers) => ({
 });
 
 export const thunk_discoverUsers = () => async (dispatch) => {
-	const response = await fetch("/api/discover");
+	const response = await fetch("/api/discover/");
 	console.log("INSIDE THUNK");
 	// console.log(response, "RESPONSE");
 	if (response.ok) {

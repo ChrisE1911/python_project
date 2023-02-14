@@ -42,7 +42,9 @@ export const thunkCreateProfile = (data) => async (dispatch) => {
 
 export const thunkCurrentUserProfile = () => async (dispatch) => {
 
-  const response = await fetch('/api/users/current_user')
+  const response = await fetch('/api/profile/current_user')
+
+  console.log('RESPONSE', response)
 
   if(response.ok){
     const data = await response.json();

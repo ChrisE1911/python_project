@@ -60,3 +60,15 @@ def create_profile():
         print('HELLO', user_profile)
         return user_profile.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+@profile_routes.route('/current_user')
+# @login_required
+def self():
+    """
+    Query for the current user logged in and return in dictionary
+    """
+    self_id = current_user.id
+    user = User.query.get(self_id)
+    print('USER!!!!!', user.to_dict_profile())
+    print("!!!!!!!!!!!!!!!!!")
+    return user.to_dict_profile()

@@ -17,7 +17,7 @@ export const thunkCreateLike =
 				admirer_id,
 			}),
 		});
-		console.log(response, "RESPONSE");
+		console.log(response, "RESPONSE INSIDE LIKE");
 		if (response.ok) {
 			const data = await response.json();
 			console.log("INSIDE THUNK__CREATELIKE", data);

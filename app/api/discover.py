@@ -42,13 +42,7 @@ def queue():
 def create_likes():
 
     # like_receiver_id = request.json['like_receiver_id']
-    # like_receiver_id = request.json['admirer_id']
-    # print(like_receiver_id, 'likeRECEIVER ID')
-    # pass
-    return {'message': 'I work'}
-
-    # admirer_id = request.json['admirer_id']
-    # like_receiver_id = request.json['like_receiver_id']
+    # admirer_id = request.json['admirer_id']['id']
 
     # admirer = User.query.get(admirer_id)
     # like_receiver = User.query.get(like_receiver_id)
@@ -58,5 +52,11 @@ def create_likes():
     # db.session.add(admirer)
     # db.session.commit()
 
-    # # return admirer.to_dict()
-    # return {'message': 'I work'}
+    # return admirer.to_dict()
+    return {'message': 'I work'}
+
+    # return {
+    #     'like_receiver_id': like_receiver_id,
+    #     'admirer_id': admirer_id
+
+    # }

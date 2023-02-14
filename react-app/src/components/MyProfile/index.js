@@ -1,27 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
-import { thunkCreateLike } from "../../store/like";
-export default function ProfileCard({ user, updateUserNumber }) {
-	const admirer_id = useSelector((state) => state.session.user);
-	const like_receiver_id = user?.id;
-	console.log(like_receiver_id, "like_receiver_id");
-	console.log(admirer_id.id, "admirer_id");
-	console.log("user", user);
-	const dispatch = useDispatch();
+// import { thunkCurrentUserProfile } from "../../store/profile";
 
-	function handleLike(e) {
-		// update Like Table
-		e.preventDefault();
-		updateUserNumber();
-		dispatch(thunkCreateLike(like_receiver_id, admirer_id));
-	}
-	function handlePass(e) {
-		// update Dislke Table
-		e.preventDefault();
-		updateUserNumber();
-	}
-	console.log(user);
-	return (
-		<div className='discover_container'>
+export default function MyProfile() {
+    const user = useSelector((state) => state.profile.current_user_profile)
+
+	console.log('USER', user)
+
+    return(
+        <div className='discover_container'>
 			<div className='discover_center_container'>
 				<div className='top_container'>
 					<div>
@@ -32,8 +18,8 @@ export default function ProfileCard({ user, updateUserNumber }) {
 							<span>{user.profile.state}</span>
 						</div>
 						<div className='right_buttons'>
-							<button onClick={handlePass}>PASS</button>
-							<button onClick={handleLike}>LIKE</button>
+							<button>PASS</button>
+							<button>LIKE</button>
 						</div>
 					</div>
 					<div className='discover_image'>
@@ -58,5 +44,5 @@ export default function ProfileCard({ user, updateUserNumber }) {
 				</div>
 			</div>
 		</div>
-	);
+    )
 }

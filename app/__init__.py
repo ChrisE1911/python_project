@@ -8,8 +8,11 @@ from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.discover import discover_routes
+from .api.likes_routes import likes_routes
 from .seeds import seed_commands
 from .config import Config
+from .api.profile_routes import profile_routes
+from .api.pictures_routes import picture_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -30,6 +33,9 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(discover_routes, url_prefix='/api/discover')
+app.register_blueprint(profile_routes, url_prefix='/api/profile')
+app.register_blueprint(picture_routes, url_prefix='/api/picture')
+# app.register_blueprint(likes_routes, url_prefix='/api/likes/')
 db.init_app(app)
 Migrate(app, db)
 
@@ -70,9 +76,9 @@ def api_help():
     """
     acceptable_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
     route_list = {rule.rule:
-                    [[method for method in rule.methods if method in acceptable_methods],
-                    app.view_functions[rule.endpoint].__doc__]
-                    for rule in app.url_map.iter_rules() if rule.endpoint != 'static'}
+                  [[method for method in rule.methods if method in acceptable_methods],
+                   app.view_functions[rule.endpoint].__doc__]
+                  for rule in app.url_map.iter_rules() if rule.endpoint != 'static'}
     return route_list
 
 

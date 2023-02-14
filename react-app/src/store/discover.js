@@ -1,6 +1,5 @@
 const ALL_UNMARKED_USERS = "unmarked/all";
 
-
 const discoverUserAction = (discoverUsers) => ({
 	type: ALL_UNMARKED_USERS,
 	payload: discoverUsers,
@@ -9,12 +8,14 @@ const discoverUserAction = (discoverUsers) => ({
 export const thunk_discoverUsers = () => async (dispatch) => {
 	const response = await fetch("/api/discover/");
 	console.log("INSIDE THUNK");
+	// console.log(response, "RESPONSE");
 	if (response.ok) {
 		const discoverUsers = await response.json();
 		console.log(discoverUsers, "HELLO");
 		dispatch(discoverUserAction(discoverUsers));
 		return discoverUsers;
 	}
+	console.log("ERROOOOORRRR");
 };
 
 const initialState = {
@@ -30,33 +31,9 @@ const normalize = (arr) => {
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case ALL_UNMARKED_USERS:
-			return normalize(action.payload.discover_users);
+			return normalize(action.payload.unmarked_users);
 
 		default:
 			return state;
 	}
 }
-
-// const fetch_unlikes = (ansObj) => ({
-//   type: FETCH_MY_UNLIKES,
-//   payload: ansObj
-// })
-
-// export const fetchUnliked = () => async (dispatch) => {
-//   const response = await fetch('/api/users/notlikes',
-//       {
-//           headers: {
-//               'Content-Type': 'application/json'
-
-//           }
-//       });
-//   if (response.ok) {
-//       const data = await response.json();
-//       if (data.errors) {
-//           return { 'errors': 'Sorry, something went wrong!' };
-//       }
-//       await dispatch(fetch_unlikes(data))
-//       return data
-//   }
-
-// }

@@ -31,7 +31,8 @@ class Profile(db.Model):
     ethnicity = db.Column(db.String(50))
     body_type = db.Column(db.String(50))
     education_level = db.Column(db.String(50))
-    bio = db.Column(db.String(50))
+    bio = db.Column(db.String(500))
+    age = db.Column(db.Integer, nullable=False)
 
     # relationships
     users = db.relationship('User', back_populates='profile')
@@ -60,5 +61,7 @@ class Profile(db.Model):
             'ethnicity': self.ethnicity,
             'body_type': self.body_type,
             'education_level': self.education_level,
-            'bio': self.bio
+            'bio': self.bio,
+            'age': self.age,
+            'userImages': [user_image.to_dict() for user_image in self.pictures]
         }

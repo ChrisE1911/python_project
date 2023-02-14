@@ -35,7 +35,7 @@ class User(db.Model, UserMixin):
     # relationships
     profile = db.relationship('Profile', back_populates='users')
     question = db.relationship(
-        'Question', secondary='Answer', back_populates='user')
+        'Question', secondary='answers', back_populates='user')
     # Joint relationships
     like_requests = db.relationship(
         "User",

@@ -1,6 +1,7 @@
 const CREATE_PROFILE = '/create_profile'
 const CURRENT_USER_PROFILE = '/current_user_profile'
 
+
 const createProfileAction = (data) => ({
   type: CREATE_PROFILE,
   payload: data
@@ -11,8 +12,26 @@ const currentUserProfileAction = (data) => ({
   payload: data
 })
 
-export const thunkCreateProfile = (data) => async (dispatch) => {
 
+export const thunkEditProfile = (data) => async (dispatch) => {
+  const response = await fetch('/api/profile/edit', {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+  if(response.ok){
+    let editedProfileData = await response.json();
+    dispatch(createProfileAction(editedProfileData))
+    return editedProfileData
+  }
+}
+
+
+
+
+export const thunkCreateProfile = (data) => async (dispatch) => {
   const response = await fetch('/api/profile/create', {
     method: "POST",
 		headers: {
@@ -29,11 +48,10 @@ export const thunkCreateProfile = (data) => async (dispatch) => {
       },
       body: JSON.stringify(data)
     })
-    console.log(data.picture_url)
+
     if(addPicture.ok){
       const newPicture = await addPicture.json()
       const newObj= {...profileData, ...newPicture}
-      console.log(newObj)
       dispatch(createProfileAction(newObj))
       return newObj;
     }
@@ -42,7 +60,9 @@ export const thunkCreateProfile = (data) => async (dispatch) => {
 
 export const thunkCurrentUserProfile = () => async (dispatch) => {
 
-  const response = await fetch('/api/users/current_user')
+  const response = await fetch('/api/profile/current_user')
+
+  console.log('RESPONSE', response)
 
   if(response.ok){
     const data = await response.json();
@@ -66,7 +86,7 @@ export default function profileReducer(state=initialState, action){
       return newState
     case CURRENT_USER_PROFILE:
       let currentProfile = action.payload
-      newState.current_user_profile = currentProfile
+      newState.current_user_profile = {...currentProfile}
       return newState
     default: {
       return state

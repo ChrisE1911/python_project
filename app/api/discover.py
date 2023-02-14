@@ -38,23 +38,25 @@ def queue():
 
 
 @discover_routes.route('/', methods=['POST'])
-@login_required
+# @login_required
 def create_likes():
 
     # like_receiver_id = request.json['like_receiver_id']
-    # like_receiver_id = request.json['admirer_id']
-    # print(like_receiver_id, 'likeRECEIVER ID')
-    # pass
+    # admirer_id = request.json['admirer_id']['id']
 
-    admirer_id = request.json['admirer_id']
-    like_receiver_id = request.json['like_receiver_id']
+    # admirer = User.query.get(admirer_id)
+    # like_receiver = User.query.get(like_receiver_id)
 
-    admirer = User.query.get(admirer_id)
-    like_receiver = User.query.get(like_receiver_id)
+    # if like_receiver not in admirer.like_requests:
+    #     admirer.like_requests.append(like_receiver)
+    # db.session.add(admirer)
+    # db.session.commit()
 
-    if like_receiver not in admirer.like_requests:
-        admirer.like_requests.append(like_receiver)
-    db.session.add(admirer)
-    db.session.commit()
+    # return admirer.to_dict()
+    return {'message': 'I work'}
 
-    return admirer.to_dict()
+    # return {
+    #     'like_receiver_id': like_receiver_id,
+    #     'admirer_id': admirer_id
+
+    # }

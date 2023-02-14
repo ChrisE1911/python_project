@@ -1,9 +1,9 @@
 import "./SplashPage.css";
-import { useSelector } from "react-redux";
-import HomePage from "../HomePage";
+// import { useSelector } from "react-redux";
+// import HomePage from "../HomePage";
 
 function SplashPage() {
-	const sessionUser = useSelector((state) => state.session.user);
+	// const sessionUser = useSelector((state) => state.session.user);
 	return (
 		<>
 			<div className='splashBody'>

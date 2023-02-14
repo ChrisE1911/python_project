@@ -72,13 +72,12 @@ class User(db.Model, UserMixin):
         }
 
     def to_dict_profile(self):
-        profile = self.profile
-        # print('HIIIIII', profile)
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
-            'firstname': self.firstname,
-            'lastname': self.lastname,
-            'profile': self.profile[0].to_dict()
-        }
+        if self.profile:
+            return {
+                'id': self.id,
+                'username': self.username,
+                'email': self.email,
+                'firstname': self.firstname,
+                'lastname': self.lastname,
+                'profile': self.profile[0].to_dict()
+            }

@@ -9,8 +9,7 @@ class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     quest_txt = db.Column(db.String(255))
 
-    user = db.relationship('User', secondary='answers',
-                           back_populates='question')
+    answer = db.relationship('Answer', back_populates='question')
 
     def to_dict(self):
         return {

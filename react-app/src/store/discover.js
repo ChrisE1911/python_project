@@ -8,7 +8,7 @@ const discoverUserAction = (discoverUsers) => ({
 export const thunk_discoverUsers = () => async (dispatch) => {
 	const response = await fetch("/api/discover/");
 	console.log("INSIDE THUNK");
-	console.log(response, "RESPONSE");
+	// console.log(response, "RESPONSE");
 	if (response.ok) {
 		const discoverUsers = await response.json();
 		console.log(discoverUsers, "HELLO");
@@ -37,27 +37,3 @@ export default function reducer(state = initialState, action) {
 			return state;
 	}
 }
-
-// const fetch_unlikes = (ansObj) => ({
-//   type: FETCH_MY_UNLIKES,
-//   payload: ansObj
-// })
-
-// export const fetchUnliked = () => async (dispatch) => {
-//   const response = await fetch('/api/users/notlikes',
-//       {
-//           headers: {
-//               'Content-Type': 'application/json'
-
-//           }
-//       });
-//   if (response.ok) {
-//       const data = await response.json();
-//       if (data.errors) {
-//           return { 'errors': 'Sorry, something went wrong!' };
-//       }
-//       await dispatch(fetch_unlikes(data))
-//       return data
-//   }
-
-// }

@@ -7,6 +7,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
+import CreateProfilePage from "./components/CreateProfilePage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -30,7 +31,9 @@ function App() {
 					<Route path='/discover'>
 						<HomePage />
 					</Route>
-
+					<Route path='/profile/create'>
+						<CreateProfilePage/>
+					</Route>
 					<Route path='/'>
 						<SplashPage />
 					</Route>

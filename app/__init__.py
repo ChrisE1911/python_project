@@ -11,6 +11,7 @@ from .api.discover import discover_routes
 from .api.likes_routes import likes_routes
 from .seeds import seed_commands
 from .config import Config
+from .api.profile_routes import profile_routes
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
 
@@ -31,6 +32,7 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(discover_routes, url_prefix='/api/discover')
+app.register_blueprint(profile_routes, url_prefix='/api/profile/create')
 # app.register_blueprint(likes_routes, url_prefix='/api/likes/')
 db.init_app(app)
 Migrate(app, db)

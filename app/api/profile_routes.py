@@ -18,6 +18,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 @profile_routes.route('/create', methods=['POST'])
+@login_required
 def create_profile():
     """
     Creates use profile and picture

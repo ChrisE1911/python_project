@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { thunkCurrentUserProfile } from "../../store/profile";
+// import { thunkCurrentUserProfile } from "../../store/profile";
 
 export default function MyProfile() {
     const user = useSelector((state) => state.profile.current_user_profile)
+
+	console.log('USER', user)
 
     return(
         <div className='discover_container'>
@@ -16,8 +18,8 @@ export default function MyProfile() {
 							<span>{user.profile.state}</span>
 						</div>
 						<div className='right_buttons'>
-							<button onClick={handlePass}>PASS</button>
-							<button onClick={handleLike}>LIKE</button>
+							<button>PASS</button>
+							<button>LIKE</button>
 						</div>
 					</div>
 					<div className='discover_image'>

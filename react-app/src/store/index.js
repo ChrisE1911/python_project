@@ -3,10 +3,13 @@ import thunk from "redux-thunk";
 import session from "./session";
 import discover from "./discover";
 import like from "./like";
+import profile from "./profile"
+
 const rootReducer = combineReducers({
 	session,
 	discover,
 	like,
+	profile
 });
 
 let enhancer;

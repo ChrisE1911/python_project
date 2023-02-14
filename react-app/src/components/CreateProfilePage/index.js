@@ -201,7 +201,7 @@ function CreateProfilePage() {
           </select>
 				</label>
         <label>
-         Religion
+        Religion
 					<select
             type='text'
             name='religion'

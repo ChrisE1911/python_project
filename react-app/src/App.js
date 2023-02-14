@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
 import CreateProfilePage from "./components/CreateProfilePage";
+import MyProfile from "./components/MyProfile";
 
 function App() {
 	const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
 					</Route>
 					<Route path='/profile/create'>
 						<CreateProfilePage/>
+					</Route>
+					<Route path='/profile/current_user'>
+						<MyProfile/>
 					</Route>
 					<Route path='/'>
 						<SplashPage />

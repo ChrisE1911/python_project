@@ -86,7 +86,7 @@ function CreateProfilePage() {
 		if (data) {
 			setErrors(data);
 		} else {
-			// history.push("/discover");
+			history.push("/discover");
 
 		}
 

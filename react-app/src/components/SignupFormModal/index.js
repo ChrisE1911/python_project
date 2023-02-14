@@ -25,7 +25,7 @@ function SignupFormModal() {
 			if (data) {
 				setErrors(data);
 			} else {
-				history.push("/discover");
+				history.push("/profile/create");
 				closeModal();
 			}
 		} else {

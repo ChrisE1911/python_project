@@ -1,23 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
-// import { thunkCurrentUserProfile } from "../../store/profile";
+import { useEffect } from "react";
+import { thunkCurrentUserProfile } from "../../store/profile";
 
 export default function MyProfile() {
 	const user = useSelector((state) => state.profile.current_user_profile)
 	const dispatch = useDispatch();
-	console.log('USER', user)
-
 
 	useEffect(() => {
-		
-	})
+		dispatch(thunkCurrentUserProfile())
+	}, [dispatch])
 
 
-
+	// console.log('USER', user.profile)
 
 
 	return (
+		// <h1>Hello World</h1>
 		<>
-			<h1>Hello World</h1>
 			<div className='discover_container'>
 				<div className='discover_center_container'>
 					<div className='top_container'>
@@ -29,8 +28,6 @@ export default function MyProfile() {
 								<span>{user.profile.state}</span>
 							</div>
 							<div className='right_buttons'>
-								<button>PASS</button>
-								<button>LIKE</button>
 							</div>
 						</div>
 						<div className='discover_image'>
@@ -50,7 +47,6 @@ export default function MyProfile() {
 							<h5>{user.profile.height}</h5>
 							<h5>{user.profile.body_type}</h5>
 							<h5>{user.profile.ethnicity}</h5>
-							<h5>{user.profile.language}</h5>
 						</div>
 					</div>
 				</div>

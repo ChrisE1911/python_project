@@ -21,8 +21,6 @@ export default function Discover() {
 		setLoaded(false);
 		if (userNumber === discoverUsers_arr.length - 1) {
 			setUserNumber(0);
-		} else {
-			setUserNumber(userNumber + 1);
 		}
 	};
 

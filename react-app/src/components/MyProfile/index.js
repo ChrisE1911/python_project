@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 export default function MyProfile() {
 	const dispatch = useDispatch();
 	// Remember that you cannot access state more than two layers deep in one line!
-	const user_main = useSelector((state) => state.profile.current_user_profile);
+	const user_main = useSelector((state) => state.profile);
 	const user = user_main.profile;
 	// Remember profile.current_user_profile.profile.userImages is an array
 	const image = user?.userImages;
@@ -29,7 +29,7 @@ export default function MyProfile() {
 								<span>{user.city}</span>
 								<span>{user.state}</span>
 							</div>
-							<NavLink exact to={"/profiles/edit"}>
+							<NavLink exact to={"/profile/edit"}>
 								Edit
 							</NavLink>
 							<div className='right_buttons'></div>

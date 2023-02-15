@@ -6,18 +6,16 @@ import { NavLink } from "react-router-dom";
 export default function MyProfile() {
 	const dispatch = useDispatch();
 	// Remember that you cannot access state more than two layers deep in one line!
-	const user_main = useSelector((state) => state.profile.current_user_profile)
-	const user = user_main.profile
+	const user_main = useSelector((state) => state.profile.current_user_profile);
+	const user = user_main.profile;
 	// Remember profile.current_user_profile.profile.userImages is an array
-	const image = user.userImages
+	const image = user?.userImages;
 
 	useEffect(() => {
-		dispatch(thunkCurrentUserProfile())
-	}, [dispatch])
+		dispatch(thunkCurrentUserProfile());
+	}, [dispatch]);
 
-
-	console.log('USER', user)
-
+	console.log("USER", user);
 
 	return (
 		<>
@@ -31,15 +29,13 @@ export default function MyProfile() {
 								<span>{user.city}</span>
 								<span>{user.state}</span>
 							</div>
-							<NavLink exact to={'/profiles/edit'}>Edit</NavLink>
-							<div className='right_buttons'>
-							</div>
+							<NavLink exact to={"/profiles/edit"}>
+								Edit
+							</NavLink>
+							<div className='right_buttons'></div>
 						</div>
 						<div className='discover_image'>
-							<img
-								src={image[0].picture_url}
-								alt='profile-pic'
-							/>
+							<img src={image[0].picture_url} alt='profile-pic' />
 						</div>
 					</div>
 					<div className='bottom-container'>
@@ -57,5 +53,5 @@ export default function MyProfile() {
 				</div>
 			</div>
 		</>
-	)
+	);
 }

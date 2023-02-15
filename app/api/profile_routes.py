@@ -69,6 +69,7 @@ def self():
     """
     self_id = current_user.id
     user = User.query.get(self_id)
+    
     return user.to_dict_profile()
 
 

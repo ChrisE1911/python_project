@@ -7,16 +7,9 @@ export default function MyProfile() {
 	const dispatch = useDispatch();
 	// Remember that you cannot access state more than two layers deep in one line!
 	const user_main = useSelector((state) => state.profile.current_user_profile)
-	// let user;
-	// let image;
-	let user = user_main.profile
+	const user = user_main.profile
 	// Remember profile.current_user_profile.profile.userImages is an array
-	let image = user.userImages
-	// const func () => {
-	// 	user = user_main.profile,
-	// 	image = user.userImages
-	// 	return user, image
-
+	const image = user.userImages
 
 	useEffect(() => {
 		dispatch(thunkCurrentUserProfile())
@@ -25,9 +18,8 @@ export default function MyProfile() {
 
 	console.log('USER', user)
 
-	if (!image && !user) return null;
 
-	return  (
+	return (
 		<>
 			<div className='discover_container'>
 				<div className='discover_center_container'>

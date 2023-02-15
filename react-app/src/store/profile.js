@@ -23,10 +23,10 @@ export const thunkEditProfile = (data) => async (dispatch) => {
 		},
 		body: JSON.stringify(data),
 	});
-	console.log("INSIDE HERE?????");
+	console.log("INSIDE HERE?????", response.body);
 	if (response.ok) {
 		let editedProfileData = await response.json();
-		console.log("INSIDE EDIT PROFILE REDUCER");
+		// console.log("INSIDE EDIT PROFILE REDUCER");
 		console.log("EDITEDPROFILE IN THUNK", editedProfileData);
 		dispatch(editProfileAction(editedProfileData));
 		return editedProfileData;

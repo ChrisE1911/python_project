@@ -31,3 +31,7 @@ def create_likes():
     print(admirer, 'admirer')
 
     return admirer.to_dict()
+
+# @likes_routes.route('/my_likes')
+# @login_required
+# def my_likes():

@@ -82,38 +82,38 @@ def edit_profile():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         to_update_profile = Profile.query.filter(
-            Profile.user_id == current_user.id).first().to_dict()
+            Profile.user_id == current_user.id).first()
         # print("EDITERROR!!!!!!", to_update_profile)
 
-        to_update_profile['city']=form.data['city'],
-        to_update_profile['state']=form.data['state'],
-        to_update_profile['occupation']=form.data['occupation'],
-        to_update_profile['gender']=form.data['gender'],
-        to_update_profile['sexual_orientation']=form.data['sexual_orientation'],
-        to_update_profile['height']=form.data['height'],
-        to_update_profile['religion']=form.data['religion'],
-        to_update_profile['political_affiliation']=form.data['political_affiliation'],
-        to_update_profile['language']=form.data['language'],
-        to_update_profile['kids']=form.data['kids'],
-        to_update_profile['pets']=form.data['pets'],
-        to_update_profile['drinker']=form.data['drinker'],
-        to_update_profile['diet']=form.data['diet'],
-        to_update_profile['smoker']=form.data['smoker'],
-        to_update_profile['marijuana']=form.data['marijuana'],
-        to_update_profile['zodiac']=form.data['zodiac'],
-        to_update_profile['ethnicity']=form.data['ethnicity'],
-        to_update_profile['body_type']=form.data['body_type'],
-        to_update_profile['education_level']=form.data['education_level'],
-        to_update_profile['bio']=form.data['bio'],
-        to_update_profile['age']=form.data['age']
+        to_update_profile.user_id=current_user.id
+        to_update_profile.city=form.data['city'],
+        to_update_profile.state=form.data['state'],
+        to_update_profile.occupation=form.data['occupation'],
+        to_update_profile.gender=form.data['gender'],
+        to_update_profile.sexual_orientation=form.data['sexual_orientation'],
+        to_update_profile.height=form.data['height'],
+        to_update_profile.religion=form.data['religion'],
+        to_update_profile.political_affiliation=form.data['political_affiliation'],
+        to_update_profile.language=form.data['language'],
+        to_update_profile.kids=form.data['kids'],
+        to_update_profile.pets=form.data['pets'],
+        to_update_profile.drinker=form.data['drinker'],
+        to_update_profile.diet=form.data['diet'],
+        to_update_profile.smoker=form.data['smoker'],
+        to_update_profile.marijuana=form.data['marijuana'],
+        to_update_profile.zodiac=form.data['zodiac'],
+        to_update_profile.ethnicity=form.data['ethnicity'],
+        to_update_profile.body_type=form.data['body_type'],
+        to_update_profile.education_level=form.data['education_level'],
+        to_update_profile.bio=form.data['bio'],
+        to_update_profile.age=form.data['age']
         # db.session.add(edited_profile)
         # # db.session.add(user_picture)
         db.session.commit()
-        saved_profile = to_update_profile
-        print(saved_profile)
+        saved_profile = to_update_profile.to_dict()
+        print('AAAaaaAAA', saved_profile)
         # print('EDITED PROFILE!!!!!', edited_profile.to_dict())
-        print('TO UPDATE PROFILE MESSAGE', to_update_profile)
-        return to_update_profile
+        return to_update_profile.to_dict()
     return {}
 # add error validations/message
 

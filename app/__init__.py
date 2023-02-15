@@ -37,7 +37,7 @@ app.register_blueprint(discover_routes, url_prefix='/api/discover')
 app.register_blueprint(profile_routes, url_prefix='/api/profile')
 app.register_blueprint(picture_routes, url_prefix='/api/picture')
 app.register_blueprint(dislikes_routes, url_prefix='/api/dislikes')
-# app.register_blueprint(likes_routes, url_prefix='/api/likes/')
+app.register_blueprint(likes_routes, url_prefix='/api/likes')
 db.init_app(app)
 Migrate(app, db)
 

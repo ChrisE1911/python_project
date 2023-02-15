@@ -1,9 +1,15 @@
 const CREATE_LIKE = "/create_likes";
+const GET_LIKES = "/get_likes";
 
 const createLikeAction = (data) => ({
 	type: CREATE_LIKE,
 	payload: data,
 });
+
+const getLikesAction = (data) => ({
+	type: GET_LIKES,
+	payload: data
+})
 
 // const createDislikeAction = (data) => ({
 // 	type: CREATE_DISLIKE,
@@ -59,13 +65,36 @@ export const thunkCreateDislike =
 
 	};
 
+export const thunkGetAllLikes =
+	() => async (dispatch) => {
+		const response = await fetch('/api/likes/my-likes')
+		console.log("GETLIKESRESPONSE", response)
+		if (response.ok) {
+			const data = await response.json();
+			dispatch(getLikesAction(data));
+
+			return data;
+		}
+	}
+
+const normalize = (arr) => {
+	const resultObj = {};
+	arr.forEach((element) => (resultObj[element.id] = element));
+	return resultObj;
+};
+
 const initialState = {
 	likes: [],
 };
 export default function reducer(state = initialState, action) {
+	let newState;
 	switch (action.type) {
+		case GET_LIKES:
+			newState = { ...state};
+			newState.likes = normalize(action.payload);
+			return newState;
 		case CREATE_LIKE:
-			const newState = { ...state };
+			newState = { ...state };
 			let updatedLikes = [...state.likes];
 			updatedLikes.push(action.like);
 			newState.likes = updatedLikes;

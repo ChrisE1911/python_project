@@ -32,6 +32,14 @@ def create_likes():
 
     return admirer.to_dict()
 
-# @likes_routes.route('/my_likes')
-# @login_required
-# def my_likes():
+@likes_routes.route('/my-likes')
+@login_required
+def my_likes():
+
+    my_id = current_user.id
+    me = User.query.get(int(my_id))
+    likes_arr = [liked.to_dict() for liked in me.like_requests]
+
+    print('AAAA', likes_arr)
+
+    return likes_arr

@@ -8,7 +8,6 @@ function HomePage() {
 				<li>Discover (NAVIGATION)</li>
 				<li>Likes</li>
 				<li>Questions</li>
-				<button>My Profile</button>
 			</nav>
 			<Discover />
 		</>

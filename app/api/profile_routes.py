@@ -74,7 +74,7 @@ def self():
     return user.to_dict_profile()
 
 
-@profile_routes.route('/edit')
+@profile_routes.route('/edit', methods=['PUT'])
 @login_required
 def edit_profile():
     form = ProfileForm()
@@ -106,5 +106,5 @@ def edit_profile():
         db.session.add(edited_profile)
         # db.session.add(user_picture)
         db.session.commit()
-        print('EDITED PROFILE!!!!!', edit_profile.to_dict())
-        return edit_profile.to_dict()
+        print('EDITED PROFILE!!!!!', edited_profile.to_dict())
+        return edited_profile.to_dict()

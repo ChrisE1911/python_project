@@ -7,15 +7,15 @@ import { thunkCurrentUserProfile } from "../../store/profile";
 export default function EditProfilePage(){
   const dispatch = useDispatch();
   const history = useHistory();
-  useEffect(() => {
-		dispatch(thunkCurrentUserProfile())
-	}, [dispatch])
-  const current_user = useSelector(state=> state.profile.current_user_profile.profile)
+  const test = useSelector(state=> state.profile)
+  let current_user = test.current_user_profile.profile
+
 
 
   console.log('CURRENT USER!!!!!', current_user)
 
-  const [city, setCity] = useState(current_user.city);
+  const [loaded, setLoaded] = useState(false);
+  const [city, setCity] = useState(current_user?.city);
   const [state, setState] = useState(current_user?.state);
   const [occupation, setOccupation] = useState(current_user?.occupation);
   const [gender, setGender] = useState(current_user?.gender);
@@ -36,6 +36,32 @@ export default function EditProfilePage(){
   const [educationLevel, setEducationLevel] = useState(current_user?.education_level);
   const [bio, setBio] = useState(current_user?.bio);
   const [age, setAge] = useState(current_user?.age);
+
+  useEffect(() => {
+    dispatch(thunkCurrentUserProfile())
+    .then(() => setLoaded(true))
+    .then(() => setCity(current_user.city))
+    .then(() => setState(current_user.state))
+    .then(() => setOccupation(current_user.occupation))
+    .then(() => setGender(current_user.gender))
+    .then(() => setSexualOrientation(current_user.sexual_orientation))
+    .then(() => setHeight(current_user.height))
+    .then(() => setReligion(current_user.religion))
+    .then(() => setPoliticalAffiliation(current_user.political_affiliation))
+    .then(() => setLanguage(current_user.language))
+    .then(() => setKids(current_user.kids))
+    .then(() => setPets(current_user.pets))
+    .then(() => setDiet(current_user.diet))
+    .then(() => setSmoker(current_user.smoker))
+    .then(() => setDrinker(current_user.drinker))
+    .then(() => setMarijuana(current_user.marijuana))
+    .then(() => setZodiac(current_user.zodiac))
+    .then(() => setEthnicity(current_user.ethnicity))
+    .then(() => setBodyType(current_user.body_type))
+    .then(() => setEducationLevel(current_user.education_level))
+    .then(() => setBio(current_user.bio))
+    .then(() => setAge(current_user.age))
+  }, [dispatch, loaded])
 
   const genderChoices=['', 'Man', 'Woman', 'Nonbinary', ]
   const sexualOrientationChoices =['', 'Straight', 'Gay', 'Lesbian', 'Bisexual', 'Queer', 'Pansexual', 'Questioning', 'Heteroflexible', 'Homoflexible', 'Asexual', 'Gray-asexual', 'Demisexual', 'Reciprosexual', 'Akiosexual', 'Aceflux', 'Grayromantic', 'Demiromantic', 'Recipromantic', 'Akioromantic', 'Aroflux', ]
@@ -97,13 +123,12 @@ export default function EditProfilePage(){
 
 	};
 
-  // if(current_user_arr.length === 0) return null;
-  // else {
+
+  if(!current_user) return null;
+  else {
 
     return(
       <>
-        <h1>Profile Information</h1>
-        <h3>Tell us about you!</h3>
         <form onSubmit={handleSubmit}>
           {/* <ul>
             {errors.map((error, idx) => (
@@ -111,7 +136,7 @@ export default function EditProfilePage(){
             ))}
           </ul> */}
           <label>
-            City
+            City:
             <input
               type="text"
               value={city}
@@ -383,10 +408,10 @@ export default function EditProfilePage(){
           </label>
 
 
-          <button type="submit">Create Profile</button>
+          <button type="submit">Edit Profile</button>
         </form>
       </>
     )
-  // }
+  }
 
 }

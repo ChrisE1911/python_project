@@ -1,7 +1,6 @@
 const CREATE_PROFILE = '/create_profile'
 const CURRENT_USER_PROFILE = '/current_user_profile'
 
-
 const createProfileAction = (data) => ({
   type: CREATE_PROFILE,
   payload: data
@@ -11,6 +10,7 @@ const currentUserProfileAction = (data) => ({
   type: CURRENT_USER_PROFILE,
   payload: data
 })
+
 
 
 export const thunkEditProfile = (data) => async (dispatch) => {
@@ -86,7 +86,7 @@ export default function profileReducer(state=initialState, action){
       return newState
     case CURRENT_USER_PROFILE:
       let currentProfile = action.payload
-      newState.current_user_profile = {...currentProfile}
+      newState.current_user_profile = currentProfile
       return newState
     default: {
       return state

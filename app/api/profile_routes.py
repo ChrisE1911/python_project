@@ -39,6 +39,7 @@ def create_profile():
           language=form.data['language'],
           kids=form.data['kids'],
           pets=form.data['pets'],
+          drinker=form.data['drinker'],
           diet=form.data['diet'],
           smoker=form.data['smoker'],
           marijuana=form.data['marijuana'],
@@ -69,6 +70,7 @@ def self():
     """
     self_id = current_user.id
     user = User.query.get(self_id)
+
     return user.to_dict_profile()
 
 

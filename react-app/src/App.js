@@ -34,13 +34,13 @@ function App() {
 						<HomePage />
 					</Route>
 					<Route path='/profile/create'>
-						<CreateProfilePage/>
+						<CreateProfilePage />
 					</Route>
 					<Route path='/profile/current_user'>
-						<MyProfile/>
+						<MyProfile />
 					</Route>
 					<Route path='/profile/edit'>
-						<EditProfilePage/>
+						<EditProfilePage />
 					</Route>
 					<Route path='/'>
 						<SplashPage />

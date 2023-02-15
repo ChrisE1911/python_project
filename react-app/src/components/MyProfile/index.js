@@ -35,9 +35,9 @@ export default function MyProfile() {
 							</NavLink>
 							<div className='right_buttons'></div>
 						</div>
-						{/* <div className='discover_image'>
-							<img src={image[0].picture_url} alt='profile-pic' />
-						</div> */}
+						<div className='discover_image'>
+							<img src={image[0]?.picture_url} alt='profile-pic' />
+						</div>
 					</div>
 					<div className='bottom-container'>
 						<div className='self_summary'>

@@ -31,7 +31,9 @@ const normalize = (arr) => {
 export default function reducer(state = initialState, action) {
 	switch (action.type) {
 		case ALL_UNMARKED_USERS:
-			return normalize(action.payload.unmarked_users);
+			const newState = { ...state };
+			newState.discover_users = normalize(action.payload.unmarked_users);
+			return newState;
 
 		default:
 			return state;

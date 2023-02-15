@@ -11,8 +11,27 @@ const currentUserProfileAction = (data) => ({
   payload: data
 })
 
-export const thunkCreateProfile = (data) => async (dispatch) => {
 
+
+export const thunkEditProfile = (data) => async (dispatch) => {
+  const response = await fetch('/api/profile/edit', {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data)
+  })
+  if(response.ok){
+    let editedProfileData = await response.json();
+    dispatch(createProfileAction(editedProfileData))
+    return editedProfileData
+  }
+}
+
+
+
+
+export const thunkCreateProfile = (data) => async (dispatch) => {
   const response = await fetch('/api/profile/create', {
     method: "POST",
 		headers: {
@@ -29,11 +48,10 @@ export const thunkCreateProfile = (data) => async (dispatch) => {
       },
       body: JSON.stringify(data)
     })
-    console.log(data.picture_url)
+
     if(addPicture.ok){
       const newPicture = await addPicture.json()
       const newObj= {...profileData, ...newPicture}
-      console.log(newObj)
       dispatch(createProfileAction(newObj))
       return newObj;
     }

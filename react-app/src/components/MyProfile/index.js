@@ -1,56 +1,57 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { thunkCurrentUserProfile } from "../../store/profile";
+import { NavLink } from "react-router-dom";
 
 export default function MyProfile() {
-	const user = useSelector((state) => state.profile.current_user_profile)
 	const dispatch = useDispatch();
+	// Remember that you cannot access state more than two layers deep in one line!
+	const user_main = useSelector((state) => state.profile.current_user_profile);
+	const user = user_main.profile;
+	// Remember profile.current_user_profile.profile.userImages is an array
+	const image = user?.userImages;
 
 	useEffect(() => {
-		dispatch(thunkCurrentUserProfile())
-	}, [dispatch])
+		dispatch(thunkCurrentUserProfile());
+	}, [dispatch]);
 
-
-	// console.log('USER', user.profile)
-
+	console.log("USER", user);
 
 	return (
-		// <h1>Hello World</h1>
 		<>
 			<div className='discover_container'>
 				<div className='discover_center_container'>
 					<div className='top_container'>
 						<div>
 							<div className='left_div'>
-								<h1>{user.firstname}</h1>
-								<span>{user.profile.age}</span>
-								<span>{user.profile.city}</span>
-								<span>{user.profile.state}</span>
+								<h1>{user_main.firstname}</h1>
+								<span>{user.age}</span>
+								<span>{user.city}</span>
+								<span>{user.state}</span>
 							</div>
-							<div className='right_buttons'>
-							</div>
+							<NavLink exact to={"/profiles/edit"}>
+								Edit
+							</NavLink>
+							<div className='right_buttons'></div>
 						</div>
 						<div className='discover_image'>
-							<img
-								src={user.profile.userImages[0].picture_url}
-								alt='profile-pic'
-							/>
+							<img src={image[0].picture_url} alt='profile-pic' />
 						</div>
 					</div>
 					<div className='bottom-container'>
 						<div className='self_summary'>
 							<h2>Self-Summary</h2>
-							<p>{user.profile.bio}</p>
+							<p>{user.bio}</p>
 						</div>
 						<div className='details'>
-							<h5>{user.profile.sexual_orientation}</h5>
-							<h5>{user.profile.height}</h5>
-							<h5>{user.profile.body_type}</h5>
-							<h5>{user.profile.ethnicity}</h5>
+							<h5>{user.sexual_orientation}</h5>
+							<h5>{user.height}</h5>
+							<h5>{user.body_type}</h5>
+							<h5>{user.ethnicity}</h5>
 						</div>
 					</div>
 				</div>
 			</div>
 		</>
-	)
+	);
 }

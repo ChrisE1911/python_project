@@ -38,7 +38,7 @@ def my_likes():
 
     my_id = current_user.id
     me = User.query.get(int(my_id))
-    likes_arr = [liked.to_dict() for liked in me.like_requests]
+    likes_arr = [liked.to_dict_profile() for liked in me.like_requests]
 
     print('AAAA', likes_arr)
 

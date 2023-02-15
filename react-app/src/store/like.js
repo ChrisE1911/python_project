@@ -5,6 +5,11 @@ const createLikeAction = (data) => ({
 	payload: data,
 });
 
+// const createDislikeAction = (data) => ({
+// 	type: CREATE_DISLIKE,
+// 	payload: data,
+// });
+
 export const thunkCreateLike =
 	(like_receiver_id, admirer_id) => async (dispatch) => {
 		const response = await fetch(`/api/discover/`, {
@@ -22,16 +27,38 @@ export const thunkCreateLike =
 			const data = await response.json();
 			dispatch(createLikeAction(data));
 			return data;
-		} else if (response.status < 500) {
-			const data = await response.json();
+		// } else if (response.status < 500) {
+		// 	const data = await response.json();
 			//   if (data.errors) {
 			//     return data.errors;
 			//   }
 			// } else {
 			//   return ['An error occurred. Please try again.']
-			return data;
+			// return data;
 		}
 	};
+
+export const thunkCreateDislike =
+	(hate_receiver_id, hater_id) => async (dispatch) => {
+		const response = await fetch('api/dislikes/', {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				hater_id,
+				hate_receiver_id,
+			}),
+		});
+
+		if (response.ok) {
+			const data = await response.json();
+			// dispatch(createDislikeAction(data));
+			return data;
+		}
+
+	};
+
 const initialState = {
 	likes: [],
 };

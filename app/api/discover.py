@@ -28,7 +28,7 @@ def queue():
 
     all_users = User.query.filter(User.id != self_id).all()
     unmarked_users = [user.to_dict_profile()
-                      for user in all_users if user.id not in likes_id and user.id not in dislikes_id]
+                    for user in all_users if user.id not in likes_id and user.id not in dislikes_id]
 
     # return jsonify({"filtered": [ele.to_dict() for ele in filtered]})
     return {

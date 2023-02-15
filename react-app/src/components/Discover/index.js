@@ -17,6 +17,8 @@ export default function Discover() {
 	}, [dispatch, loaded]);
 	// console.log(discoverUsers_arr, "allUSERS");
 
+	// Likes queue is screwed up. Maybe we want to pop and shorten array instead of iterating through array? Why async?
+
 	const updateUserNumber = async () => {
 		setLoaded(false);
 		if (userNumber === discoverUsers_arr.length - 1) {

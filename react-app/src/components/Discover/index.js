@@ -27,6 +27,11 @@ export default function Discover() {
 	};
 
 	console.log("singleProfileToShow WHHHHHHHYYYY", singleProfileToShow);
+	if (discoverUsers_arr.length === 0) {
+		return (
+			<h1>All out of users</h1>
+		);
+	}
 
 	return loaded ? (
 		<>

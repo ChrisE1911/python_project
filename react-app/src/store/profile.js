@@ -82,8 +82,9 @@ export default function profileReducer(state=initialState, action){
   switch(action.type){
     case CREATE_PROFILE:
       let profileInfo = action.payload
-      newState.profile = { ...profileInfo }
+      newState.profile= { ...profileInfo }
       return newState
+    // case EDIT_PROFILE:
     case CURRENT_USER_PROFILE:
       let currentProfile = action.payload
       newState.current_user_profile = currentProfile

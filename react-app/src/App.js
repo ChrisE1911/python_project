@@ -9,6 +9,7 @@ import SplashPage from "./components/SplashPage";
 import HomePage from "./components/HomePage";
 import CreateProfilePage from "./components/CreateProfilePage";
 import MyProfile from "./components/MyProfile";
+import EditProfilePage from "./components/EditProfilePage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -33,10 +34,13 @@ function App() {
 						<HomePage />
 					</Route>
 					<Route path='/profile/create'>
-						<CreateProfilePage/>
+						<CreateProfilePage />
 					</Route>
 					<Route path='/profile/current_user'>
-						<MyProfile/>
+						<MyProfile />
+					</Route>
+					<Route path='/profile/edit'>
+						<EditProfilePage />
 					</Route>
 					<Route path='/'>
 						<SplashPage />

@@ -14,7 +14,7 @@ export default function MyProfile() {
 	// Remember profile.current_user_profile.profile.userImages is an array
 	const image = user?.userImages;
 
-	
+
 	useEffect(() => {
 		dispatch(thunkCurrentUserProfile()).then(() => setLoaded(true));
 	}, [dispatch]);

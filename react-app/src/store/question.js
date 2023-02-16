@@ -1,9 +1,17 @@
 const GET_ALL_QUESTIONS = "/get_all_questions"
+const CREATE_ANSWER = "/create_answers"
 
 const getAllQuestionsAction = (data) => ({
     type: GET_ALL_QUESTIONS,
     payload: data,
 })
+
+const createAnswersAction = (data) => ({
+    type: CREATE_ANSWER,
+    payload: data,
+})
+
+
 
 export const thunkGetAllQuestions = () => async (dispatch) => {
     const response = await fetch("/api/questions/all")
@@ -15,6 +23,25 @@ export const thunkGetAllQuestions = () => async (dispatch) => {
         return data
     }
 };
+
+export const thunkCreateAnswer = (question_id, yes_or_no) => async (dispatch) => {
+    const response = await fetch("/api/questions/answer-questions", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            question_id,
+            yes_or_no
+        }),
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(createAnswersAction(data))
+        return data
+    }
+}
 
 const initialState = {
     allQuestions: {},
@@ -36,7 +63,12 @@ export default function questionReducer(state = initialState, action) {
             newState = { ...action.payload }
             console.log('PAYLOAD', action.payload)
             return newState;
-
+        case CREATE_ANSWER:
+            newState.answerQuestions[action.payload.id] = action.payload
+            console.log('ACTION.PAYLOAD', action.payload)
+            // delete newState.unansweredQuestions[action.payload.id]
+            // delete newState.answerQuestions[action.payload.id]
+            return newState
         default:
             return state;
     }

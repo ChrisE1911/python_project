@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { thunkGetAllQuestions } from "../../store/question";
+import { thunkCreateAnswer } from "../../store/question";
 
 function QuestionsPage() {
     const dispatch = useDispatch();
@@ -18,6 +19,17 @@ function QuestionsPage() {
             .then(() => setLoaded(true))
     }, [dispatch])
 
+    const createYes = async (id) => {
+        let question_id = id
+        let yes_or_no = "Yes"
+        await dispatch(thunkCreateAnswer(question_id, yes_or_no))
+    }
+
+    const createNo = async (id) => {
+        let question_id = id
+        let yes_or_no = "No"
+        await dispatch(thunkCreateAnswer(question_id, yes_or_no))
+    }
 
     return (
         <>
@@ -28,25 +40,25 @@ function QuestionsPage() {
                 <div className="right-bottom">
                     <div id="question-container">
                         <ul id="answered-question-card-list">
-                            {loaded && answers.map((answer) =>
-                                <div className="question-container" key={answer.id}>
+                            {loaded && unanswered.map((unanswer) =>
+                                <div className="question-container" key={unanswer.id}>
                                     <div className="question-container-top">
-                                        {console.log(answer)}
-                                        <div>{allQuestions[answer.question_id].quest_txt}</div>
+                                        {/* {console.log(answer)} */}
+                                        <div>{unanswer.quest_txt}</div>
                                     </div>
                                     <div className="question-container-bottom">
-                                        <div>Yes</div>
-                                        <div>No</div>
+                                        <button onClick={() => createYes(unanswer.id)}>Yes</button>
+                                        <button onClick={() => createNo(unanswer.id)}>No</button>
                                     </div>
                                 </div>
                             )
                             }
                         </ul>
                         <ul id="unanswered-question-card-list">
-                            {loaded && unanswered.map((answer) =>
+                            {loaded && answers.map((answer) =>
                                 <div className="question-container" key={answer.id}>
                                     <div className="question-container-top">
-                                        <div>{answer.quest_txt}</div>
+                                        <div>{allQuestions[answer.question_id].quest_txt}</div>
                                     </div>
                                     <div className="question-container-bottom">
                                         <div>user answers here</div>

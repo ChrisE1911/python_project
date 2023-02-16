@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from flask_login import current_user, login_required
 from app.models import User, Profile, db, Question, Answer
 
@@ -50,3 +50,27 @@ def all_questions():
 
 
     return {"allQuestions": all_questions_obj, "answerQuestions": all_answers_obj, "answeredQuestions": answered_questions_obj, "unansweredQuestions": all_unanswered_obj}
+
+@question_routes.route("/answer-questions", methods=["POST"])
+@login_required
+def create_answer():
+    incoming_answer = request.get_json()
+
+    user_id = current_user.id
+    print('1111111', user_id)
+    question_id = incoming_answer['question_id']
+    print('2222222', question_id)
+    yes_or_no = incoming_answer['yes_or_no']
+    print('3333333', yes_or_no)
+
+    new_answer = Answer(
+        user_id = user_id,
+        question_id  = question_id,
+        yes_or_no = yes_or_no
+    )
+
+    db.session.add(new_answer)
+
+    db.session.commit()
+
+    return new_answer.to_dict()

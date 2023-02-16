@@ -18,17 +18,17 @@ function Navigation({ isLoaded }) {
 	return (
 		<ul className='NavBar'>
 			<li>
-				<NavLink exact to='/discover'>
+				{sessionUser ? <NavLink exact to='/discover'>
 					MidCupid
-				</NavLink>
+				</NavLink> : <NavLink exact to='/'>MidCupid</NavLink>}
 			</li>
 			{isLoaded && (
 				<>
 					<NavLink exact to='/likes-page'>
-						<button>Likes</button>
+						{sessionUser && <button>Likes</button>}
 					</NavLink>
 					<NavLink exact to='/profile/current_user'>
-						<button>My Profile</button>
+						{sessionUser && <button>My Profile</button>}
 					</NavLink>
 					<li>
 						<ProfileButton user={sessionUser} />

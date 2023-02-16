@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { thunkGetAllLikes } from "../../store/like";
 import LikeCard from "../LikesCard";
+import "./LikesPage.css"
 
 
 
@@ -17,16 +18,18 @@ function LikesPage() {
 
     return (
         <>
+            <h1>Likes</h1>
             {!allLikesArr &&
                 <div>No likes yet, be patient!</div>
             }
-            <ul>
-
-            {allLikesArr.map((like) => {
-                return <LikeCard key={like.id} like={like} />
-            })
-        }
-        </ul>
+            <div id="card-container">
+                <ul id="card-list">
+                    {allLikesArr.map((like) => {
+                        return <LikeCard key={like.id} like={like} />
+                    })
+                    }
+                </ul>
+            </div>
         </>
     )
 }

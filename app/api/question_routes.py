@@ -26,7 +26,7 @@ def all_questions():
     all_answers_list = [answer for answer in answers]
     for i in all_answers_list:
         all_answers_obj[i.id] = i.to_dict()
-        answered_id.append(i.id)
+        answered_id.append(i.question_id)
     print("CCCCC", all_answers_obj)
 
     all_unanswered_obj = {}

@@ -29,6 +29,13 @@ def all_questions():
         answered_id.append(i.question_id)
     print("CCCCC", all_answers_obj)
 
+    answered_questions_obj = {}
+    for i in answered_id:
+        quest = Question.query.get(i)
+        print("EEEEE", quest)
+        answered_questions_obj[quest.id] = quest.to_dict()
+        print("FFFFF", answered_questions_obj)
+
     all_unanswered_obj = {}
     for i in all_questions_obj:
         if i not in answered_id:
@@ -42,4 +49,4 @@ def all_questions():
     # print("DDDDD", all_unanswered_obj)
 
 
-    return {"allQuestions": all_questions_obj, "answerQuestions": all_answers_obj, "unansweredQuestions": all_unanswered_obj}
+    return {"allQuestions": all_questions_obj, "answerQuestions": all_answers_obj, "answeredQuestions": answered_questions_obj, "unansweredQuestions": all_unanswered_obj}

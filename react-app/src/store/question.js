@@ -18,7 +18,9 @@ export const thunkGetAllQuestions = () => async (dispatch) => {
 
 const initialState = {
     allQuestions: {},
-    workingQuestion: {}
+    answerQuestions: {},
+    unansweredQuestions: {},
+    answeredQuestions: {}
 }
 
 const normalize = (arr) => {
@@ -31,8 +33,8 @@ export default function questionReducer(state = initialState, action) {
     let newState = { ...state };
     switch(action.type) {
         case GET_ALL_QUESTIONS:
-            newState.allQuestions = normalize(action.payload)
-            console.log(action.payload)
+            newState = { ...action.payload }
+            console.log('PAYLOAD', action.payload)
             return newState;
 
         default:

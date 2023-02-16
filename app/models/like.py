@@ -8,6 +8,7 @@ likes = db.Table(
     db.Column("like_receiver_id", db.Integer, db.ForeignKey(
         add_prefix_for_prod("users.id")))
 )
+
 if environment == "production":
     likes.schema = SCHEMA
 

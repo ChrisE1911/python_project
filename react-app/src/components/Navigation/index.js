@@ -24,6 +24,9 @@ function Navigation({ isLoaded }) {
 			</li>
 			{isLoaded && (
 				<>
+					<NavLink exact to="/likes-page">
+						<button>Likes</button>
+					</NavLink>
 					<NavLink exact to="/profile/current_user">
 						<button>My Profile</button>
 					</NavLink>

@@ -1,0 +1,12 @@
+#likes-card{
+/* border: 2px solid red;
+background-color: gray;
+border-radius: 10px;
+padding: 10px; */
+}
+
+#card-list{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}

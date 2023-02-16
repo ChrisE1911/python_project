@@ -6,7 +6,6 @@ function HomePage() {
 		<>
 			<nav>
 				<li>Discover (NAVIGATION)</li>
-				<li>Likes</li>
 				<li>Questions</li>
 			</nav>
 			<Discover />

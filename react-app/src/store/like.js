@@ -1,5 +1,6 @@
 const CREATE_LIKE = "/create_likes";
 const GET_LIKES = "/get_likes";
+const DELETE_LIKE = "/delete_likes"
 
 const createLikeAction = (data) => ({
 	type: CREATE_LIKE,
@@ -8,6 +9,11 @@ const createLikeAction = (data) => ({
 
 const getLikesAction = (data) => ({
 	type: GET_LIKES,
+	payload: data
+})
+
+const deleteLikesAction = (data) => ({
+	type: DELETE_LIKE,
 	payload: data
 })
 
@@ -77,6 +83,18 @@ export const thunkGetAllLikes =
 		}
 	}
 
+export const thunkDeleteLike =
+	(user_id) => async (dispatch) => {
+		const response = await fetch(`/api/likes/delete-like/${user_id}`, {
+			method: 'DELETE'
+		})
+
+		if (response.ok) {
+			const removedLike = await response.json();
+			dispatch(deleteLikesAction(removedLike));
+		}
+	}
+
 const normalize = (arr) => {
 	const resultObj = {};
 	arr.forEach((element) => (resultObj[element.id] = element));
@@ -99,6 +117,10 @@ export default function reducer(state = initialState, action) {
 			updatedLikes.push(action.like);
 			newState.likes = updatedLikes;
 			return newState;
+		case DELETE_LIKE:
+			newState = { ...state }
+			delete newState.likes[action.payload]
+			return newState
 		default:
 			return state;
 	}

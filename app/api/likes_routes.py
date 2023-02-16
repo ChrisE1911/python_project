@@ -40,6 +40,19 @@ def my_likes():
     me = User.query.get(int(my_id))
     likes_arr = [liked.to_dict_profile() for liked in me.like_requests]
 
-    print('AAAA', likes_arr)
-
     return likes_arr
+
+@likes_routes.route('/delete-like/<int:user_id>', methods=["DELETE"])
+@login_required
+def delete_like(user_id):
+    my_id = current_user.id
+    me = User.query.get(int(my_id))
+
+    likes_arr = me.like_requests
+    for liked in likes_arr:
+        if liked.id == user_id:
+            del liked
+
+    print(likes_arr)
+
+    return {}

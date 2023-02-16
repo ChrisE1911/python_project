@@ -55,7 +55,7 @@ def delete_like(user_id):
     deleted_user = me.like_requests.remove(unliked)
     likes_arr = me.like_requests
     # new_likes_arr = [liked.to_dict() for liked in likes_arr if liked.id != user_id]
-    new_likes_arr = [liked.to_dict() for liked in likes_arr]
+    new_likes_arr = [liked.to_dict_profile() for liked in likes_arr]
     print("EEEEE", likes_arr)
     print("EFGEFG", new_likes_arr)
 
@@ -66,7 +66,7 @@ def delete_like(user_id):
     #     if likes_arr[i]['id'] == user_id:
     #         del likes_arr[i]
 
-    return {"message": "User has been deleted from likes"}
+    return new_likes_arr
 
     # # all_likes = Session.query(likes).all()
     # # print("EEEEE", all_likes)

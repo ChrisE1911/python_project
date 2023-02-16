@@ -11,12 +11,15 @@ function LikesPage() {
     const dispatch = useDispatch()
     const allLikes = useSelector((state) => state.like.likes)
     const allLikesArr = Object.values(allLikes)
-    const [deleted, setDeleted] = useState(0)
+    const [loaded, setLoaded] = useState(false)
     console.log(allLikesArr)
 
     useEffect(() => {
         dispatch(thunkGetAllLikes())
+            .then(() => setLoaded(true))
     }, [dispatch])
+
+    if (!allLikesArr.length) return null
 
     return (
         <>
@@ -26,7 +29,7 @@ function LikesPage() {
             }
             <div id="card-container">
                 <ul id="card-list">
-                    {allLikesArr.map((like) => {
+                    {loaded && allLikesArr.map((like) => {
                         return <LikeCard key={like.id} like={like} />
                     })
                     }

@@ -36,7 +36,8 @@ class Profile(db.Model):
 
     # relationships
     users = db.relationship('User', back_populates='profile')
-    pictures = db.relationship('Picture', back_populates='profile')
+    pictures = db.relationship(
+        'Picture', back_populates='profile', cascade='all, delete')
 
     def to_dict(self):
         return {

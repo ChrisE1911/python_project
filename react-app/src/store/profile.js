@@ -1,6 +1,7 @@
 const CREATE_PROFILE = "/create_profile";
 const CURRENT_USER_PROFILE = "/current_user_profile";
 const EDIT_PROFILE = "/edit_profile";
+const DELETE_USER = "/delete_curr_user";
 const createProfileAction = (data) => ({
 	type: CREATE_PROFILE,
 	payload: data,
@@ -12,6 +13,11 @@ const editProfileAction = (data) => ({
 
 const currentUserProfileAction = (data) => ({
 	type: CURRENT_USER_PROFILE,
+	payload: data,
+});
+
+const deleteProfileAction = (data) => ({
+	type: DELETE_USER,
 	payload: data,
 });
 
@@ -72,6 +78,18 @@ export const thunkCurrentUserProfile = () => async (dispatch) => {
 	}
 };
 
+export const thunkDeleteUserProfile = () => async (dispatch) => {
+	const response = await fetch("/api/profile/delete", {
+		method: "DELETE",
+	});
+	console.log("DELETE RESPONSE", response);
+	if (response.ok) {
+		const removedUser = await response.json();
+		dispatch(deleteProfileAction(removedUser));
+		return removedUser;
+	}
+};
+
 const initialState = {
 	working_profile: {},
 	current_user_profile: {},
@@ -97,8 +115,11 @@ export default function profileReducer(state = initialState, action) {
 			let currentProfile = action.payload;
 			newState.current_user_profile = { ...currentProfile };
 			return newState;
+		case DELETE_USER:
+			return newState;
 		default: {
 			return state;
 		}
+		case DELETE_USER:
 	}
 }

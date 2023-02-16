@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { thunkCurrentUserProfile } from "../../store/profile";
 import { NavLink } from "react-router-dom";
 
 export default function MyProfile() {
+	const [isLoaded, setLoaded] = useState(false);
 	const dispatch = useDispatch();
 	// Remember that you cannot access state more than two layers deep in one line!
 	const user_main = useSelector((state) => state.profile.current_user_profile);
@@ -13,46 +14,49 @@ export default function MyProfile() {
 	// Remember profile.current_user_profile.profile.userImages is an array
 	const image = user?.userImages;
 
+	
 	useEffect(() => {
-		dispatch(thunkCurrentUserProfile());
+		dispatch(thunkCurrentUserProfile()).then(() => setLoaded(true));
 	}, [dispatch]);
 
 	console.log("USER IN MYPROFILE", user);
 
 	return (
 		<>
-			<div className='discover_container'>
-				<div className='discover_center_container'>
-					<div className='top_container'>
-						<div>
-							<div className='left_div'>
-								<span>{user?.age}</span>
-								<span>{user?.city}</span>
-								<span>{user?.state}</span>
+			{isLoaded && (
+				<div className='discover_container'>
+					<div className='discover_center_container'>
+						<div className='top_container'>
+							<div>
+								<div className='left_div'>
+									<span>{user?.age}</span>
+									<span>{user?.city}</span>
+									<span>{user?.state}</span>
+								</div>
+								<NavLink exact to={"/profile/edit"}>
+									Edit
+								</NavLink>
+								<div className='right_buttons'></div>
 							</div>
-							<NavLink exact to={"/profile/edit"}>
-								Edit
-							</NavLink>
-							<div className='right_buttons'></div>
+							<div className='discover_image'>
+								<img src={image[0]?.picture_url} alt='profile-pic' />
+							</div>
 						</div>
-						<div className='discover_image'>
-							<img src={image[0]?.picture_url} alt='profile-pic' />
-						</div>
-					</div>
-					<div className='bottom-container'>
-						<div className='self_summary'>
-							<h2>Self-Summary</h2>
-							<p>{user?.bio}</p>
-						</div>
-						<div className='details'>
-							<h5>{user?.sexual_orientation}</h5>
-							<h5>{user?.height}</h5>
-							<h5>{user?.body_type}</h5>
-							<h5>{user?.ethnicity}</h5>
+						<div className='bottom-container'>
+							<div className='self_summary'>
+								<h2>Self-Summary</h2>
+								<p>{user?.bio}</p>
+							</div>
+							<div className='details'>
+								<h5>{user?.sexual_orientation}</h5>
+								<h5>{user?.height}</h5>
+								<h5>{user?.body_type}</h5>
+								<h5>{user?.ethnicity}</h5>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			)}
 		</>
 	);
 }

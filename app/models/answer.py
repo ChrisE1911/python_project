@@ -9,11 +9,13 @@ class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('users.id')), nullable=False)
-    question_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('questions.id')), nullable=False)
+    question_id = db.Column(db.Integer, db.ForeignKey(
+        add_prefix_for_prod('questions.id')), nullable=False)
     yes_or_no = db.Column(db.Boolean)
 
     user = db.relationship('User', back_populates='answer')
-    question = db.relationship('Question', back_populates='answer')
+    question = db.relationship(
+        'Question', back_populates='answer', cascade='all, delete')
 
     def to_dict(self):
         return {

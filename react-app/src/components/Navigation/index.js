@@ -12,8 +12,8 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
 
 	useEffect(() => {
-		dispatch(thunkCurrentUserProfile())
-	}, [dispatch])
+		sessionUser && dispatch(thunkCurrentUserProfile()) ;
+	}, [dispatch]);
 
 	return (
 		<ul className='NavBar'>
@@ -24,10 +24,10 @@ function Navigation({ isLoaded }) {
 			</li>
 			{isLoaded && (
 				<>
-					<NavLink exact to="/likes-page">
+					<NavLink exact to='/likes-page'>
 						<button>Likes</button>
 					</NavLink>
-					<NavLink exact to="/profile/current_user">
+					<NavLink exact to='/profile/current_user'>
 						<button>My Profile</button>
 					</NavLink>
 					<li>

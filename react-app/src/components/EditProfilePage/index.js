@@ -1,13 +1,15 @@
-import { thunkEditProfile } from "../../store/profile";
+import { thunkDeleteUserProfile, thunkEditProfile } from "../../store/profile";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { thunkCurrentUserProfile } from "../../store/profile";
+import { logout } from "../../store/session";
 
 export default function EditProfilePage() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const test = useSelector((state) => state.profile);
+	const currentUser = useSelector((state) => state.session.user);
 	console.log("IN EDIT ", test.current_user_profile.profile.age);
 	let current_user = test.current_user_profile.profile;
 
@@ -67,6 +69,14 @@ export default function EditProfilePage() {
 			.then(() => setBio(current_user.bio))
 			.then(() => setAge(current_user.age));
 	}, [dispatch, loaded]);
+
+	async function handleDelete() {
+		const awaitedData = await dispatch(thunkDeleteUserProfile());
+		if (awaitedData) {
+			// dispatch(logout());
+			history.push("/");
+		}
+	}
 
 	const genderChoices = ["", "Man", "Woman", "Nonbinary"];
 	const sexualOrientationChoices = [
@@ -640,6 +650,7 @@ export default function EditProfilePage() {
 					</label>
 
 					<button type='submit'>Edit Profile</button>
+					<button onClick={handleDelete}>Delete Profile</button>
 				</form>
 			</>
 		);

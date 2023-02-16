@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { thunkCreateLike } from "../../store/like";
+import { thunkCreateLike, thunkCreateDislike } from "../../store/like";
+
 export default function ProfileCard({ user, updateUserNumber }) {
 	const admirer_id = useSelector((state) => state.session.user);
+	const hater_id = useSelector((state) => state.session.user);
 	const like_receiver_id = user?.id;
+	const hate_receiver_id = user?.id;
 	console.log(like_receiver_id, "like_receiver_id");
-	// console.log(admirer_id.id, "admirer_id");
 
 	const dispatch = useDispatch();
 
@@ -18,7 +20,9 @@ export default function ProfileCard({ user, updateUserNumber }) {
 		// update Dislke Table
 		e.preventDefault();
 		updateUserNumber();
+		dispatch(thunkCreateDislike(hate_receiver_id, hater_id));
 	}
+	
 	console.log(user.profile);
 	return (
 		<div className='discover_container'>

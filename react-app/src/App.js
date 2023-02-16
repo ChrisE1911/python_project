@@ -10,6 +10,7 @@ import HomePage from "./components/HomePage";
 import CreateProfilePage from "./components/CreateProfilePage";
 import MyProfile from "./components/MyProfile";
 import EditProfilePage from "./components/EditProfilePage";
+import LikesPage from "./components/LikesPage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -42,7 +43,10 @@ function App() {
 					<Route path='/profile/edit'>
 						<EditProfilePage />
 					</Route>
-					<Route path='/'>
+					<Route exact path='/likes-page'>
+						<LikesPage />
+					</Route>
+					<Route exact path='/'>
 						<SplashPage />
 					</Route>
 				</Switch>

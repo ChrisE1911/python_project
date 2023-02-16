@@ -11,7 +11,7 @@ class Answer(db.Model):
         add_prefix_for_prod('users.id')), nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey(
         add_prefix_for_prod('questions.id')), nullable=False)
-    yes_or_no = db.Column(db.Boolean)
+    yes_or_no = db.Column(db.String)
 
     user = db.relationship('User', back_populates='answer')
     question = db.relationship(

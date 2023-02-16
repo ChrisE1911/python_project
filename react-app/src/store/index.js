@@ -4,12 +4,14 @@ import session from "./session";
 import discover from "./discover";
 import like from "./like";
 import profile from "./profile"
+import questionReducer from "./question";
 
 const rootReducer = combineReducers({
 	session,
 	discover,
 	like,
-	profile
+	profile,
+	questionReducer
 });
 
 let enhancer;

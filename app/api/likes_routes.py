@@ -1,6 +1,8 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, db
+from app.models import User, db, likes
+from sqlalchemy.orm import Session
+
 
 likes_routes = Blueprint('likes', __name__)
 
@@ -46,13 +48,28 @@ def my_likes():
 @login_required
 def delete_like(user_id):
     my_id = current_user.id
+    print("CCCCCC", my_id)
     me = User.query.get(int(my_id))
-
+    print("DDDDD", me.to_dict())
+    unliked = User.query.get(int(user_id))
+    deleted_user = me.like_requests.remove(unliked)
     likes_arr = me.like_requests
-    for liked in likes_arr:
-        if liked.id == user_id:
-            del liked
+    # new_likes_arr = [liked.to_dict() for liked in likes_arr if liked.id != user_id]
+    new_likes_arr = [liked.to_dict() for liked in likes_arr]
+    print("EEEEE", likes_arr)
+    print("EFGEFG", new_likes_arr)
 
-    print(likes_arr)
+    db.session.commit()
 
-    return {}
+
+    # for i in range(len(likes_arr)):
+    #     if likes_arr[i]['id'] == user_id:
+    #         del likes_arr[i]
+
+    return {"message": "User has been deleted from likes"}
+
+    # # all_likes = Session.query(likes).all()
+    # # print("EEEEE", all_likes)
+    # specific_like = Session.query(likes).filter_by(likes.c.like_receiver_id==user_id)
+    # print("FFFFF", specific_like)
+    # return {}

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { useEffect } from "react";
 import { thunkGetAllLikes } from "../../store/like";
 import LikeCard from "../LikesCard";
@@ -10,6 +11,7 @@ function LikesPage() {
     const dispatch = useDispatch()
     const allLikes = useSelector((state) => state.like.likes)
     const allLikesArr = Object.values(allLikes)
+    const [deleted, setDeleted] = useState(0)
     console.log(allLikesArr)
 
     useEffect(() => {

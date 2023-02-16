@@ -1,13 +1,20 @@
 import './LikesCard.css';
 import { useDispatch } from 'react-redux';
 import { thunkDeleteLike } from '../../store/like';
+import { useHistory } from 'react-router-dom'
+import { useState } from 'react';
 
 const LikeCard = ({ like }) => {
     const dispatch = useDispatch();
-
+    const history = useHistory();
+    const [likeArr, setLikeArr] = useState([])
     const handleDelete = async () => {
         await dispatch(thunkDeleteLike(like.id))
-        alert("You have un-liked this person")
+            .then(() => {
+
+                alert("You have un-liked this person")
+            })
+            .then(setLikeArr(like))
     }
 
     console.log('BBBBBB', like)

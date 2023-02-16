@@ -119,6 +119,7 @@ export default function reducer(state = initialState, action) {
 			return newState;
 		case DELETE_LIKE:
 			newState = { ...state }
+			console.log('ACTION', action.payload)
 			delete newState.likes[action.payload]
 			return newState
 		default:

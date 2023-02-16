@@ -10,10 +10,10 @@ export default function EditProfilePage() {
 	const history = useHistory();
 	const test = useSelector((state) => state.profile);
 	const currentUser = useSelector((state) => state.session.user);
-	console.log("IN EDIT ", test.current_user_profile.profile.age);
+	// console.log("IN EDIT ", test.current_user_profile.profile.age);
 	let current_user = test.current_user_profile.profile;
 
-	console.log("CURRENT USER!!!!!", current_user);
+	// console.log("CURRENT USER!!!!!", current_user);
 
 	const [loaded, setLoaded] = useState(false);
 	const [city, setCity] = useState(current_user?.city);
@@ -73,7 +73,7 @@ export default function EditProfilePage() {
 	async function handleDelete() {
 		const awaitedData = await dispatch(thunkDeleteUserProfile());
 		if (awaitedData) {
-			// dispatch(logout());
+			dispatch(logout());
 			history.push("/");
 		}
 	}
@@ -374,7 +374,7 @@ export default function EditProfilePage() {
 
 		const edited_profile = await dispatch(thunkEditProfile(data));
 
-		console.log("EDITED PROFILE---> SENDING TO THUNK", edited_profile);
+		// console.log("EDITED PROFILE---> SENDING TO THUNK", edited_profile);
 
 		if (edited_profile) history.push("/profile/current_user");
 		// 	if (data) {

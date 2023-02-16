@@ -75,6 +75,8 @@ export const thunkCurrentUserProfile = () => async (dispatch) => {
 		const data = await response.json();
 		dispatch(currentUserProfileAction(data));
 		return data;
+	} else {
+		return null;
 	}
 };
 
@@ -116,6 +118,7 @@ export default function profileReducer(state = initialState, action) {
 			newState.current_user_profile = { ...currentProfile };
 			return newState;
 		case DELETE_USER:
+			newState.current_user_profile = {};
 			return newState;
 		default: {
 			return state;

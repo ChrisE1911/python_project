@@ -327,9 +327,11 @@ function CreateProfilePage() {
 			age,
 			picture_url,
 		};
+
 		// if (data) {
 		// 	setErrors(data);
 		// }
+
 		await dispatch(thunkCreateProfile(data));
 		history.push("/discover");
 	};
@@ -343,11 +345,11 @@ function CreateProfilePage() {
 
 			<fieldset>
 			<form className="create-profile-form" onSubmit={handleSubmit}>
-				{/* <ul>
-					{errors.map((error, idx) => (
+				<ul>
+					{/* {errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
-					))}
-				</ul> */}
+					))} */}
+				</ul>
 				<label className="create-profile-field">
 					City
 					<input
@@ -355,6 +357,7 @@ function CreateProfilePage() {
 						value={city}
 						onChange={(e) => setCity(e.target.value)}
 						required
+						maxLength={50}
 					/>
 				</label>
 				<label className="create-profile-field">
@@ -364,6 +367,7 @@ function CreateProfilePage() {
 						value={state}
 						onChange={(e) => setState(e.target.value)}
 						required
+						maxLength={20}
 					/>
 				</label>
 				<label className="create-profile-field">
@@ -373,6 +377,7 @@ function CreateProfilePage() {
 						value={occupation}
 						onChange={(e) => setOccupation(e.target.value)}
 						required
+						maxLength={20}
 					/>
 				</label>
 				<label className="create-profile-field">
@@ -382,6 +387,7 @@ function CreateProfilePage() {
 						value={age}
 						onChange={(e) => setAge(e.target.value)}
 						required
+						min={18}
 					/>
 				</label>
 				<label className="create-profile-field">
@@ -391,6 +397,7 @@ function CreateProfilePage() {
 						value={bio}
 						onChange={(e) => setBio(e.target.value)}
 						required
+						maxLength={500}
 					/>
 				</label>
 				<label className="create-profile-field">
@@ -410,6 +417,7 @@ function CreateProfilePage() {
 						name='gender'
 						onChange={(e) => setGender(e.target.value)}
 						value={gender}
+						required
 					>
 						{genderChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -423,6 +431,7 @@ function CreateProfilePage() {
 						name='sexualOrientation'
 						onChange={(e) => setSexualOrientation(e.target.value)}
 						value={sexualOrientation}
+						required
 					>
 						{sexualOrientationChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -436,6 +445,7 @@ function CreateProfilePage() {
 						name='height'
 						onChange={(e) => setHeight(e.target.value)}
 						value={height}
+						required
 					>
 						{heightChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -449,6 +459,7 @@ function CreateProfilePage() {
 						name='religion'
 						onChange={(e) => setReligion(e.target.value)}
 						value={religion}
+						required
 					>
 						{religionChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -462,6 +473,7 @@ function CreateProfilePage() {
 						name='politicalAffiliation'
 						onChange={(e) => setPoliticalAffiliation(e.target.value)}
 						value={politicalAffiliation}
+						required
 					>
 						{politicalAffiliationChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -475,6 +487,7 @@ function CreateProfilePage() {
 						name='language'
 						onChange={(e) => setLanguage(e.target.value)}
 						value={language}
+						required
 					>
 						{languageChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -488,6 +501,7 @@ function CreateProfilePage() {
 						name='kids'
 						onChange={(e) => setKids(e.target.value)}
 						value={kids}
+						required
 					>
 						{kidsChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -501,6 +515,7 @@ function CreateProfilePage() {
 						name='pets'
 						onChange={(e) => setPets(e.target.value)}
 						value={pets}
+						required
 					>
 						{petsChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -514,6 +529,7 @@ function CreateProfilePage() {
 						name='diet'
 						onChange={(e) => setDiet(e.target.value)}
 						value={diet}
+						required
 					>
 						{dietChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -527,6 +543,7 @@ function CreateProfilePage() {
 						name='smoker'
 						onChange={(e) => setSmoker(e.target.value)}
 						value={smoker}
+						required
 					>
 						{smokerChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -540,6 +557,7 @@ function CreateProfilePage() {
 						name='drinker'
 						onChange={(e) => setDrinker(e.target.value)}
 						value={drinker}
+						required
 					>
 						{drinkerChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -553,6 +571,7 @@ function CreateProfilePage() {
 						name='marijuana'
 						onChange={(e) => setMarijuana(e.target.value)}
 						value={marijuana}
+						required
 					>
 						{marijuanaChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -566,6 +585,7 @@ function CreateProfilePage() {
 						name='zodiac'
 						onChange={(e) => setZodiac(e.target.value)}
 						value={zodiac}
+						required
 					>
 						{zodiacChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -579,6 +599,7 @@ function CreateProfilePage() {
 						name='ethnicity'
 						onChange={(e) => setEthnicity(e.target.value)}
 						value={ethnicity}
+						required
 					>
 						{ethnicityChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -592,6 +613,7 @@ function CreateProfilePage() {
 						name='bodyType'
 						onChange={(e) => setBodyType(e.target.value)}
 						value={bodyType}
+						required
 					>
 						{bodyTypeChoices.map((option) => (
 							<option key={option}>{option}</option>
@@ -605,6 +627,7 @@ function CreateProfilePage() {
 						name='educationLevel'
 						onChange={(e) => setEducationLevel(e.target.value)}
 						value={educationLevel}
+						required
 					>
 						{educationLevelChoices.map((option) => (
 							<option key={option}>{option}</option>

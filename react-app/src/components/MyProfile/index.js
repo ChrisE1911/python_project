@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { thunkCurrentUserProfile } from "../../store/profile";
 import { NavLink } from "react-router-dom";
+import "./MyProfile.css"
 
 export default function MyProfile() {
 	const [isLoaded, setLoaded] = useState(false);
@@ -50,10 +51,11 @@ export default function MyProfile() {
 								<p>{user?.bio}</p>
 							</div>
 							<div className='details'>
-								<h5>{user?.sexual_orientation}</h5>
-								<h5>{user?.height}</h5>
-								<h5>{user?.body_type}</h5>
-								<h5>{user?.ethnicity}</h5>
+							<h5>{`${user?.gender}  |  ${user?.sexual_orientation}`}</h5>
+							<h5>{`${user?.height}  |  ${user?.body_type}`}</h5>
+							<h5>{`${user?.ethnicity} | ${user?.political_affiliation} | ${user?.language} | ${user?.education_level} | ${user?.occupation} | ${user?.religion} | ${user?.zodiac}`}</h5>
+							<h5>{`${user?.smoker}  |  ${user?.drinker} | ${user?.marijuana} | ${user?.diet}`}</h5>
+							<h5>{`${user?.kids} | ${user?.pets} `}</h5>
 							</div>
 						</div>
 					</div>

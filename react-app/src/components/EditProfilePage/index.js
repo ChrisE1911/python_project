@@ -405,6 +405,7 @@ export default function EditProfilePage() {
 							value={city}
 							onChange={(e) => setCity(e.target.value)}
 							required
+							maxLength={50}
 							/>
 					</label>
 					<label className="edit-profile-field">
@@ -414,6 +415,7 @@ export default function EditProfilePage() {
 							value={state}
 							onChange={(e) => setState(e.target.value)}
 							required
+							maxLength={20}
 							/>
 					</label>
 					<label className="edit-profile-field">
@@ -423,6 +425,7 @@ export default function EditProfilePage() {
 							value={occupation}
 							onChange={(e) => setOccupation(e.target.value)}
 							required
+							maxLength={20}
 						/>
 					</label>
 					<label className="edit-profile-field">
@@ -432,6 +435,7 @@ export default function EditProfilePage() {
 							value={age}
 							onChange={(e) => setAge(e.target.value)}
 							required
+							min={18}
 							/>
 					</label>
 					<label className="edit-profile-field">
@@ -441,6 +445,7 @@ export default function EditProfilePage() {
 							value={bio}
 							onChange={(e) => setBio(e.target.value)}
 							required
+							maxLength={500}
 							/>
 					</label>
 
@@ -451,6 +456,7 @@ export default function EditProfilePage() {
 							name='gender'
 							onChange={(e) => setGender(e.target.value)}
 							value={gender}
+							required
 						>
 							{genderChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -464,6 +470,7 @@ export default function EditProfilePage() {
 							name='sexualOrientation'
 							onChange={(e) => setSexualOrientation(e.target.value)}
 							value={sexualOrientation}
+							required
 							>
 							{sexualOrientationChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -477,6 +484,7 @@ export default function EditProfilePage() {
 							name='height'
 							onChange={(e) => setHeight(e.target.value)}
 							value={height}
+							required
 							>
 							{heightChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -490,6 +498,7 @@ export default function EditProfilePage() {
 							name='religion'
 							onChange={(e) => setReligion(e.target.value)}
 							value={religion}
+							required
 							>
 							{religionChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -503,6 +512,7 @@ export default function EditProfilePage() {
 							name='politicalAffiliation'
 							onChange={(e) => setPoliticalAffiliation(e.target.value)}
 							value={politicalAffiliation}
+							required
 							>
 							{politicalAffiliationChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -516,6 +526,7 @@ export default function EditProfilePage() {
 							name='language'
 							onChange={(e) => setLanguage(e.target.value)}
 							value={language}
+							required
 						>
 							{languageChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -529,6 +540,7 @@ export default function EditProfilePage() {
 							name='kids'
 							onChange={(e) => setKids(e.target.value)}
 							value={kids}
+							required
 							>
 							{kidsChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -542,6 +554,7 @@ export default function EditProfilePage() {
 							name='pets'
 							onChange={(e) => setPets(e.target.value)}
 							value={pets}
+							required
 						>
 							{petsChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -555,6 +568,7 @@ export default function EditProfilePage() {
 							name='diet'
 							onChange={(e) => setDiet(e.target.value)}
 							value={diet}
+							required
 						>
 							{dietChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -568,6 +582,7 @@ export default function EditProfilePage() {
 							name='smoker'
 							onChange={(e) => setSmoker(e.target.value)}
 							value={smoker}
+							required
 						>
 							{smokerChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -581,6 +596,7 @@ export default function EditProfilePage() {
 							name='drinker'
 							onChange={(e) => setDrinker(e.target.value)}
 							value={drinker}
+							required
 							>
 							{drinkerChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -594,6 +610,7 @@ export default function EditProfilePage() {
 							name='marijuana'
 							onChange={(e) => setMarijuana(e.target.value)}
 							value={marijuana}
+							required
 						>
 							{marijuanaChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -607,6 +624,7 @@ export default function EditProfilePage() {
 							name='zodiac'
 							onChange={(e) => setZodiac(e.target.value)}
 							value={zodiac}
+							required
 						>
 							{zodiacChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -620,6 +638,7 @@ export default function EditProfilePage() {
 							name='ethnicity'
 							onChange={(e) => setEthnicity(e.target.value)}
 							value={ethnicity}
+							required
 						>
 							{ethnicityChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -633,6 +652,7 @@ export default function EditProfilePage() {
 							name='bodyType'
 							onChange={(e) => setBodyType(e.target.value)}
 							value={bodyType}
+							required
 						>
 							{bodyTypeChoices.map((option) => (
 								<option key={option}>{option}</option>
@@ -646,6 +666,7 @@ export default function EditProfilePage() {
 							name='educationLevel'
 							onChange={(e) => setEducationLevel(e.target.value)}
 							value={educationLevel}
+							required
 						>
 							{educationLevelChoices.map((option) => (
 								<option key={option}>{option}</option>

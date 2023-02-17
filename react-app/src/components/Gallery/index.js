@@ -53,6 +53,7 @@ export default function Gallery() {
 									value={newUrl}
 									type='url'
 									onChange={(e) => setNewUrl(e.target.value)}
+									required
 								></input>
 							</label>
 							<button>SUBMIT</button>

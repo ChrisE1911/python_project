@@ -18,32 +18,35 @@ function Navigation({ isLoaded }) {
 	return (
 		<ul className='NavBar'>
 
-			<li>
+			<li id="midcupid-logo">
 				{sessionUser ? <NavLink exact to='/discover'>
 					MidCupid
 				</NavLink> : <NavLink exact to='/'>MidCupid</NavLink>}
 			</li>
+
 			{isLoaded && (
 				<>
 					<div id="nav-bar-left-side">
-					<NavLink exact to='/discover'>
-						{sessionUser && <button>Discover</button>}
-					</NavLink>
-					<NavLink exact to='/questions'>
-						{sessionUser && <button>Questions</button>}
-					</NavLink>
-					<NavLink exact to='/likes-page'>
-						{sessionUser && <button>Likes</button>}
-					</NavLink>
-					</div>
+						<div id="nav-bar-buttons">
+							<NavLink exact to='/discover'>
+								{sessionUser && <button>Discover</button>}
+							</NavLink>
+							<NavLink exact to='/questions'>
+								{sessionUser && <button>Questions</button>}
+							</NavLink>
+							<NavLink exact to='/likes-page'>
+								{sessionUser && <button>Likes</button>}
+							</NavLink>
+						</div>
 
-					<div id="nav-bar-right-side">
-						<NavLink exact to='/profile/current_user'>
-							{sessionUser && <button>My Profile</button>}
-						</NavLink>
-						<li>
-							<ProfileButton user={sessionUser} />
-						</li>
+						<div id="nav-bar-right-side">
+							<NavLink exact to='/profile/current_user'>
+								{sessionUser && <button>My Profile</button>}
+							</NavLink>
+							<li>
+								<ProfileButton user={sessionUser} />
+							</li>
+						</div>
 					</div>
 				</>
 			)}

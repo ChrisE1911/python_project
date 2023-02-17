@@ -15,3 +15,32 @@
   width: auto;
   padding: 0;
 }
+
+#nav-bar-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  position: relative;
+  right: 138%;
+}
+
+#nav-bar-left-side {
+  position: relative;
+  width: 80%;
+  right: 6%;
+  gap: 6px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+#midcupid-logo a{
+  text-decoration-line: none;
+  color: white;
+  font-weight: 700;
+  font-size: x-large
+}
+
+body{
+  background-color: lightgray;
+}

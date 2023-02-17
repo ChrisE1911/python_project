@@ -77,7 +77,7 @@ export default function Gallery() {
 								<div key={pic.id}>
 									<img className='picture' src={pic.picture_url} />
 									<div className='button-container'>
-										{galleryArr.length >= 1 && (
+										{galleryArr.length > 1 && (
 											<button onClick={() => deletePicture(pic.id)}>
 												DELETE PICTURE
 											</button>

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { thunkGetAllQuestions } from "../../store/question";
 import { thunkCreateAnswer } from "../../store/question";
 import { thunkUpdateAnswer } from "../../store/question";
+import { thunkDeleteAnswer } from "../../store/question";
 
 function QuestionsPage() {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function QuestionsPage() {
     const answers = Object.values(questions.answerQuestions)
 
     const [loaded, setLoaded] = useState(false)
+    const [unansweredArr, setUnansweredArr] = useState(unanswered)
 
     useEffect(() => {
         dispatch(thunkGetAllQuestions())
@@ -40,6 +42,12 @@ function QuestionsPage() {
             let yes_or_no = "Yes"
             await dispatch(thunkUpdateAnswer(id, yes_or_no))
         }
+    }
+
+    const deleteAnswer = async (id) => {
+        await dispatch(thunkDeleteAnswer(id)).then(() => dispatch(thunkGetAllQuestions()));
+        // alert("This question has been unanswered");
+        // setUnansweredArr(unansweredArr);÷
     }
 
     return (
@@ -69,12 +77,12 @@ function QuestionsPage() {
                             {loaded && answers.map((answer) =>
                                 <div className="question-container" key={answer.id}>
                                     <div className="question-container-top">
-                                        <div>{allQuestions[answer.question_id].quest_txt}</div>
+                                        <div>{allQuestions[answer.question_id]?.quest_txt}</div>
                                     </div>
                                     <div className="question-container-bottom">
                                         <div>{`Current Answer: ${answer.yes_or_no}`} </div>
                                         <button onClick={() => updateAnswer(answer.id, answer.yes_or_no)}>Update</button>
-                                        <button>Delete</button>
+                                        <button onClick={() => deleteAnswer(answer.id)}>Delete</button>
                                     </div>
                                 </div>
                             )

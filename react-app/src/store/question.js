@@ -1,6 +1,7 @@
 const GET_ALL_QUESTIONS = "/get_all_questions"
 const CREATE_ANSWER = "/create_answers"
 const UPDATE_ANSWER = "/update_answers"
+const DELETE_ANSWER = "/update_answers"
 
 const getAllQuestionsAction = (data) => ({
     type: GET_ALL_QUESTIONS,
@@ -14,7 +15,12 @@ const createAnswersAction = (data) => ({
 
 const updateAnswersAction = (data) => ({
     type: UPDATE_ANSWER,
-    payload: data
+    payload: data,
+})
+
+const deleteAnswerAction = (data) => ({
+    type: DELETE_ANSWER,
+    payload: data,
 })
 
 
@@ -66,6 +72,17 @@ export const thunkUpdateAnswer = (id, yes_or_no) => async (dispatch) => {
     }
 }
 
+export const thunkDeleteAnswer = (id) => async (dispatch) => {
+    const response = await fetch(`/api/questions/${id}`, {
+        method: "DELETE"
+    })
+
+    if (response.ok) {
+        const removedAnswer = await response.json()
+        await dispatch(deleteAnswerAction(removedAnswer))
+    }
+}
+
 const initialState = {
     allQuestions: {},
     answerQuestions: {},
@@ -87,17 +104,21 @@ export default function questionReducer(state = initialState, action) {
             console.log('PAYLOAD', action.payload)
             return newState;
         case CREATE_ANSWER:
-            newState.answerQuestions[action.payload.id] = action.payload
-            console.log('ACTION.PAYLOAD', action.payload)
+            newState.answerQuestions[action.payload.id] = { ...action.payload }
             delete newState.unansweredQuestions[action.payload.question_id]
             // delete newState.answerQuestions[action.payload.id]
             return newState
-        case UPDATE_ANSWER:
-            const copyNewState = {...state}
-            // const answer = action.payload
-            delete copyNewState.answerQuestions[action.payload.id]
-            copyNewState.answerQuestions[action.payload.id] = action.payload
-            return copyNewState
+            case UPDATE_ANSWER:
+                const copyNewState = {...state}
+                // const answer = action.payload
+                delete copyNewState.answerQuestions[action.payload.id]
+            copyNewState.answerQuestions[action.payload.id] = { ...action.payload }
+            // copyNewState.answeredQuestions[action.payload.id] = { ...action.payload }
+                return copyNewState
+        case DELETE_ANSWER:
+            newState.unansweredQuestions[action.payload.id] = { ...action.payload }
+            delete newState.answerQuestions[action.payload.id]
+            return newState
         default:
             return state;
     }

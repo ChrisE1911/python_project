@@ -87,3 +87,15 @@ def update_answer():
     # print('11111111111111111', request_body['yes_or_no'])
     # print('22222222222222222222' , edit_answer)
     return edit_answer
+
+
+@question_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_answer(id):
+    deleted_answer_to_delete = Answer.query.get(int(id))
+    deleted_answer_obj = deleted_answer_to_delete.to_dict()
+    print(deleted_answer_obj)
+    db.session.delete(deleted_answer_to_delete)
+    db.session.commit()
+
+    return deleted_answer_obj

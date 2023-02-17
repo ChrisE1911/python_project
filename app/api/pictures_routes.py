@@ -1,20 +1,26 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import current_user, login_user, logout_user, login_required
-from app.forms import ProfileForm
 from app.models import User, db, Profile, Picture
 
-picture_routes = Blueprint('picture', __name__)
+picture_routes = Blueprint('pictures', __name__)
 
-@picture_routes.route('/')
+@picture_routes.route('/all')
 @login_required
 def get_all_pictures():
     """
     Retrieve all of a user's pictures
     """
 
+    # Will get all pictures objects for the Gallery component, into a list.
+    # Still includes profile picture even though separate from above.
+
+    print("You hit the route!!!!!")
     my_id = current_user.id
-    pictures = Picture.query.filter_by(user_id = my_id)
+    print('AAAAA', my_id)
+    pictures = Picture.query.filter(Picture.profile_id == my_id).all()
+    print('BBBBB', pictures)
     pictures_arr = [picture.to_dict() for picture in pictures]
+    print('CCCCC', pictures_arr)
 
     return pictures_arr
 
@@ -52,6 +58,10 @@ def create_additional_picture():
     """
     Creates extra pictures after initial profile picture
     """
+
+    #   The above "/create" route creates a picture, but sets profile equal to True.
+    #   This route should be accessible from components not on initial-setup and
+    #   will set is_profile_pic to False for all pictures made here. NOT IMPLEMENTED YET
 
     picture_url=request.json['picture_url']
     user_id=current_user.id

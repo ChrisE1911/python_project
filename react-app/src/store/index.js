@@ -5,7 +5,7 @@ import discover from "./discover";
 import like from "./like";
 import profile from "./profile"
 import questionReducer from "./question";
-import picture from "./picture"
+import pictureReducer from "./picture"
 
 const rootReducer = combineReducers({
 	session,
@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
 	like,
 	profile,
 	questionReducer,
-	picture
+	pictureReducer
 });
 
 let enhancer;

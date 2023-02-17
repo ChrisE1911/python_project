@@ -11,14 +11,14 @@ const createMorePicturesAction = (data) => ({
     payload: data,
 })
 
-export const thunkGetAllPictures = (data) => async (dispatch) => {
-    const response = await fetch("/api/picture/");
+export const thunkGetAllPictures = () => async (dispatch) => {
+    const response = await fetch("/api/picture/all");
 
     if(response.ok) {
-        const pictures = await response.json();
-        dispatch(getAllPicturesAction(pictures));
+        const data = await response.json();
+        dispatch(getAllPicturesAction(data));
 
-        return pictures;
+        return data;
     }
 }
 
@@ -45,19 +45,22 @@ const normalize = (arr) => {
 };
 
 const initialState = {
-    allPictures: {},
+    allPictures: [],
     currentPicture: {}
 }
 
-export default function reducer(state = initialState, action) {
-    let newState = { ...state };
+export default function pictureReducer(state = initialState, action) {
+    let newState;
     switch (action.type) {
         case GET_ALL_PICTURES:
+            newState = { ...state }
             newState.allPictures = normalize(action.payload)
             return newState
         case CREATE_MORE_PICTURES:
             newState.allPictures[action.payload.id] = action.payload
             newState.currentPicture = action.payload
             return newState
+        default:
+            return state;
     }
 }

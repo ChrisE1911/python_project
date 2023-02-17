@@ -39,7 +39,7 @@ function SignupFormPage() {
         <label>
           Email
           <input
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required

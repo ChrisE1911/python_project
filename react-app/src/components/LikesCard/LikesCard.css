@@ -1,12 +1,23 @@
-#likes-card{
-/* border: 2px solid red;
-background-color: gray;
-border-radius: 10px;
-padding: 10px; */
+.likes-card {
+    margin: 20px;
+    width: 180px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
 }
 
 #card-list{
     width: 80%;
     display: flex;
     flex-wrap: wrap;
+}
+
+.likes-image img {
+    width:100%;
+    border-radius: 8px;
 }

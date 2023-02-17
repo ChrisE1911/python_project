@@ -12,12 +12,12 @@ def all_questions():
     """
 
     questions_list = Question.query.all()
-    print('AAAAA', questions_list)
+    # print('AAAAA', questions_list)
     all_questions_obj = {}
     all_questions_list = [question for question in questions_list]
     for i in all_questions_list:
         all_questions_obj[i.id] = i.to_dict()
-    print('BBBBB', all_questions_obj)
+    # print('BBBBB', all_questions_obj)
 
 
     answers = Answer.query.filter(Answer.user_id == current_user.id).all()
@@ -27,20 +27,20 @@ def all_questions():
     for i in all_answers_list:
         all_answers_obj[i.id] = i.to_dict()
         answered_id.append(i.question_id)
-    print("CCCCC", all_answers_obj)
+    # print("CCCCC", all_answers_obj)
 
     answered_questions_obj = {}
     for i in answered_id:
         quest = Question.query.get(i)
-        print("EEEEE", quest)
+        # print("EEEEE", quest)
         answered_questions_obj[quest.id] = quest.to_dict()
-        print("FFFFF", answered_questions_obj)
+        # print("FFFFF", answered_questions_obj)
 
     all_unanswered_obj = {}
     for i in all_questions_obj:
         if i not in answered_id:
             all_unanswered_obj[i] = all_questions_obj[i]
-    print("DDDDD", all_unanswered_obj)
+    # print("DDDDD", all_unanswered_obj)
 
     # all_unanswered_obj = {}
     # for i in all_answers_list:
@@ -74,3 +74,16 @@ def create_answer():
     db.session.commit()
 
     return new_answer.to_dict()
+
+@question_routes.route("/update", methods=["PUT"])
+@login_required
+def update_answer():
+    request_body = request.get_json()
+    answer_id = request_body['id']
+    edit_answer = Answer.query.get(answer_id).to_dict()
+    edit_answer['yes_or_no'] = request_body['yes_or_no']
+
+    db.session.commit()
+    # print('11111111111111111', request_body['yes_or_no'])
+    # print('22222222222222222222' , edit_answer)
+    return edit_answer

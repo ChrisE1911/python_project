@@ -3,13 +3,14 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { thunkGetAllQuestions } from "../../store/question";
 import { thunkCreateAnswer } from "../../store/question";
+import { thunkUpdateAnswer } from "../../store/question";
 
 function QuestionsPage() {
     const dispatch = useDispatch();
     const questions = useSelector((state) => state.questionReducer)
     const allQuestions = questions.allQuestions
     const unanswered = Object.values(questions.unansweredQuestions)
-    const answered = Object.values(questions.answeredQuestions)
+    // const answered = Object.values(questions.answeredQuestions)
     const answers = Object.values(questions.answerQuestions)
 
     const [loaded, setLoaded] = useState(false)
@@ -29,6 +30,16 @@ function QuestionsPage() {
         let question_id = id
         let yes_or_no = "No"
         await dispatch(thunkCreateAnswer(question_id, yes_or_no))
+    }
+
+    const updateAnswer = async (id, current_answer) => {
+        if (current_answer === "Yes") {
+            let yes_or_no = "No"
+            await dispatch(thunkUpdateAnswer(id, yes_or_no))
+        } else {
+            let yes_or_no = "Yes"
+            await dispatch(thunkUpdateAnswer(id, yes_or_no))
+        }
     }
 
     return (
@@ -61,7 +72,9 @@ function QuestionsPage() {
                                         <div>{allQuestions[answer.question_id].quest_txt}</div>
                                     </div>
                                     <div className="question-container-bottom">
-                                        <div>user answers here</div>
+                                        <div>{`Current Answer: ${answer.yes_or_no}`} </div>
+                                        <button onClick={() => updateAnswer(answer.id, answer.yes_or_no)}>Update</button>
+                                        <button>Delete</button>
                                     </div>
                                 </div>
                             )

@@ -5,13 +5,15 @@ import discover from "./discover";
 import like from "./like";
 import profile from "./profile"
 import questionReducer from "./question";
+import pictureReducer from "./picture"
 
 const rootReducer = combineReducers({
 	session,
 	discover,
 	like,
 	profile,
-	questionReducer
+	questionReducer,
+	pictureReducer
 });
 
 let enhancer;

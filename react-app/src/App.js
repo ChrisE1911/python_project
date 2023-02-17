@@ -13,6 +13,7 @@ import EditProfilePage from "./components/EditProfilePage";
 import LikesPage from "./components/LikesPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import QuestionsPage from "./components/QuestionsPage";
+import Gallery from "./components/Gallery";
 
 function App() {
 	const dispatch = useDispatch();
@@ -51,6 +52,9 @@ function App() {
 					</Route>
 					<Route exact path='/questions'>
 						<QuestionsPage />
+					</Route>
+					<Route exact path='/pictures'>
+						<Gallery />
 					</Route>
 					<Route exact path='/'>
 						<SplashPage />

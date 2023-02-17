@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { thunkCurrentUserProfile } from "../../store/profile";
 import { logout } from "../../store/session";
+import "./EditProfilePage.css"
 
 export default function EditProfilePage() {
 	const dispatch = useDispatch();
@@ -388,31 +389,34 @@ export default function EditProfilePage() {
 	else {
 		return (
 			<>
-				<form onSubmit={handleSubmit}>
+			<div className="edit-form-container">
+			<fieldset>
+
+				<form className="edit-profile-form" onSubmit={handleSubmit}>
 					{/* <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul> */}
-					<label>
+					<label className="edit-profile-field">
 						City:
 						<input
 							type='text'
 							value={city}
 							onChange={(e) => setCity(e.target.value)}
 							required
-						/>
+							/>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						State
 						<input
 							type='text'
 							value={state}
 							onChange={(e) => setState(e.target.value)}
 							required
-						/>
+							/>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Occupation
 						<input
 							type='text'
@@ -421,26 +425,26 @@ export default function EditProfilePage() {
 							required
 						/>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Age
 						<input
 							type='number'
 							value={age}
 							onChange={(e) => setAge(e.target.value)}
 							required
-						/>
+							/>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Bio
 						<textarea
 							type='text'
 							value={bio}
 							onChange={(e) => setBio(e.target.value)}
 							required
-						/>
+							/>
 					</label>
 
-					<label>
+					<label className="edit-profile-field">
 						Gender
 						<select
 							type='text'
@@ -450,62 +454,62 @@ export default function EditProfilePage() {
 						>
 							{genderChoices.map((option) => (
 								<option key={option}>{option}</option>
-							))}
+								))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Sexual Orientation
 						<select
 							type='text'
 							name='sexualOrientation'
 							onChange={(e) => setSexualOrientation(e.target.value)}
 							value={sexualOrientation}
-						>
+							>
 							{sexualOrientationChoices.map((option) => (
 								<option key={option}>{option}</option>
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Height
 						<select
 							type='text'
 							name='height'
 							onChange={(e) => setHeight(e.target.value)}
 							value={height}
-						>
+							>
 							{heightChoices.map((option) => (
 								<option key={option}>{option}</option>
-							))}
+								))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Religion
 						<select
 							type='text'
 							name='religion'
 							onChange={(e) => setReligion(e.target.value)}
 							value={religion}
-						>
+							>
 							{religionChoices.map((option) => (
 								<option key={option}>{option}</option>
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Political Affiliation
 						<select
 							type='text'
 							name='politicalAffiliation'
 							onChange={(e) => setPoliticalAffiliation(e.target.value)}
 							value={politicalAffiliation}
-						>
+							>
 							{politicalAffiliationChoices.map((option) => (
 								<option key={option}>{option}</option>
-							))}
+								))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Language
 						<select
 							type='text'
@@ -515,23 +519,23 @@ export default function EditProfilePage() {
 						>
 							{languageChoices.map((option) => (
 								<option key={option}>{option}</option>
-							))}
+								))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Kids
 						<select
 							type='text'
 							name='kids'
 							onChange={(e) => setKids(e.target.value)}
 							value={kids}
-						>
+							>
 							{kidsChoices.map((option) => (
 								<option key={option}>{option}</option>
-							))}
+								))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Pets
 						<select
 							type='text'
@@ -544,7 +548,7 @@ export default function EditProfilePage() {
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Diet
 						<select
 							type='text'
@@ -557,7 +561,7 @@ export default function EditProfilePage() {
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Smoker
 						<select
 							type='text'
@@ -570,20 +574,20 @@ export default function EditProfilePage() {
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Drinker
 						<select
 							type='text'
 							name='drinker'
 							onChange={(e) => setDrinker(e.target.value)}
 							value={drinker}
-						>
+							>
 							{drinkerChoices.map((option) => (
 								<option key={option}>{option}</option>
-							))}
+								))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Marijuana
 						<select
 							type='text'
@@ -596,7 +600,7 @@ export default function EditProfilePage() {
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Zodiac
 						<select
 							type='text'
@@ -609,7 +613,7 @@ export default function EditProfilePage() {
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Ethnicity
 						<select
 							type='text'
@@ -622,7 +626,7 @@ export default function EditProfilePage() {
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Body Type
 						<select
 							type='text'
@@ -635,7 +639,7 @@ export default function EditProfilePage() {
 							))}
 						</select>
 					</label>
-					<label>
+					<label className="edit-profile-field">
 						Education Level
 						<select
 							type='text'
@@ -652,6 +656,8 @@ export default function EditProfilePage() {
 					<button type='submit'>Edit Profile</button>
 					<button onClick={handleDelete}>Delete Profile</button>
 				</form>
+							</fieldset>
+							</div>
 			</>
 		);
 	}

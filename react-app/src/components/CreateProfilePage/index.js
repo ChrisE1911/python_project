@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { thunkCreateProfile } from "../../store/profile";
+import "./CreateProfilePage.css"
 
 function CreateProfilePage() {
 	const dispatch = useDispatch();
@@ -337,13 +338,17 @@ function CreateProfilePage() {
 		<>
 			<h1>Profile Information</h1>
 			<h3>Tell us about you!</h3>
-			<form onSubmit={handleSubmit}>
+			<div className="create-form-container">
+
+
+			<fieldset>
+			<form className="create-profile-form" onSubmit={handleSubmit}>
 				{/* <ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul> */}
-				<label>
+				<label className="create-profile-field">
 					City
 					<input
 						type='text'
@@ -352,7 +357,7 @@ function CreateProfilePage() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					State
 					<input
 						type='text'
@@ -361,7 +366,7 @@ function CreateProfilePage() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Occupation
 					<input
 						type='text'
@@ -370,7 +375,7 @@ function CreateProfilePage() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Age
 					<input
 						type='number'
@@ -379,7 +384,7 @@ function CreateProfilePage() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Bio
 					<textarea
 						type='text'
@@ -388,7 +393,7 @@ function CreateProfilePage() {
 						required
 					/>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Picture URL
 					<input
 						type='url'
@@ -398,7 +403,7 @@ function CreateProfilePage() {
 					/>
 				</label>
 
-				<label>
+				<label className="create-profile-field">
 					Gender
 					<select
 						type='text'
@@ -411,7 +416,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Sexual Orientation
 					<select
 						type='text'
@@ -424,7 +429,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Height
 					<select
 						type='text'
@@ -437,7 +442,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Religion
 					<select
 						type='text'
@@ -450,7 +455,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Political Affiliation
 					<select
 						type='text'
@@ -463,7 +468,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Language
 					<select
 						type='text'
@@ -476,7 +481,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Kids
 					<select
 						type='text'
@@ -489,7 +494,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Pets
 					<select
 						type='text'
@@ -502,7 +507,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Diet
 					<select
 						type='text'
@@ -515,7 +520,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Smoker
 					<select
 						type='text'
@@ -528,7 +533,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Drinker
 					<select
 						type='text'
@@ -541,7 +546,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Marijuana
 					<select
 						type='text'
@@ -554,7 +559,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Zodiac
 					<select
 						type='text'
@@ -567,7 +572,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Ethnicity
 					<select
 						type='text'
@@ -580,7 +585,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Body Type
 					<select
 						type='text'
@@ -593,7 +598,7 @@ function CreateProfilePage() {
 						))}
 					</select>
 				</label>
-				<label>
+				<label className="create-profile-field">
 					Education Level
 					<select
 						type='text'
@@ -609,6 +614,8 @@ function CreateProfilePage() {
 
 				<button type='submit'>Create Profile</button>
 			</form>
+							</fieldset>
+							</div>
 		</>
 	);
 }

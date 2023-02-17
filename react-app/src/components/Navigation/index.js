@@ -30,6 +30,9 @@ function Navigation({ isLoaded }) {
 					<NavLink exact to='/profile/current_user'>
 						{sessionUser && <button>My Profile</button>}
 					</NavLink>
+					<NavLink exact to='/questions'>
+						{sessionUser && <button>Questions</button>}
+					</NavLink>
 					<li>
 						<ProfileButton user={sessionUser} />
 					</li>

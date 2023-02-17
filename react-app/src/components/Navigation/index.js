@@ -12,11 +12,12 @@ function Navigation({ isLoaded }) {
 	const sessionUser = useSelector((state) => state.session.user);
 
 	useEffect(() => {
-		sessionUser && dispatch(thunkCurrentUserProfile()) ;
+		sessionUser && dispatch(thunkCurrentUserProfile());
 	}, [dispatch]);
 
 	return (
 		<ul className='NavBar'>
+
 			<li>
 				{sessionUser ? <NavLink exact to='/discover'>
 					MidCupid
@@ -24,18 +25,26 @@ function Navigation({ isLoaded }) {
 			</li>
 			{isLoaded && (
 				<>
-					<NavLink exact to='/likes-page'>
-						{sessionUser && <button>Likes</button>}
-					</NavLink>
-					<NavLink exact to='/profile/current_user'>
-						{sessionUser && <button>My Profile</button>}
+					<div id="nav-bar-left-side">
+					<NavLink exact to='/discover'>
+						{sessionUser && <button>Discover</button>}
 					</NavLink>
 					<NavLink exact to='/questions'>
 						{sessionUser && <button>Questions</button>}
 					</NavLink>
-					<li>
-						<ProfileButton user={sessionUser} />
-					</li>
+					<NavLink exact to='/likes-page'>
+						{sessionUser && <button>Likes</button>}
+					</NavLink>
+					</div>
+
+					<div id="nav-bar-right-side">
+						<NavLink exact to='/profile/current_user'>
+							{sessionUser && <button>My Profile</button>}
+						</NavLink>
+						<li>
+							<ProfileButton user={sessionUser} />
+						</li>
+					</div>
 				</>
 			)}
 		</ul>

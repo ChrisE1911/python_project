@@ -14,7 +14,6 @@ export default function MyProfile() {
 	// Remember profile.current_user_profile.profile.userImages is an array
 	const image = user?.userImages;
 
-
 	useEffect(() => {
 		dispatch(thunkCurrentUserProfile()).then(() => setLoaded(true));
 	}, [dispatch]);
@@ -34,7 +33,10 @@ export default function MyProfile() {
 									<span>{user?.state}</span>
 								</div>
 								<NavLink exact to={"/profile/edit"}>
-									Edit
+									Edit Profile
+								</NavLink>
+								<NavLink exact to={"/pictures"}>
+									Edit Pictures
 								</NavLink>
 								<div className='right_buttons'></div>
 							</div>

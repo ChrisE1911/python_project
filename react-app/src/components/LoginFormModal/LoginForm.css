@@ -16,7 +16,7 @@
 	border-radius: 8px;
 	background: rgb(255, 255, 255);
 	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
-	padding-bottom: 20px;
+	padding: 20px;
 }
 .login-form input {
 	width: 100%;

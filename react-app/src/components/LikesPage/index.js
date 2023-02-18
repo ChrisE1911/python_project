@@ -23,7 +23,7 @@ function LikesPage() {
 
     return (
         <>
-            <h1>Likes</h1>
+            <h1 id='likespage-title'>Likes</h1>
             {!allLikesArr &&
                 <div>No likes yet, be patient!</div>
             }

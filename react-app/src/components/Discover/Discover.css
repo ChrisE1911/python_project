@@ -1,8 +1,11 @@
-#discover-empty{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100vw;
-    padding-bottom: 40px;
+#discover-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100vw;
+	padding-bottom: 40px;
+}
+#outofuser-h1 {
+	padding: 12px;
 }

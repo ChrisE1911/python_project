@@ -38,13 +38,17 @@ export default function ProfileCard({ user, updateUserNumber }) {
 					<div className='name-btn-container'>
 						<div className='left_div'>
 							<h1>{user.firstname}</h1>
-							<span>{user.profile.age}</span>
-							<span>{user.profile.city}</span>
-							<span>{user.profile.state}</span>
+							<span>{user.profile.age} {user.profile.city}, {user.profile.state}</span>
 						</div>
 						<div className='right_buttons'>
-							<button onClick={handlePass}>PASS</button>
-							<button onClick={handleLike}>LIKE</button>
+							<button className="dislike-button" onClick={handlePass}>
+								<i class="fa-solid fa-xmark fa-2xl"></i>
+								<div className="button-text">PASS</div>
+							</button>
+							<button className="like-button" onClick={handleLike}>
+								<i class="fa-solid fa-heart fa-2xl"></i>
+								<div className="button-text">LIKE</div>
+							</button>
 						</div>
 					</div>
 					<div className='discover_image'>
@@ -76,11 +80,27 @@ export default function ProfileCard({ user, updateUserNumber }) {
 						<p>{user.profile.bio}</p>
 					</div>
 					<div className='details'>
-						<h5>{`${user.profile.gender}  |  ${user.profile.sexual_orientation}`}</h5>
-						<h5>{`${user.profile.height}  |  ${user.profile.body_type}`}</h5>
-						<h5>{`${user.profile.ethnicity} | ${user.profile.political_affiliation} | ${user.profile.language} | ${user.profile.education_level} | ${user.profile.occupation} | ${user.profile.religion} | ${user.profile.zodiac}`}</h5>
-						<h5>{`${user.profile.smoker}  |  ${user.profile.drinker} | ${user.profile.marijuana} | ${user.profile.diet}`}</h5>
-						<h5>{`${user.profile.kids} | ${user.profile.pets} `}</h5>
+						<div className="details-field">
+							<i class="fa-solid fa-shapes"></i>
+							<h5 className="details-text">{`${user.profile.gender}  |  ${user.profile.sexual_orientation}`}</h5>
+						</div>
+						<div className="details-field">
+							<i class="fa-solid fa-person"></i>
+							<h5 className="details-text">{`${user.profile.height}  |  ${user.profile.body_type}`}</h5>
+						</div>
+						<div className="details-field">
+							<i class="fa-solid fa-globe"></i>
+							<h5 className="details-text">{`${user.profile.ethnicity} | ${user.profile.political_affiliation} | ${user.profile.language} | ${user.profile.education_level} | ${user.profile.occupation} | ${user.profile.religion} | ${user.profile.zodiac}`}</h5>
+						</div>
+						<div className="details-field">
+							<i class="fa-solid fa-martini-glass-citrus"></i>
+							<h5 className="details-text">{`${user.profile.smoker}  |  ${user.profile.drinker} | ${user.profile.marijuana} | ${user.profile.diet}`}</h5>
+						</div>
+						<div className="details-field">
+							<i class="fa-solid fa-house"></i>
+							<h5 className="details-text">{`${user.profile.kids} | ${user.profile.pets} `}</h5>
+						</div>
+
 					</div>
 				</div>
 			</div>

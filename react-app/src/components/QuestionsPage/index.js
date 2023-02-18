@@ -60,8 +60,10 @@ function QuestionsPage() {
             <h1>Questions</h1>
             <div className="questions-main-container">
                 <div className="left-side">
+                    <div className="left-side-container">
                     <h3>Questions Complete</h3>
                     <h1>{`${questionPercentage}%`}</h1>
+                    </div>
                 </div>
                 <div className="right-side">
                     <div className="right-top"></div>
@@ -72,7 +74,7 @@ function QuestionsPage() {
                                     <div className="question-container" key={unanswer.id}>
                                         <div className="question-container-top">
                                             {/* {console.log(answer)} */}
-                                            <div>{unanswer.quest_txt}</div>
+                                            <div className="question-text">{unanswer.quest_txt}</div>
                                         </div>
                                         <div className="question-container-bottom">
                                             <button onClick={() => createYes(unanswer.id)}>Yes</button>
@@ -86,10 +88,10 @@ function QuestionsPage() {
                                 {loaded && answers.map((answer) =>
                                     <div className="question-container" key={answer.id}>
                                         <div className="question-container-top">
-                                            <div>{allQuestions[answer.question_id]?.quest_txt}</div>
+                                            <div className="question-text">{allQuestions[answer.question_id]?.quest_txt}</div>
                                         </div>
                                         <div className="question-container-bottom">
-                                            <div>{`Current Answer: ${answer.yes_or_no}`} </div>
+                                            <div className="answer-text">{`Current Answer: ${answer.yes_or_no}`} </div>
                                             <button onClick={() => updateAnswer(answer.id, answer.yes_or_no)}>Update</button>
                                             <button onClick={() => deleteAnswer(answer.id)}>Delete</button>
                                         </div>

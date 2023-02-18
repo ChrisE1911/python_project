@@ -104,3 +104,10 @@ body {
 	position: relative;
 	left: 40%;
 }
+.discover-icon {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 2px;
+}

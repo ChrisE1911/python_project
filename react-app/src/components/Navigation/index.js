@@ -53,16 +53,34 @@ function Navigation({ isLoaded }) {
 						<div id='nav-bar-left-side'>
 							<div id='nav-bar-buttons'>
 								<NavLink exact to='/discover'>
-									{sessionUser && <button>Discover</button>}
-									{/* <button>Discover</button> */}
+									{sessionUser && (
+										<button>
+											<div className='discover-icon'>
+												<i class='fa-regular fa-address-book'></i>
+												Discover
+											</div>
+										</button>
+									)}
 								</NavLink>
 								<NavLink exact to='/questions'>
-									{sessionUser && <button>Questions</button>}
-									{/* <button>Questions</button> */}
+									{sessionUser && (
+										<button>
+											<div className='discover-icon'>
+												<i class='fa-solid fa-magnifying-glass'></i>
+												Questions
+											</div>
+										</button>
+									)}
 								</NavLink>
 								<NavLink exact to='/likes-page'>
-									{sessionUser && <button>Likes</button>}
-									{/* <button>Likes</button> */}
+									{sessionUser && (
+										<button>
+											<div className='discover-icon'>
+												<i class='fa-regular fa-heart'></i>
+												Likes
+											</div>
+										</button>
+									)}
 								</NavLink>
 							</div>
 

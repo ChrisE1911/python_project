@@ -23,27 +23,4 @@ Links to Project Wiki:
 You will be able to test the features without going through the entire signup process by clicking the 'Demo User' button in the login modal.
 ![LoginPageScreenshot](https://user-images.githubusercontent.com/106803067/219902855-5b84042b-c96f-493e-bed9-fe9718691cb0.png)
 
-
-
-# Features List:
-
-## User Authentication:
-
-- New user without account can log in as demo user
-- New users can create account with username, email, and password
-- Existing users can log in and create groups and events
-- Users can log out anytime redirected to splash page
-- Users can see what inputs are invalid
-
-## Groups/Events:
-
-- Logged in user can create group, edit group and delete group. If not authorized, buttons won't show for above actions.
-- Logged in user can create events and delete events associated to their group
-
-## Future Feature Plans:
-
-- User Profile Page where they can see their own groups and events
-- Join a group
-- RSVP
-- Create
-- 404 Page
+![MidCupidSplashPage](https://user-images.githubusercontent.com/106803067/219902941-8d9ed647-41ac-44cf-b2ba-40d71cdde61c.png)

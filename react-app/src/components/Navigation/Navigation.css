@@ -6,6 +6,13 @@
     border-radius: 8px;
     background: rgb(255, 255, 255);
     box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 27px;
+    margin: 0;
 }
 
 .hidden {
@@ -27,8 +34,19 @@
   gap: 20px;
   position: relative;
   right: 138%;
+  align-items: center;
+  justify-content: center;
 }
 
+#nav-bar-buttons button {
+  background: none;
+  border: none;
+  color: white;
+}
+
+#nav-bar-buttons button:hover {
+  border-bottom: 1px solid #e00095;
+}
 #nav-bar-left-side {
   position: relative;
   width: 80%;
@@ -56,3 +74,18 @@ body{
   align-items: center;
   justify-content: center;
 }
+
+#nav-bar-right-side button {
+  border-radius: 65%;
+  width: 45px;
+  height: 45px;
+}
+
+/* .nav-my-profile-container {
+display: flex;
+flex-direction: row;
+gap: 5px;
+justify-content: center;
+align-items: center;
+} */
+

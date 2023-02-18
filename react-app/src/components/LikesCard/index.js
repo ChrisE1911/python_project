@@ -35,7 +35,7 @@ const LikeCard = ({ like }) => {
                 <div>{`${like.profile.city}, ${like.profile.state}`}</div>
             </div>
 {/* Add onclick and handle delete like to this component */}
-            <button onClick={handleDelete}>Delete</button>
+            <button className='dislike-button' onClick={handleDelete}>Delete</button>
         </div>
     )
 }

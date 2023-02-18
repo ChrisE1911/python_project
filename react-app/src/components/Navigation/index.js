@@ -62,8 +62,10 @@ function Navigation({ isLoaded }) {
 
 						<div id="nav-bar-right-side">
 
-							<NavLink exact to='/profile/current_user'>
-								{sessionUser && <button>My Profile</button>}
+							<NavLink className="nav-my-profile-container" exact to='/profile/current_user'>
+								{sessionUser && <button>
+									<i className='fas fa-user-circle fa-2xl' />
+								</button>}
 							</NavLink>
 							<li>
 								<ProfileButton user={sessionUser} />

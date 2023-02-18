@@ -28,6 +28,7 @@ function CreateProfilePage() {
 	const [bio, setBio] = useState("");
 	const [age, setAge] = useState("");
 	const [pictureUrl, setPictureUrl] = useState("");
+	console.log("change for emailvalidator install")
 
 	const [errors, setErrors] = useState([]);
 	const history = useHistory();

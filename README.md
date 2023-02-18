@@ -20,10 +20,10 @@ Links to Project Wiki:
 
 # Features Directions:
 
-You will be able to test the features without signup/login by clicking 'try it out' button in the login modal
-![meetup-homepage-screenshot]
+You will be able to test the features without going through the entire signup process by clicking the 'Demo User' button in the login modal.
+![LoginPageScreenshot](https://user-images.githubusercontent.com/106803067/219902855-5b84042b-c96f-493e-bed9-fe9718691cb0.png)
 
-[meetup-homepage-screenshot]: ./assets/Screen%20Shot%202023-01-22%20at%202.04.25%20PM.png
+
 
 # Features List:
 

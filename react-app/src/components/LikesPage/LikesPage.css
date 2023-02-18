@@ -18,3 +18,17 @@
 	text-align: center;
 	padding-top: 8px;
 }
+
+#likes-empty {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 100vw;
+	padding-bottom: 40px;
+	font-size: 100px;
+}
+
+#outoflikes-id {
+	padding: 12px;
+}

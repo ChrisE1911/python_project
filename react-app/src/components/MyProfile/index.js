@@ -42,7 +42,14 @@ export default function MyProfile() {
 								<div className='right_buttons'></div>
 							</div>
 							<div className='discover_image'>
-								<img src={image[0]?.picture_url} alt='profile-pic' />
+								{
+									image.map((img) =>
+									<div key={img.id} className='profile-img-container'>
+										<img src={img?.picture_url} alt='profile-pic' />
+									</div>
+
+									)
+								}
 							</div>
 						</div>
 						<div className='bottom-container'>

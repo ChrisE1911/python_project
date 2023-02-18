@@ -29,7 +29,6 @@
 
 .discover_image {
 	display: flex;
-
 	flex-direction: row;
 	overflow: scroll;
 	overflow-y: hidden;

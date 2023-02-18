@@ -10,71 +10,83 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector((state) => state.session.user);
-	const currentProfile = useSelector((state) => state.profile.current_user_profile)
-	const path = useLocation()
-	console.log("WHAT PATH AM I", path)
+	const currentProfile = useSelector(
+		(state) => state.profile.current_user_profile
+	);
+	const path = useLocation();
+	console.log("WHAT PATH AM I", path);
 
 	useEffect(() => {
 		sessionUser && dispatch(thunkCurrentUserProfile());
 	}, [dispatch]);
 
-	const currentUserProfileArr = Object.values(currentProfile)
+	const currentUserProfileArr = Object.values(currentProfile);
 
 	function sessionCurrentProfileCheck() {
-		if(sessionUser.id === currentProfile.id) {
-			return false
+		if (sessionUser.id === currentProfile.id) {
+			return false;
 		} else {
-			return true
+			return true;
 		}
 	}
 
+	if (path.pathname === "/profile/create")
+		return <h1 className='alt-nav'>Complete the Form Below</h1>;
 
+	return (
+		path.pathname !== "/profile/create" && (
+			<ul className='NavBar'>
+				<li id='midcupid-logo'>
+					{sessionUser ? (
+						<NavLink exact to='/discover'>
+							MidCupid
+						</NavLink>
+					) : (
+						<NavLink exact to='/'>
+							MidCupid
+						</NavLink>
+					)}
+				</li>
 
-	if (path.pathname === "/profile/create") return <h1 className="alt-nav">Complete the Form Below</h1>
+				{isLoaded && (
+					<>
+						<div id='nav-bar-left-side'>
+							<div id='nav-bar-buttons'>
+								<NavLink exact to='/discover'>
+									{sessionUser && <button>Discover</button>}
+									{/* <button>Discover</button> */}
+								</NavLink>
+								<NavLink exact to='/questions'>
+									{sessionUser && <button>Questions</button>}
+									{/* <button>Questions</button> */}
+								</NavLink>
+								<NavLink exact to='/likes-page'>
+									{sessionUser && <button>Likes</button>}
+									{/* <button>Likes</button> */}
+								</NavLink>
+							</div>
 
-	return path.pathname !== "/profile/create" && (
-		<ul className='NavBar'>
-			<li id="midcupid-logo">
-				{sessionUser ? <NavLink exact to='/discover'>
-					MidCupid
-				</NavLink> : <NavLink exact to='/'>MidCupid</NavLink>}
-			</li>
-
-			{isLoaded && (
-				<>
-					<div id="nav-bar-left-side">
-						<div id="nav-bar-buttons">
-
-							<NavLink exact to='/discover'>
-								{sessionUser && <button>Discover</button>}
-								{/* <button>Discover</button> */}
-							</NavLink>
-							<NavLink exact to='/questions'>
-								{sessionUser && <button>Questions</button>}
-								{/* <button>Questions</button> */}
-							</NavLink>
-							<NavLink exact to='/likes-page'>
-								{sessionUser && <button>Likes</button>}
-								{/* <button>Likes</button> */}
-							</NavLink>
-
+							<div id='nav-bar-right-side'>
+								<NavLink
+									className='nav-my-profile-container '
+									exact
+									to='/profile/current_user'
+								>
+									{sessionUser && (
+										<button className='logout-door-btn'>
+											<i className='fas fa-user-circle fa-2xl' />
+										</button>
+									)}
+								</NavLink>
+								<li>
+									<ProfileButton user={sessionUser} />
+								</li>
+							</div>
 						</div>
-
-						<div id="nav-bar-right-side">
-
-							<NavLink className="nav-my-profile-container" exact to='/profile/current_user'>
-								{sessionUser && <button>
-									<i className='fas fa-user-circle fa-2xl' />
-								</button>}
-							</NavLink>
-							<li>
-								<ProfileButton user={sessionUser} />
-							</li>
-						</div>
-					</div>
-				</>
-			)}
-		</ul>
+					</>
+				)}
+			</ul>
+		)
 	);
 }
 

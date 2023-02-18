@@ -42,15 +42,21 @@ function ProfileButton({ user }) {
 
 	return (
 		<>
-			<button onClick={openMenu}>
-			<i class="fa-solid fa-arrow-right-from-bracket fa-xl"></i>
+			<button onClick={openMenu} className='logout-door-btn'>
+				<i class='fa-solid fa-arrow-right-from-bracket fa-xl'></i>
 			</button>
 			<ul className={ulClassName} ref={ulRef}>
 				{user ? (
 					<>
 						<li>Are you sure you want to log out?</li>
 						<li>
-							<button id='log-out-button' onClick={handleLogout}>Log Out</button>
+							<button
+								id='log-out-button'
+								className='like-button'
+								onClick={handleLogout}
+							>
+								Log Out
+							</button>
 						</li>
 					</>
 				) : (

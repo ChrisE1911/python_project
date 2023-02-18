@@ -1,91 +1,105 @@
 .profile-dropdown {
-  position: fixed;
-    right: 14%;
-    color: black;
-    background-color: white;
-    border-radius: 8px;
-    background: rgb(255, 255, 255);
-    box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 27px;
-    margin: 0;
+	position: fixed;
+	right: 26%;
+	color: black;
+	background-color: white;
+	border-radius: 8px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
+	list-style-type: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 27px;
+	margin: 0;
+}
+.profile-dropdown button {
+	margin: 5px;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
 
 .NavBar {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  list-style-type: none;
-  width: auto;
-  padding: 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	list-style-type: none;
+	width: auto;
+	padding: 0;
 }
 
 #nav-bar-buttons {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  position: relative;
-  right: 138%;
-  align-items: center;
-  justify-content: center;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	position: relative;
+	right: 138%;
+	align-items: center;
+	justify-content: center;
 }
 
 #nav-bar-buttons button {
-  background: none;
-  border: none;
-  color: white;
+	background: none;
+	border: none;
+	color: white;
 }
 
 #nav-bar-buttons button:hover {
-  border-bottom: 1px solid #e00095;
+	border-bottom: 1px solid #e00095;
 }
 #nav-bar-left-side {
-  position: relative;
-  width: 80%;
-  right: 6%;
-  gap: 6px;
-  display: flex;
-  gap: 8px;
-  justify-content: space-between;
+	position: relative;
+	width: 80%;
+	right: 6%;
+	gap: 6px;
+	display: flex;
+	gap: 8px;
+	justify-content: space-between;
 }
 
-#midcupid-logo a{
-  text-decoration-line: none;
-  color: white;
-  font-weight: 700;
-  font-size: x-large
+#midcupid-logo a {
+	text-decoration-line: none;
+	color: white;
+	font-weight: 700;
+	font-size: x-large;
 }
 
-body{
-  background-color: lightgray;
+body {
+	background-color: lightgray;
 }
 
 .alt-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-#nav-bar-right-side button {
-  border-radius: 65%;
-  width: 45px;
-  height: 45px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 }
 
 /* .nav-my-profile-container {
-display: flex;
-flex-direction: row;
-gap: 5px;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
 } */
 
+.logout-door-btn {
+	border-radius: 65%;
+	width: 45px;
+	height: 45px;
+	position: relative;
+}
+
+/* #nav-bar-right-side button {
+  border-radius: 65%;
+  width: 45px;
+  height: 45px;
+} */
+
+#midcupid-logo a {
+	position: relative;
+	left: 40%;
+}

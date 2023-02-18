@@ -30,13 +30,14 @@ function LoginFormModal() {
 
 	return (
 		<>
-			<h1>Log In</h1>
-			<form onSubmit={handleSubmit}>
+			<h1 id='login-h1'>Log In</h1>
+			<form className='login-form' onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
+
 				<label>
 					Email
 					<input
@@ -55,8 +56,13 @@ function LoginFormModal() {
 						required
 					/>
 				</label>
-				<button type='submit'>Log In</button>
-				<button onClick={demoInput}>Demo User</button>
+
+				<button className='like-button' type='submit'>
+					Log In
+				</button>
+				<button className='dislike-button' onClick={demoInput}>
+					Demo User
+				</button>
 			</form>
 		</>
 	);

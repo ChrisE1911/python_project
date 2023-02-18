@@ -36,6 +36,10 @@ export default function Gallery() {
 		);
 	}
 
+	function addDefaultSrc(ev) {
+		ev.target.src = 'https://imgs.search.brave.com/j6LvyJzEO_tVPwInMfwerPZyHUE0NcuPIhjVzBN-cKc/rs:fit:375:500:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY1LzBi/L2E3LzY1MGJhNzM0/N2UyZDg3NTFjMTU3/YjcwZDc5MTEyM2I4/LmpwZw'
+	}
+
 	if (!galleryArr.length) return null;
 
 	// console.log("AAAAA-Gallery", gallery);
@@ -76,7 +80,7 @@ export default function Gallery() {
 						{loaded &&
 							galleryArr.map((pic) => (
 								<div key={pic.id}>
-									<img className='picture' src={pic.picture_url} />
+									<img onError={addDefaultSrc} className='picture' src={pic.picture_url} />
 									<div className='button-container'>
 										{galleryArr.length > 1 && (
 											<button onClick={() => deletePicture(pic.id)}>

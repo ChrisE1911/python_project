@@ -26,6 +26,10 @@ export default function ProfileCard({ user, updateUserNumber }) {
 		return user.profile.userImages.length !== 1;
 	}
 
+	function addDefaultSrc(ev) {
+		ev.target.src = 'https://imgs.search.brave.com/j6LvyJzEO_tVPwInMfwerPZyHUE0NcuPIhjVzBN-cKc/rs:fit:375:500:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY1LzBi/L2E3LzY1MGJhNzM0/N2UyZDg3NTFjMTU3/YjcwZDc5MTEyM2I4/LmpwZw'
+	}
+
 	console.log(user.profile);
 	return (
 		<div className='discover_container'>
@@ -61,7 +65,7 @@ export default function ProfileCard({ user, updateUserNumber }) {
 						*/}
 						{user.profile.userImages.map((img) => (
 							<div key={img.id} className='profile-img-container'>
-								<img src={img.picture_url} />
+								<img onError={addDefaultSrc} src={img.picture_url} />
 							</div>
 						))}
 					</div>

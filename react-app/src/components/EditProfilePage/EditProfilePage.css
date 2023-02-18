@@ -20,8 +20,15 @@
     flex-direction: column;
     margin: auto;
     width: 500px;
+    padding:50px;
 }
 
 fieldset {
     border-radius: 8px;
+}
+
+#edit-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }

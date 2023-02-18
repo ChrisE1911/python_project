@@ -57,7 +57,7 @@ function QuestionsPage() {
 
     return (
         <>
-            <h1>Questions</h1>
+            <h1 id='questions-title'>Questions</h1>
             <div className="questions-main-container">
                 <div className="left-side">
                     <div className="left-side-container">
@@ -77,8 +77,8 @@ function QuestionsPage() {
                                             <div className="question-text">{unanswer.quest_txt}</div>
                                         </div>
                                         <div className="question-container-bottom">
-                                            <button onClick={() => createYes(unanswer.id)}>Yes</button>
-                                            <button onClick={() => createNo(unanswer.id)}>No</button>
+                                            <button className='like-button' onClick={() => createYes(unanswer.id)}>Yes</button>
+                                            <button className='dislike-button' onClick={() => createNo(unanswer.id)}>No</button>
                                         </div>
                                     </div>
                                 )
@@ -92,8 +92,8 @@ function QuestionsPage() {
                                         </div>
                                         <div className="question-container-bottom">
                                             <div className="answer-text">{`Current Answer: ${answer.yes_or_no}`} </div>
-                                            <button onClick={() => updateAnswer(answer.id, answer.yes_or_no)}>Update</button>
-                                            <button onClick={() => deleteAnswer(answer.id)}>Delete</button>
+                                            <button className='like-button' onClick={() => updateAnswer(answer.id, answer.yes_or_no)}>Update</button>
+                                            <button className="dislike-button" onClick={() => deleteAnswer(answer.id)}>Delete</button>
                                         </div>
                                     </div>
                                 )

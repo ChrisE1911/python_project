@@ -6,6 +6,7 @@ import {
 	thunkGetAllPictures,
 } from "../../store/picture";
 import { NavLink } from "react-router-dom";
+import './Gallery.css'
 
 // Will render all pictures as a gallery, rest is up for discussion
 
@@ -46,44 +47,46 @@ export default function Gallery() {
 	return (
 		loaded && (
 			<div>
-				<h1>Pictures</h1>
-				<div className='left-url-form'>
-					<h2>Add New Picture</h2>
-					{galleryArr.length < 10 && (
-						<form onSubmit={createPicture}>
-							<label>
-								Image Url:
-								<input
-									value={newUrl}
-									type='url'
-									onChange={(e) => setNewUrl(e.target.value)}
-									required
-								></input>
-							</label>
-							<button>SUBMIT</button>
-						</form>
-					)}
-					<div>
-						{galleryArr.length > 9 && (
-							<h2>You've reached Maximum of pictures</h2>
+				<h1 id="edit-pictures-title">Pictures</h1>
+				<div className="main-picture-container">
+					<div className='left-url-form'>
+						<h2>Add New Picture</h2>
+						{galleryArr.length < 10 && (
+							<form onSubmit={createPicture}>
+								<label>
+									Image Url:
+									<input
+										value={newUrl}
+										type='url'
+										onChange={(e) => setNewUrl(e.target.value)}
+										required
+									></input>
+								</label>
+								<button className="like-button">SUBMIT</button>
+							</form>
 						)}
-					</div>
+						<div>
+							{galleryArr.length > 9 && (
+								<h2>You've reached Maximum of pictures</h2>
+							)}
+						</div>
 				</div>
 
-				<div id='gallery-container'>
-					<div>
-						{!galleryArr.length && (
-							<div>Add some photos so people can get to know you!</div>
-						)}
+					<div id='gallery-container'>
+						<div>
+							{!galleryArr.length && (
+								<div>Add some photos so people can get to know you!</div>
+							)}
+						</div>
 					</div>
 					<ul id='gallery-list'>
 						{loaded &&
 							galleryArr.map((pic) => (
-								<div key={pic.id}>
+								<div className="gallery-image" key={pic.id}>
 									<img onError={addDefaultSrc} className='picture' src={pic.picture_url} />
 									<div className='button-container'>
 										{galleryArr.length > 1 && (
-											<button onClick={() => deletePicture(pic.id)}>
+											<button className="dislike-button" onClick={() => deletePicture(pic.id)}>
 												DELETE PICTURE
 											</button>
 										)}

@@ -1,6 +1,7 @@
 .questions-main-container{
     width: 100vw;
     height: 100vh;
+    padding-bottom:150px;
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -52,9 +53,11 @@ body {
 }
 
 .question-container-bottom {
-    border-top: 1px solid lightgray;
-    margin-top: 5px;
-    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 15px;
 }
 
 .answer-text {

@@ -30,7 +30,7 @@ function Navigation({ isLoaded }) {
 
 
 
-	if (path.pathname === "/profile/create") return <h1>Complete the Form Below</h1>
+	if (path.pathname === "/profile/create") return <h1 className="alt-nav">Complete the Form Below</h1>
 
 	return path.pathname !== "/profile/create" && (
 		<ul className='NavBar'>

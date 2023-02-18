@@ -339,9 +339,8 @@ function CreateProfilePage() {
 
 	return (
 		<>
-			<h1>Profile Information</h1>
-			<h3>Tell us about you!</h3>
 			<div className="create-form-container">
+			<h3 className="create-profile-title">Tell us about you!</h3>
 
 
 			<fieldset>
@@ -352,7 +351,7 @@ function CreateProfilePage() {
 					))} */}
 				</ul>
 				<label className="create-profile-field">
-					City
+					City:
 					<input
 						type='text'
 						value={city}
@@ -362,7 +361,7 @@ function CreateProfilePage() {
 					/>
 				</label>
 				<label className="create-profile-field">
-					State
+					State:
 					<input
 						type='text'
 						value={state}
@@ -372,7 +371,7 @@ function CreateProfilePage() {
 					/>
 				</label>
 				<label className="create-profile-field">
-					Occupation
+					Occupation:
 					<input
 						type='text'
 						value={occupation}
@@ -382,7 +381,7 @@ function CreateProfilePage() {
 					/>
 				</label>
 				<label className="create-profile-field">
-					Age
+					Age:
 					<input
 						type='number'
 						value={age}
@@ -392,7 +391,7 @@ function CreateProfilePage() {
 					/>
 				</label>
 				<label className="create-profile-field">
-					Bio
+					Bio:
 					<textarea
 						type='text'
 						value={bio}
@@ -402,7 +401,7 @@ function CreateProfilePage() {
 					/>
 				</label>
 				<label className="create-profile-field">
-					Picture URL
+					Picture URL:
 					<input
 						type='url'
 						value={pictureUrl}
@@ -410,9 +409,8 @@ function CreateProfilePage() {
 						required
 					/>
 				</label>
-
 				<label className="create-profile-field">
-					Gender
+					Gender:
 					<select
 						type='text'
 						name='gender'
@@ -426,7 +424,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Sexual Orientation
+					Sexual Orientation:
 					<select
 						type='text'
 						name='sexualOrientation'
@@ -440,7 +438,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Height
+					Height:
 					<select
 						type='text'
 						name='height'
@@ -454,7 +452,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Religion
+					Religion:
 					<select
 						type='text'
 						name='religion'
@@ -468,7 +466,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Political Affiliation
+					Political Affiliation:
 					<select
 						type='text'
 						name='politicalAffiliation'
@@ -482,7 +480,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Language
+					Language:
 					<select
 						type='text'
 						name='language'
@@ -496,7 +494,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Kids
+					Kids:
 					<select
 						type='text'
 						name='kids'
@@ -510,7 +508,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Pets
+					Pets:
 					<select
 						type='text'
 						name='pets'
@@ -524,7 +522,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Diet
+					Diet:
 					<select
 						type='text'
 						name='diet'
@@ -538,7 +536,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Smoker
+					Smoker:
 					<select
 						type='text'
 						name='smoker'
@@ -552,7 +550,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Drinker
+					Drinker:
 					<select
 						type='text'
 						name='drinker'
@@ -566,7 +564,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Marijuana
+					Marijuana:
 					<select
 						type='text'
 						name='marijuana'
@@ -580,7 +578,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Zodiac
+					Zodiac:
 					<select
 						type='text'
 						name='zodiac'
@@ -594,7 +592,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Ethnicity
+					Ethnicity:
 					<select
 						type='text'
 						name='ethnicity'
@@ -608,7 +606,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Body Type
+					Body Type:
 					<select
 						type='text'
 						name='bodyType'
@@ -622,7 +620,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 				<label className="create-profile-field">
-					Education Level
+					Education Level:
 					<select
 						type='text'
 						name='educationLevel'
@@ -636,7 +634,7 @@ function CreateProfilePage() {
 					</select>
 				</label>
 
-				<button type='submit'>Create Profile</button>
+				<button className="like-button" type='submit'>Create Profile</button>
 			</form>
 							</fieldset>
 							</div>

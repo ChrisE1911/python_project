@@ -17,6 +17,7 @@ Links to Project Wiki:
 - Redux
 - Python
 - Flask/SQLAlchemy
+- HTML/CSS
 
 # Features Directions:
 

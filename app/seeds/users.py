@@ -13,12 +13,31 @@ def seed_users():
         username='alex', email='alex@aa.io', password='password', firstname="Alex", lastname="Parker")
     sarah = User(
         username='sarah', email='sarah@aa.io', password='password', firstname="Sarah", lastname="Henderson")
+    v = User(
+        username='vbts', email='vbts@aa.io', password='password', firstname='V', lastname='Bts')
+    jungkook = User(
+        username='jungkook', email='jungkook@aa.io', password='password', firstname='Jungkook', lastname='Bts'
+    )
+    blake = User(
+        username='blake', email='blake@aa.io', password='password', firstname='Blake', lastname='Lively'
+    )
+    beyonce = User(
+        username='beyonce', email='beyonce@aa.io', password='password', firstname='Beyonce', lastname='Carter'
+    )
+    kim = User(
+        username='kim', email='kim@aa.io', password='password', firstname='Kim', lastname='Kardashian'
+    )
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
     db.session.add(alex)
     db.session.add(sarah)
+    db.session.add(v)
+    db.session.add(jungkook)
+    db.session.add(blake)
+    db.session.add(beyonce)
+    db.session.add(kim)
     db.session.commit()
 
     return [user for user in User.query.all()]

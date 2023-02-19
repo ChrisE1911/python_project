@@ -1,0 +1,23 @@
+.footer-container {
+    color: white;
+    background-color: black;
+    padding-left: 20px;
+}
+
+.about-header {
+    margin: 0px;
+    padding: 10px;
+}
+
+.repo-link {
+    margin: 5px;
+}
+
+.contact-header {
+    margin: 10px;
+}
+
+.contacts-list {
+    margin: 0px;
+    padding-bottom: 10px;
+}

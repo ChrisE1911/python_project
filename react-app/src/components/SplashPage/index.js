@@ -1,4 +1,5 @@
 import "./SplashPage.css";
+import Footer from "../Footer";
 // import { useSelector } from "react-redux";
 // import HomePage from "../HomePage";
 
@@ -27,6 +28,7 @@ function SplashPage() {
 					></img>
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 }

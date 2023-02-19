@@ -2,6 +2,8 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { thunkCreateProfile } from "../../store/profile";
+import { thunkDeleteUserProfile } from "../../store/profile";
+import { logout } from "../../store/session";
 import "./CreateProfilePage.css";
 
 function CreateProfilePage() {
@@ -337,6 +339,14 @@ function CreateProfilePage() {
 		history.push("/discover");
 	};
 
+	async function handleDelete() {
+		const awaitedData = await dispatch(thunkDeleteUserProfile());
+		if (awaitedData) {
+			dispatch(logout());
+			history.push("/");
+		}
+	}
+
 	return (
 		<>
 			<div className='create-form-container'>
@@ -635,6 +645,9 @@ function CreateProfilePage() {
 
 						<button className='like-button' type='submit'>
 							Create Profile
+						</button>
+						<button className="dislike-button" onClick={handleDelete}>
+							Cancel Account Creation
 						</button>
 					</form>
 				</fieldset>

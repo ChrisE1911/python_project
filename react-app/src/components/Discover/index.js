@@ -25,6 +25,7 @@ export default function Discover() {
 		}
 	};
 
+
 	console.log("singleProfileToShow WHHHHHHHYYYY", singleProfileToShow);
 	if (discoverUsers_arr.length === 0) {
 		return (

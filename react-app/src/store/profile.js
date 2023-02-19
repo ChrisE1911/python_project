@@ -66,6 +66,34 @@ export const thunkCreateProfile = (data) => async (dispatch) => {
 	}
 };
 
+export const thunkInitialCreateProfile = (data) => async (dispatch) => {
+	const response = await fetch("/api/profile/edit", {
+		method: "PUT",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(data),
+	});
+	if (response.ok) {
+		const profileData = await response.json();
+		const addPicture = await fetch("/api/picture/create", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(data),
+		});
+
+		if (addPicture.ok) {
+			const newPicture = await addPicture.json();
+			const newObj = { ...profileData, ...newPicture };
+			dispatch(createProfileAction(newObj));
+			return newObj;
+		}
+	}
+};
+
+
 export const thunkCurrentUserProfile = () => async (dispatch) => {
 	const response = await fetch("/api/profile/current_user");
 

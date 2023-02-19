@@ -1,13 +1,15 @@
 import { useHistory } from "react-router-dom";
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { thunkCreateProfile } from "../../store/profile";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { thunkInitialCreateProfile } from "../../store/profile";
 import { thunkDeleteUserProfile } from "../../store/profile";
+import { thunkCreateProfile } from "../../store/profile";
 import { logout } from "../../store/session";
 import "./CreateProfilePage.css";
 
 function CreateProfilePage() {
 	const dispatch = useDispatch();
+	const sessionUser = useSelector((state) => state.session.user);
 	const [city, setCity] = useState("");
 	const [state, setState] = useState("");
 	const [occupation, setOccupation] = useState("");
@@ -335,7 +337,7 @@ function CreateProfilePage() {
 		// 	setErrors(data);
 		// }
 
-		await dispatch(thunkCreateProfile(data));
+		await dispatch(thunkInitialCreateProfile(data));
 		history.push("/discover");
 	};
 
@@ -346,6 +348,34 @@ function CreateProfilePage() {
 			history.push("/");
 		}
 	}
+
+	useEffect(() => {
+		dispatch(thunkCreateProfile({
+			user_id: sessionUser.id,
+			city: "Blank",
+			state: "Blank",
+			occupation: "Blank",
+			gender: "Nonbinary",
+			sexual_orientation: "Asexual",
+			height: "<4'0",
+			religion: "Other religion",
+			political_affiliation: "Other political beliefs",
+			language: "English",
+			kids: "Doesn't have kids but might want them",
+			pets: "Doesn't have pet(s)",
+			drinker: "Doesn't drink",
+			diet: "Omnivore",
+			smoker: "Doesn't smoke cigarettes",
+			marijuana: "Never smokes marijuana",
+			zodiac: "Aquarius",
+			ethnicity: "Other ethnicity",
+			body_type: "Thin",
+			education_level: "High school",
+			bio: "No bio written yet!",
+			age: 18,
+			picture_url: "https://imgs.search.brave.com/bYBGbrir49Sv4Vp0Zm6XJ-VS9AWQQ0-ThApi1EQPqBo/rs:fit:279:280:1/g:ce/aHR0cHM6Ly9wbmcu/cG5naXRlbS5jb20v/cGltZ3Mvcy81MDgt/NTA4NzIzNl90YWIt/cHJvZmlsZS1mLXVz/ZXItaWNvbi13aGl0/ZS1maWxsLWhkLnBu/Zw"
+			}))
+	}, [])
 
 	return (
 		<>

@@ -115,18 +115,267 @@ def seed_profiles():
         education_level='In grad school',
         bio="Please do not message me if you own Yeezy shoes"
     )
+    tim = Profile(
+        user_id=11,
+        age=34,
+        city='Gary',
+        state='IN',
+        occupation='Zookeeper',
+        gender='Man',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="A hot dog is a sandwich fight me."
+    )
+    sam = Profile(
+        user_id=12,
+        age=22,
+        city='San Diego',
+        state='CA',
+        occupation='Soldier',
+        gender='Man',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="Lookin' to live, laugh, love."
+    )
+    penny = Profile(
+        user_id=13,
+        age=19,
+        city='Portland',
+        state='OR',
+        occupation='Sculptor',
+        gender='Woman',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="Do you believe in life after love?"
+    )
+    georgia = Profile(
+        user_id=14,
+        age=23,
+        city='Memphis',
+        state='TN',
+        occupation='Uber driver',
+        gender='Woman',
+        sexual_orientation='Straight',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="Tryna find myself a simple kinda man"
+    )
+    matilda = Profile(
+        user_id=15,
+        age=31,
+        city='Las Vegas',
+        state='NV',
+        occupation='Poker player',
+        gender='Woman',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="I cheat at cards, not at love."
+    )
+    lars = Profile(
+        user_id=16,
+        age=50,
+        city='Boston',
+        state='MA',
+        occupation='Cop',
+        gender='Man',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="Felt cute lol might delete later."
+    )
+    michael = Profile(
+        user_id=17,
+        age=33,
+        city='Milwaukee',
+        state='WI',
+        occupation='Brewer',
+        gender='Man',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="Born too late to marry a princess. Born too early for a robot wife. Born just in time for MidCupid."
+    )
+    natasha = Profile(
+        user_id=18,
+        age=39,
+        city='Hoboken',
+        state='NJ',
+        occupation='Kickboxing instructor',
+        gender='Woman',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="Do you like Huey Lewis and the News?"
+    )
+    achmed = Profile(
+        user_id=19,
+        age=35,
+        city='Lansing',
+        state='MI',
+        occupation='Clerk',
+        gender='Man',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="What's in the box, maaannn?"
+    )
+    nina = Profile(
+        user_id=20,
+        age=35,
+        city='Asheville',
+        state='NC',
+        occupation='Construction',
+        gender='Woman',
+        sexual_orientation='Asexual',
+        height="<4'0",
+        religion='Sikh',
+        political_affiliation='Conservative',
+        language='English',
+        kids="Doesn't have kids and doesn't want them",
+        pets="Has cat(s)",
+        diet='Gluten Free',
+        smoker='Smokes cigarettes regularly',
+        drinker="Doesn't drink",
+        marijuana='Smokes marijuana often',
+        zodiac='Capricorn',
+        ethnicity='Middle Eastern',
+        body_type='Thin',
+        education_level='In grad school',
+        bio="You merely adopted the dark."
+    )
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
     db.session.add(alex)
     db.session.add(sarah)
-
     db.session.add(v)
     db.session.add(jungkook)
     db.session.add(blake)
     db.session.add(beyonce)
     db.session.add(kim)
+    db.session.add(tim)
+    db.session.add(sam)
+    db.session.add(penny)
+    db.session.add(georgia)
+    db.session.add(matilda)
+    db.session.add(lars)
+    db.session.add(michael)
+    db.session.add(natasha)
+    db.session.add(achmed)
+    db.session.add(nina)
 
     db.session.commit()
 

@@ -6,7 +6,6 @@ export default function ProfileCard({ user, updateUserNumber }) {
 	const hater_id = useSelector((state) => state.session.user);
 	const like_receiver_id = user?.id;
 	const hate_receiver_id = user?.id;
-	console.log(like_receiver_id, "like_receiver_id");
 
 	const dispatch = useDispatch();
 
@@ -30,7 +29,7 @@ export default function ProfileCard({ user, updateUserNumber }) {
 		ev.target.src = 'https://imgs.search.brave.com/j6LvyJzEO_tVPwInMfwerPZyHUE0NcuPIhjVzBN-cKc/rs:fit:375:500:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY1LzBi/L2E3LzY1MGJhNzM0/N2UyZDg3NTFjMTU3/YjcwZDc5MTEyM2I4/LmpwZw'
 	}
 
-	console.log(user.profile);
+	
 	return (
 		<div className='discover_container'>
 			<div className='discover_center_container'>

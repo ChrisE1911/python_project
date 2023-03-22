@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, db, likes, matches
 from sqlalchemy.orm import Session
-
+from flask import current_app as app
 
 likes_routes = Blueprint('likes', __name__)
 
@@ -19,6 +19,8 @@ def create_likes():
     # print(like_receiver_id, 'likeRECEIVER ID')
     # pass
 
+    app.logger.info("ak;lsdjfk@!)(#)(&$#!)(&$)(!&)")
+
     admirer_id = request.json['admirer_id']
     like_receiver_id = request.json['like_receiver_id']
 
@@ -29,24 +31,22 @@ def create_likes():
         admirer.like_requests.append(like_receiver)
 
     # admirer_id defined above is technically equal to the current user's id coming
-        # from the front end, so compare that to like_receiver_id from other user's likes
-        # (and the inverse for the liked user) to calculate a match
+    # from the front end, so compare that to like_receiver_id from other user's likes
+    # (and the inverse for the liked user) to calculate a match
 
-    corresponding_like = likes.query.filter(likes.like_receiver_id == admirer_id, likes.admirer_id == like_receiver_id)
+    # corresponding_like = likes.query.filter(likes.like_receiver_id == admirer_id, likes.admirer_id == like_receiver_id)
 
-    if corresponding_like:
-        newMatch = matches(
-            matched_1=admirer_id,
-            matched_2=like_receiver_id
-        )
-        print("NEW MATCH", newMatch)
-        db.session.add(newMatch)
-        db.session.commit()
+    # if corresponding_like:
+    #     newMatch = matches(
+    #         matched_1=admirer_id,
+    #         matched_2=like_receiver_id
+    #     )
+    #     print("NEW MATCH", newMatch)
+    #     db.session.add(newMatch)
+    #     db.session.commit()
 
     db.session.add(admirer)
     db.session.commit()
-
-    print(admirer, 'admirer')
 
     return admirer.to_dict()
 
@@ -64,16 +64,12 @@ def my_likes():
 @login_required
 def delete_like(user_id):
     my_id = current_user.id
-    print("CCCCCC", my_id)
     me = User.query.get(int(my_id))
-    print("DDDDD", me.to_dict())
     unliked = User.query.get(int(user_id))
     deleted_user = me.like_requests.remove(unliked)
     likes_arr = me.like_requests
     # new_likes_arr = [liked.to_dict() for liked in likes_arr if liked.id != user_id]
     new_likes_arr = [liked.to_dict_profile() for liked in likes_arr]
-    print("EEEEE", likes_arr)
-    print("EFGEFG", new_likes_arr)
 
     db.session.commit()
 

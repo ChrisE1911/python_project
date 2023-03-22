@@ -69,6 +69,7 @@ def self():
     """
     Query for the current user logged in and return in dictionary
     """
+
     self_id = current_user.id
     user = User.query.get(self_id)
 

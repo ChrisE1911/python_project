@@ -11,12 +11,11 @@ export default function Discover() {
 	const discoverUsers = useSelector((state) => state.discover);
 
 	const discoverUsers_arr = Object.values(discoverUsers.discover_users);
-	console.log(discoverUsers_arr, "ARRAYYY??????");
 	let singleProfileToShow = discoverUsers_arr[userNumber];
+
 	useEffect(() => {
 		dispatch(thunk_discoverUsers()).then(() => setLoaded(true));
 	}, [dispatch, loaded]);
-	// console.log(discoverUsers_arr, "allUSERS");
 
 	const updateUserNumber = async () => {
 		setLoaded(false);
@@ -25,8 +24,6 @@ export default function Discover() {
 		}
 	};
 
-
-	console.log("singleProfileToShow WHHHHHHHYYYY", singleProfileToShow);
 	if (discoverUsers_arr.length === 0) {
 		return (
 			<div id='discover-empty'>

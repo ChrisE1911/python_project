@@ -15,6 +15,7 @@ export default function ProfileCard({ user, updateUserNumber }) {
 		updateUserNumber();
 		dispatch(thunkCreateLike(like_receiver_id, admirer_id));
 	}
+	
 	function handlePass(e) {
 		// update Dislke Table
 		e.preventDefault();
@@ -29,7 +30,7 @@ export default function ProfileCard({ user, updateUserNumber }) {
 		ev.target.src = 'https://imgs.search.brave.com/j6LvyJzEO_tVPwInMfwerPZyHUE0NcuPIhjVzBN-cKc/rs:fit:375:500:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY1LzBi/L2E3LzY1MGJhNzM0/N2UyZDg3NTFjMTU3/YjcwZDc5MTEyM2I4/LmpwZw'
 	}
 
-	
+
 	return (
 		<div className='discover_container'>
 			<div className='discover_center_container'>

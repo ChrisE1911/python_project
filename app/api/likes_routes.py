@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import User, db, likes, matches
 from sqlalchemy.orm import Session
 from flask import current_app as app
+import sys
 
 likes_routes = Blueprint('likes', __name__)
 
@@ -14,12 +15,12 @@ likes_routes = Blueprint('likes', __name__)
 @login_required
 def create_likes():
 
+    # THIS ROUTE DOES NOT SEEM TO BE USED. CREATE_LIKES IS ALSO IN DISCOVER.PY
+
     # like_receiver_id = request.json['like_receiver_id']
     # like_receiver_id = request.json['admirer_id']
     # print(like_receiver_id, 'likeRECEIVER ID')
     # pass
-
-    app.logger.info("ak;lsdjfk@!)(#)(&$#!)(&$)(!&)")
 
     admirer_id = request.json['admirer_id']
     like_receiver_id = request.json['like_receiver_id']

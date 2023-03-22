@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, Profile, Picture, Answer, db
+from app.models import User, Profile, Picture, Answer, db, matches, likes
 
 
 discover_routes = Blueprint('discover', __name__)
@@ -41,14 +41,21 @@ def queue():
 @login_required
 def create_likes():
 
+    print("HEY")
+
     like_receiver_id = request.json['like_receiver_id']
     admirer_id = request.json['admirer_id']['id']
 
     admirer = User.query.get(admirer_id)
     like_receiver = User.query.get(like_receiver_id)
 
+
+    print("HELLO", like_receiver.like_requests.filter(like_receiver_id != admirer_id).first())
+
     if like_receiver not in admirer.like_requests:
         admirer.like_requests.append(like_receiver)
+
+
     db.session.add(admirer)
     db.session.commit()
 

@@ -15,13 +15,9 @@ def get_all_pictures():
     # Will get all pictures objects for the Gallery component, into a list.
     # Still includes profile picture even though separate from above.
 
-    print("You hit the route!!!!!")
     my_id = current_user.id
-    print('AAAAA', my_id)
     pictures = Picture.query.filter(Picture.profile_id == my_id).all()
-    print('BBBBB', pictures)
     pictures_arr = [picture.to_dict() for picture in pictures]
-    print('CCCCC', pictures_arr)
 
     return pictures_arr
 
@@ -33,7 +29,6 @@ def create_picture():
     Creates user picture
     """
     picture_url = request.json['picture_url']
-    print('PICTURE !!!!!!!!!!!!!!', picture_url)
     user_id = current_user.id
     current_profile = Profile.query.get(user_id)
     profile_dict = current_profile.to_dict()
@@ -66,11 +61,9 @@ def create_additional_picture():
     #   will set is_profile_pic to False for all pictures made here. NOT IMPLEMENTED YET
 
     picture_url = request.json['picture_url']
-    print('PICTURE URL!!!!!!!!!!!!!!!', picture_url)
     user_id = current_user.id
     current_profile = Profile.query.get(user_id)
     profile_dict = current_profile.to_dict()
-    print('PROFILE DICT!!!!!!!!!!!!!', profile_dict)
     newPicture = Picture(
         profile_id=profile_dict['id'],
         picture_url=picture_url,

@@ -49,14 +49,19 @@ def create_likes():
     admirer = User.query.get(admirer_id)
     like_receiver = User.query.get(like_receiver_id)
 
-
-    print("HELLO", like_receiver.like_requests.filter(like_receiver_id != admirer_id).first())
-
     if like_receiver not in admirer.like_requests:
         admirer.like_requests.append(like_receiver)
 
+    potential_match = like_receiver.like_requests.filter(like_receiver_id != admirer_id).first()
+
+    print("HELLO", potential_match)
+
+    if (potential_match):
+        potential_match.matchlist_1.append(like_receiver)
+        # potential_match.matchlist_2.append(like_receiver)
 
     db.session.add(admirer)
+    db.session.add(potential_match)
     db.session.commit()
 
     return admirer.to_dict()

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import User, db, likes
+from app.models import User, db, likes, matches
 from sqlalchemy.orm import Session
 
 
@@ -27,6 +27,22 @@ def create_likes():
 
     if like_receiver not in admirer.like_requests:
         admirer.like_requests.append(like_receiver)
+
+    # admirer_id defined above is technically equal to the current user's id coming
+        # from the front end, so compare that to like_receiver_id from other user's likes
+        # (and the inverse for the liked user) to calculate a match
+
+    corresponding_like = likes.query.filter(likes.like_receiver_id == admirer_id, likes.admirer_id == like_receiver_id)
+
+    if corresponding_like:
+        newMatch = matches(
+            matched_1=admirer_id,
+            matched_2=like_receiver_id
+        )
+        print("NEW MATCH", newMatch)
+        db.session.add(newMatch)
+        db.session.commit()
+
     db.session.add(admirer)
     db.session.commit()
 

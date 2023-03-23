@@ -11,6 +11,7 @@ from .api.discover import discover_routes
 from .api.likes_routes import likes_routes
 from .api.dislikes_routes import dislikes_routes
 from .api.question_routes import question_routes
+from .api.matches_routes import matches_routes
 from .seeds import seed_commands
 from .config import Config
 from .api.profile_routes import profile_routes
@@ -40,6 +41,7 @@ app.register_blueprint(picture_routes, url_prefix='/api/picture')
 app.register_blueprint(dislikes_routes, url_prefix='/api/dislikes')
 app.register_blueprint(likes_routes, url_prefix='/api/likes')
 app.register_blueprint(question_routes, url_prefix='/api/questions')
+app.register_blueprint(matches_routes, url_prefix='/api/matches')
 db.init_app(app)
 Migrate(app, db)
 

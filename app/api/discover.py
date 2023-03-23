@@ -55,7 +55,7 @@ def create_likes():
     # the match and add to the match table. Remember to add and append to the ORIGINAL model instance
     # and not a copy of it since the original instance has hidden data that interacts with the session.
 
-    potential_match = like_receiver.like_requests.filter(like_receiver_id != admirer_id).first()
+    potential_match = like_receiver.like_requests.filter(like_receiver_id == admirer_id).first()
     db.session.add(admirer)
     db.session.commit()
     print("HELLO", potential_match, admirer, like_receiver)
@@ -64,7 +64,7 @@ def create_likes():
         admirer.matchlist_1.append(like_receiver)
         admirer.matchlist_2.append(like_receiver)
         print("WHO DIS", admirer.matchlist_1.all(), admirer.matchlist_2.all())
-        # potential_match.matchlist_2.append(like_receiver)
+
         db.session.add(admirer)
         db.session.commit()
 

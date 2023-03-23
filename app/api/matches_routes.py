@@ -15,7 +15,8 @@ def get_matches():
     self_id = current_user.id
     user = User.query.get(self_id)
     matchesArr = user.matchlist_1.all()
-
+    print('INSIDE MATCHES')
     print("HELLO", matchesArr)
-
-    return {}
+    all_matches_arr = [match.to_dict_profile() for match in matchesArr]
+    print(all_matches_arr)
+    return all_matches_arr

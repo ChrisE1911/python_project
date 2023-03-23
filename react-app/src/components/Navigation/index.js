@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
@@ -6,20 +6,28 @@ import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import { thunkCurrentUserProfile } from "../../store/profile";
 import "./Navigation.css";
+import { thunkGetMatches } from "../../store/match";
 
-function Navigation({ isLoaded }) {
+function Navigation({ isLoaded, matchesLen }) {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector((state) => state.session.user);
+	const allMatchesObj = useSelector((state) => state.matchesReducer.matches);
+	const allMatches = Object.values(allMatchesObj);
 	const currentProfile = useSelector(
 		(state) => state.profile.current_user_profile
 	);
 	const path = useLocation();
-	console.log("WHAT PATH AM I", path);
-
+	// console.log("WHAT PATH AM I", path);
+	// console.log(allMatches.length);
+	// const [matchesLen, setmatchesLen] = useState(allMatches.length);
+	// console.log(matchesLen);
 	useEffect(() => {
-		sessionUser && dispatch(thunkCurrentUserProfile());
-	}, [dispatch]);
-
+		sessionUser &&
+			dispatch(thunkCurrentUserProfile()).then(() =>
+				dispatch(thunkGetMatches())
+			);
+	}, [dispatch, sessionUser]);
+	// useEffect(() => {}, [dispatch, allMatches.length]);
 	const currentUserProfileArr = Object.values(currentProfile);
 
 	function sessionCurrentProfileCheck() {
@@ -89,6 +97,7 @@ function Navigation({ isLoaded }) {
 												<i class='fa-solid fa-hand-holding-heart'></i>
 												Matches
 											</div>
+											<span>{allMatches.length > 0 && allMatches.length}</span>
 										</button>
 									)}
 								</NavLink>

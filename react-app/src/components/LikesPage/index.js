@@ -5,7 +5,7 @@ import { thunkGetAllLikes } from "../../store/like";
 import LikeCard from "../LikesCard";
 import "./LikesPage.css";
 
-function LikesPage() {
+function LikesPage({ setMatchesLen }) {
 	const dispatch = useDispatch();
 	const allLikes = useSelector((state) => state.like.likes);
 	const allLikesArr = Object.values(allLikes);
@@ -35,7 +35,13 @@ function LikesPage() {
 				<ul id='card-list'>
 					{loaded &&
 						allLikesArr.map((like) => {
-							return <LikeCard key={like.id} like={like} />;
+							return (
+								<LikeCard
+									setMatchesLen={setMatchesLen}
+									key={like.id}
+									like={like}
+								/>
+							);
 						})}
 				</ul>
 			</div>

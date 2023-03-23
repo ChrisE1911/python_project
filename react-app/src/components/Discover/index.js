@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunk_discoverUsers } from "../../store/discover";
+import { thunkGetMatches } from "../../store/match";
 import ProfileCard from "../ProfileCard";
 import "./Discover.css";
 
@@ -14,7 +15,9 @@ export default function Discover() {
 	let singleProfileToShow = discoverUsers_arr[userNumber];
 
 	useEffect(() => {
-		dispatch(thunk_discoverUsers()).then(() => setLoaded(true));
+		dispatch(thunk_discoverUsers())
+			.then(() => dispatch(thunkGetMatches()))
+			.then(() => setLoaded(true));
 	}, [dispatch, loaded]);
 
 	const updateUserNumber = async () => {

@@ -1,12 +1,14 @@
 import "./LikesCard.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { thunkDeleteLike } from "../../store/like";
 import { useHistory, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { thunkGetMatches } from "../../store/match";
+import { thunkDeleteMatch, thunkGetMatches } from "../../store/match";
 
-const LikeCard = ({ like }) => {
+const LikeCard = ({ like, setMatchesLen }) => {
 	const dispatch = useDispatch();
+	const allMatchesObj = useSelector((state) => state.matchesReducer.matches);
+	const allMatches = Object.values(allMatchesObj);
 	const history = useHistory();
 	const { pathname } = useLocation();
 	const [likeArr, setLikeArr] = useState([]);
@@ -15,7 +17,6 @@ const LikeCard = ({ like }) => {
 			.then(() => {
 				alert("You have un-liked this person");
 			})
-			.then(dispatch(thunkGetMatches()))
 			.then(setLikeArr(like));
 	};
 

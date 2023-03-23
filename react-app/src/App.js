@@ -15,11 +15,17 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import QuestionsPage from "./components/QuestionsPage";
 import Gallery from "./components/Gallery";
 import MatchesPage from "./components/MatchesPage";
+import { thunkGetMatches } from "./store/match";
 
 function App() {
 	const dispatch = useDispatch();
+	const sessionUser = useSelector((state) => state.session.user);
+	const allMatchesObj = useSelector((state) => state.matchesReducer.matches);
+	const allMatches = Object.values(allMatchesObj);
+	// console.log("allMatches", allMatches);
 	const currUser = useSelector((state) => state.session.user);
 	const [isLoaded, setIsLoaded] = useState(false);
+	const [matchesLen, setMatchesLen] = useState(allMatches.length);
 	// const sessionUser = useSelector((state) => state.session.user);
 	useEffect(() => {
 		dispatch(authenticate()).then(() => setIsLoaded(true));
@@ -27,7 +33,7 @@ function App() {
 
 	return (
 		<>
-			<Navigation isLoaded={isLoaded} />
+			<Navigation matchesLen={matchesLen} isLoaded={isLoaded} />
 			{isLoaded && (
 				<Switch>
 					<Route path='/login'>
@@ -49,7 +55,7 @@ function App() {
 						<EditProfilePage />
 					</Route>
 					<Route exact path='/likes-page'>
-						<LikesPage />
+						<LikesPage setMatchesLen={setMatchesLen} />
 					</Route>
 					<Route exact path='/questions'>
 						<QuestionsPage />

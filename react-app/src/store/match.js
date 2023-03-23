@@ -1,8 +1,13 @@
 //store
 const GET_MATCHES = "/get/matches";
+const DELETE_MATCH = "/delete/match";
 const actionGetMatches = (allMatches) => ({
 	type: GET_MATCHES,
 	payload: allMatches,
+});
+const actionDeleteMatch = () => ({
+	type: DELETE_MATCH,
+	payload: "someid",
 });
 
 export const thunkGetMatches = () => async (dispatch) => {
@@ -10,8 +15,12 @@ export const thunkGetMatches = () => async (dispatch) => {
 	if (response.ok) {
 		const allMatches = await response.json();
 		dispatch(actionGetMatches(allMatches));
+		return allMatches;
 	}
 };
+// export const thunkDeleteMatch = () => async (dispatch) => {
+// 	dispatch(actionDeleteMatch());
+// };
 const normalize = (arr) => {
 	const resultObj = {};
 	arr.forEach((element) => (resultObj[element.id] = element));

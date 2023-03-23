@@ -82,6 +82,16 @@ function Navigation({ isLoaded }) {
 										</button>
 									)}
 								</NavLink>
+								<NavLink exact to='/matches'>
+									{sessionUser && (
+										<button>
+											<div className='discover-icon'>
+												<i class='fa-solid fa-hand-holding-heart'></i>
+												Matches
+											</div>
+										</button>
+									)}
+								</NavLink>
 							</div>
 
 							<div id='nav-bar-right-side'>

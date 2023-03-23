@@ -14,6 +14,7 @@ import LikesPage from "./components/LikesPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import QuestionsPage from "./components/QuestionsPage";
 import Gallery from "./components/Gallery";
+import MatchesPage from "./components/MatchesPage";
 
 function App() {
 	const dispatch = useDispatch();
@@ -58,6 +59,9 @@ function App() {
 					</Route>
 					<Route exact path='/'>
 						<SplashPage />
+					</Route>
+					<Route path='/matches'>
+						<MatchesPage />
 					</Route>
 				</Switch>
 			)}

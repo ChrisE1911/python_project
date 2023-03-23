@@ -3,17 +3,18 @@ import thunk from "redux-thunk";
 import session from "./session";
 import discover from "./discover";
 import like from "./like";
-import profile from "./profile"
+import profile from "./profile";
 import questionReducer from "./question";
-import pictureReducer from "./picture"
-
+import pictureReducer from "./picture";
+import matchesReducer from "./match";
 const rootReducer = combineReducers({
 	session,
 	discover,
 	like,
 	profile,
 	questionReducer,
-	pictureReducer
+	pictureReducer,
+	matchesReducer,
 });
 
 let enhancer;

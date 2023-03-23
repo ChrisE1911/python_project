@@ -77,6 +77,9 @@ def delete_like(user_id):
     me.matchlist_1.remove(unliked)
     unliked.matchlist_2.remove(me)
 
+    unliked.matchlist_1.remove(me)
+    me.matchlist_2.remove(unliked)
+
     db.session.commit()
 
     # for i in range(len(likes_arr)):

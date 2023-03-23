@@ -5,6 +5,7 @@ from app.models import User, db, matches
 
 matches_routes = Blueprint('match', __name__)
 
+
 @matches_routes.route('/user_matches')
 @login_required
 def get_matches():
@@ -15,8 +16,6 @@ def get_matches():
     user = User.query.get(self_id)
     matchesArr = user.matchlist_1.all()
 
-    print ("HELLO", matchesArr)
+    print("HELLO", matchesArr)
 
     return {}
-
-

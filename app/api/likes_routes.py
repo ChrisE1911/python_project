@@ -51,6 +51,7 @@ def create_likes():
 
     return admirer.to_dict()
 
+
 @likes_routes.route('/my-likes')
 @login_required
 def my_likes():
@@ -60,6 +61,7 @@ def my_likes():
     likes_arr = [liked.to_dict_profile() for liked in me.like_requests]
 
     return likes_arr
+
 
 @likes_routes.route('/delete-like/<int:user_id>', methods=["DELETE"])
 @login_required
@@ -72,8 +74,10 @@ def delete_like(user_id):
     # new_likes_arr = [liked.to_dict() for liked in likes_arr if liked.id != user_id]
     new_likes_arr = [liked.to_dict_profile() for liked in likes_arr]
 
-    db.session.commit()
+    me.matchlist_1.remove(unliked)
+    unliked.matchlist_2.remove(me)
 
+    db.session.commit()
 
     # for i in range(len(likes_arr)):
     #     if likes_arr[i]['id'] == user_id:

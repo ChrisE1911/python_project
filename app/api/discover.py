@@ -28,7 +28,7 @@ def queue():
 
     all_users = User.query.filter(User.id != self_id).all()
     unmarked_users = [user.to_dict_profile()
-                    for user in all_users if user.id not in likes_id and user.id not in dislikes_id]
+                      for user in all_users if user.id not in likes_id and user.id not in dislikes_id]
 
     # return jsonify({"filtered": [ele.to_dict() for ele in filtered]})
     return {
@@ -55,7 +55,8 @@ def create_likes():
     # the match and add to the match table. Remember to add and append to the ORIGINAL model instance
     # and not a copy of it since the original instance has hidden data that interacts with the session.
 
-    potential_match = like_receiver.like_requests.filter(like_receiver_id == admirer_id).first()
+    potential_match = like_receiver.like_requests.filter(
+        like_receiver_id != admirer_id).first()
     db.session.add(admirer)
     db.session.commit()
     print("HELLO", potential_match, admirer, like_receiver)
@@ -67,7 +68,6 @@ def create_likes():
 
         db.session.add(admirer)
         db.session.commit()
-
 
     return admirer.to_dict()
     # return {'message': 'I work'}

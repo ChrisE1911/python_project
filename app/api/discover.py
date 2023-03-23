@@ -40,9 +40,6 @@ def queue():
 @discover_routes.route('/', methods=['POST'])
 @login_required
 def create_likes():
-
-    print("HEY")
-
     like_receiver_id = request.json['like_receiver_id']
     admirer_id = request.json['admirer_id']['id']
 
@@ -52,17 +49,25 @@ def create_likes():
     if like_receiver not in admirer.like_requests:
         admirer.like_requests.append(like_receiver)
 
-    potential_match = like_receiver.like_requests.filter(like_receiver_id != admirer_id).first()
+    print("WHICH", admirer, like_receiver)
 
-    print("HELLO", potential_match)
+    # check if current user shows up in their liked user's like_requests attribute. If yes, create
+    # the match and add to the match table. Remember to add and append to the ORIGINAL model instance
+    # and not a copy of it since the original instance has hidden data that interacts with the session.
+
+    potential_match = like_receiver.like_requests.filter(like_receiver_id != admirer_id).first()
+    db.session.add(admirer)
+    db.session.commit()
+    print("HELLO", potential_match, admirer, like_receiver)
 
     if (potential_match):
-        potential_match.matchlist_1.append(like_receiver)
+        admirer.matchlist_1.append(like_receiver)
+        admirer.matchlist_2.append(like_receiver)
+        print("WHO DIS", admirer.matchlist_1.all(), admirer.matchlist_2.all())
         # potential_match.matchlist_2.append(like_receiver)
+        db.session.add(admirer)
+        db.session.commit()
 
-    db.session.add(admirer)
-    db.session.add(potential_match)
-    db.session.commit()
 
     return admirer.to_dict()
     # return {'message': 'I work'}

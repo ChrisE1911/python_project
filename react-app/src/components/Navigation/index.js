@@ -22,11 +22,11 @@ function Navigation({ isLoaded, matchesLen }) {
 	// const [matchesLen, setmatchesLen] = useState(allMatches.length);
 	// console.log(matchesLen);
 	useEffect(() => {
-		sessionUser &&
-			dispatch(thunkCurrentUserProfile()).then(() =>
-				dispatch(thunkGetMatches())
-			);
+		sessionUser && dispatch(thunkCurrentUserProfile());
 	}, [dispatch, sessionUser]);
+	useEffect(() => {
+		dispatch(thunkGetMatches());
+	}, [dispatch, currentProfile]);
 	// useEffect(() => {}, [dispatch, allMatches.length]);
 	const currentUserProfileArr = Object.values(currentProfile);
 

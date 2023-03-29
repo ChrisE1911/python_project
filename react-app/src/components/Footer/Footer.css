@@ -11,6 +11,10 @@
 
 .repo-link {
     margin: 5px;
+    color: white;
+    text-decoration: none;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 
 .contact-header {
@@ -20,4 +24,11 @@
 .contacts-list {
     margin: 0px;
     padding-bottom: 10px;
+    list-style-type: none;
+}
+
+.dev-link {
+    text-decoration: none;
+    color: white;
+    padding-left: 10px;
 }

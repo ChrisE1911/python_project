@@ -1,16 +1,19 @@
 """empty message
 
-Revision ID: f4af0db59ff1
-Revises: 
-Create Date: 2023-03-23 16:34:38.397857
+Revision ID: a6f7deb886b6
+Revises:
+Create Date: 2023-03-29 17:24:44.209716
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'f4af0db59ff1'
+revision = 'a6f7deb886b6'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,6 +26,8 @@ def upgrade():
     sa.Column('quest_txt', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE questions SET SCHEMA {SCHEMA};")
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
@@ -34,6 +39,8 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     op.create_table('answers',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -43,18 +50,24 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE answers SET SCHEMA {SCHEMA};")
     op.create_table('dislikes',
     sa.Column('hater_id', sa.Integer(), nullable=True),
     sa.Column('hate_receiver_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['hate_receiver_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['hater_id'], ['users.id'], )
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE dislikes SET SCHEMA {SCHEMA};")
     op.create_table('likes',
     sa.Column('admirer_id', sa.Integer(), nullable=True),
     sa.Column('like_receiver_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['admirer_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['like_receiver_id'], ['users.id'], )
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
     op.create_table('matches',
     sa.Column('matched_1', sa.Integer(), nullable=False),
     sa.Column('matched_2', sa.Integer(), nullable=False),
@@ -62,6 +75,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['matched_2'], ['users.id'], ),
     sa.PrimaryKeyConstraint('matched_1', 'matched_2')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE matches SET SCHEMA {SCHEMA};")
     op.create_table('profiles',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -89,6 +104,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE profiles SET SCHEMA {SCHEMA};")
     op.create_table('pictures',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('profile_id', sa.Integer(), nullable=False),
@@ -97,6 +114,8 @@ def upgrade():
     sa.ForeignKeyConstraint(['profile_id'], ['profiles.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE pictures SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

@@ -74,11 +74,23 @@ def delete_like(user_id):
     # new_likes_arr = [liked.to_dict() for liked in likes_arr if liked.id != user_id]
     new_likes_arr = [liked.to_dict_profile() for liked in likes_arr]
 
-    me.matchlist_1.remove(unliked)
-    unliked.matchlist_2.remove(me)
+    # Check disliked user's matchlist. If current user is in their matchlist, delete match as well.
+    unlikedArr = unliked.matchlist_1.all()
+    print("UNLIKED ARRAY", unlikedArr)
+    def match_exists():
+        for user in unlikedArr:
+            print("WHAT USER", user)
+            if user.id == my_id:
+                return True
+            else:
+                return False
 
-    unliked.matchlist_1.remove(me)
-    me.matchlist_2.remove(unliked)
+    if match_exists():
+        me.matchlist_1.remove(unliked)
+        unliked.matchlist_2.remove(me)
+
+        unliked.matchlist_1.remove(me)
+        me.matchlist_2.remove(unliked)
 
     db.session.commit()
 

@@ -1,0 +1,60 @@
+.create-profile-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.create-profile-field {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 15px;
+}
+
+.create-form-container {
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	width: 500px;
+	align-items: center;
+	justify-content: center;
+}
+
+fieldset {
+	border-radius: 8px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
+}
+
+textarea {
+	width: 100%;
+	height: 150px;
+	padding: 12px 20px;
+	box-sizing: border-box;
+	border-radius: 8px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
+	font-size: 16px;
+	resize: none;
+	background-color: #ececee;
+	min-width: 267px;
+}
+
+select {
+	background-color: #ececee;
+	min-width: 267px;
+}
+
+input {
+	background-color: #ececee;
+	border: 1px solid gray;
+	min-width: 267px;
+}
+
+.create-profile-title {
+}

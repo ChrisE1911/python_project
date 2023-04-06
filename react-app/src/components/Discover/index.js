@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunk_discoverUsers } from "../../store/discover";
 import ProfileCard from "../ProfileCard";
+import "./Discover.css";
 
 export default function Discover() {
 	const [loaded, setLoaded] = useState(false);
@@ -27,7 +28,13 @@ export default function Discover() {
 	console.log("singleProfileToShow WHHHHHHHYYYY", singleProfileToShow);
 	if (discoverUsers_arr.length === 0) {
 		return (
-			<h1>All out of users</h1>
+			<div id='discover-empty'>
+				<h1 id='outofuser-h1'>All out of users</h1>
+				<img
+					style={{ width: "400px", height: "400px" }}
+					src='http://www.dumpaday.com/wp-content/uploads/2013/08/food-bowl-for-a-cat-empty-funny-pictures1.jpg'
+				></img>
+			</div>
 		);
 	}
 

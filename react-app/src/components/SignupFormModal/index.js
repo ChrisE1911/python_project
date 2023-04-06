@@ -20,8 +20,10 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (password === confirmPassword) {
-			const data = await dispatch(signUp(username, firstName, lastName, email, password));
-			console.log(data)
+			const data = await dispatch(
+				signUp(username, firstName, lastName, email, password)
+			);
+			console.log(data);
 			if (data) {
 				setErrors(data);
 			} else {
@@ -38,7 +40,7 @@ function SignupFormModal() {
 	return (
 		<>
 			<h1>Sign Up</h1>
-			<form onSubmit={handleSubmit}>
+			<form className='login-form' onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
@@ -47,7 +49,7 @@ function SignupFormModal() {
 				<label>
 					Email
 					<input
-						type="text"
+						type='text'
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required
@@ -56,7 +58,7 @@ function SignupFormModal() {
 				<label>
 					Username
 					<input
-						type="text"
+						type='text'
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
 						required
@@ -65,7 +67,7 @@ function SignupFormModal() {
 				<label>
 					First Name
 					<input
-						type="text"
+						type='text'
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
 						required
@@ -74,7 +76,7 @@ function SignupFormModal() {
 				<label>
 					Last Name
 					<input
-						type="text"
+						type='text'
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
 						required
@@ -83,22 +85,26 @@ function SignupFormModal() {
 				<label>
 					Password
 					<input
-						type="password"
+						type='password'
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
+						minLength={6}
 						required
 					/>
 				</label>
 				<label>
 					Confirm Password
 					<input
-						type="password"
+						type='password'
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
+						minLength={6}
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button className='like-button' type='submit'>
+					Sign Up
+				</button>
 			</form>
 		</>
 	);

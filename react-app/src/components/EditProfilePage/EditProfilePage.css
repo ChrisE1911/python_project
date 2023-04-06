@@ -1,0 +1,34 @@
+.edit-profile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-profile-field {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.edit-form-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 500px;
+    padding:50px;
+}
+
+fieldset {
+    border-radius: 8px;
+}
+
+#edit-button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}

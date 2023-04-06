@@ -17,19 +17,25 @@ const LikeCard = ({ like }) => {
             .then(setLikeArr(like))
     }
 
+    function addDefaultSrc(ev) {
+		ev.target.src = 'https://imgs.search.brave.com/j6LvyJzEO_tVPwInMfwerPZyHUE0NcuPIhjVzBN-cKc/rs:fit:375:500:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzY1LzBi/L2E3LzY1MGJhNzM0/N2UyZDg3NTFjMTU3/YjcwZDc5MTEyM2I4/LmpwZw'
+	}
+
     console.log('BBBBBB', like)
     return (
-        <div id="likes-card">
+        <div className="likes-card">
         {/* trying to add image from profile state */}
-            <div>
-                <img src={like.profile.userImages[0].picture_url} style={{width: "100px", height: '100px'}}></img>
+            <div className="likes-image">
+                <img onError={addDefaultSrc} src={like.profile.userImages[0].picture_url} style={{width: "100px", height: '100px'}}></img>
             </div>
             <div>
                 {`${like.firstname}, ${like.profile.age}`}
+            </div>
+            <div>
                 <div>{`${like.profile.city}, ${like.profile.state}`}</div>
             </div>
 {/* Add onclick and handle delete like to this component */}
-            <button onClick={handleDelete}>Delete</button>
+            <button className='dislike-button' onClick={handleDelete}>Delete</button>
         </div>
     )
 }

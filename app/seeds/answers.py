@@ -2,19 +2,25 @@ from app.models import db, Answer, environment, SCHEMA
 
 def seed_answers():
     answer_1 = Answer(
-        user_id = 1, question_id = 1, yes_or_no = True
+        user_id = 1, question_id = 1, yes_or_no = "Yes"
     )
     answer_2 = Answer(
-        user_id = 1, question_id = 2, yes_or_no = True
+        user_id = 1, question_id = 2, yes_or_no = "Yes"
     )
     answer_3 = Answer(
-        user_id = 1, question_id = 3, yes_or_no = True
+        user_id = 1, question_id = 3, yes_or_no = "No"
     )
     answer_4 = Answer(
-        user_id = 1, question_id = 4, yes_or_no = False
+        user_id = 1, question_id = 4, yes_or_no = "Yes"
     )
     answer_5 = Answer(
-        user_id = 1, question_id = 5, yes_or_no = False
+        user_id = 1, question_id = 5, yes_or_no = "No"
+    )
+    answer_6 = Answer(
+        user_id = 3, question_id = 1, yes_or_no = "Yes"
+    )
+    answer_7 = Answer(
+        user_id = 3, question_id = 2, yes_or_no = "No"
     )
 
     db.session.add(answer_1)
@@ -22,6 +28,8 @@ def seed_answers():
     db.session.add(answer_3)
     db.session.add(answer_4)
     db.session.add(answer_5)
+    db.session.add(answer_6)
+    db.session.add(answer_7)
     db.session.commit()
 
 def undo_answers():

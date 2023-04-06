@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -11,9 +11,13 @@ import CreateProfilePage from "./components/CreateProfilePage";
 import MyProfile from "./components/MyProfile";
 import EditProfilePage from "./components/EditProfilePage";
 import LikesPage from "./components/LikesPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+import QuestionsPage from "./components/QuestionsPage";
+import Gallery from "./components/Gallery";
 
 function App() {
 	const dispatch = useDispatch();
+	const currUser = useSelector((state) => state.session.user);
 	const [isLoaded, setIsLoaded] = useState(false);
 	// const sessionUser = useSelector((state) => state.session.user);
 	useEffect(() => {
@@ -45,6 +49,12 @@ function App() {
 					</Route>
 					<Route exact path='/likes-page'>
 						<LikesPage />
+					</Route>
+					<Route exact path='/questions'>
+						<QuestionsPage />
+					</Route>
+					<Route exact path='/pictures'>
+						<Gallery />
 					</Route>
 					<Route exact path='/'>
 						<SplashPage />

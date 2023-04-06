@@ -1,17 +1,20 @@
-import { thunkEditProfile } from "../../store/profile";
+import { thunkDeleteUserProfile, thunkEditProfile } from "../../store/profile";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { thunkCurrentUserProfile } from "../../store/profile";
+import { logout } from "../../store/session";
+import "./EditProfilePage.css"
 
 export default function EditProfilePage() {
 	const dispatch = useDispatch();
 	const history = useHistory();
 	const test = useSelector((state) => state.profile);
-	console.log("IN EDIT ", test.current_user_profile.profile.age);
+	const currentUser = useSelector((state) => state.session.user);
+	// console.log("IN EDIT ", test.current_user_profile.profile.age);
 	let current_user = test.current_user_profile.profile;
 
-	console.log("CURRENT USER!!!!!", current_user);
+	// console.log("CURRENT USER!!!!!", current_user);
 
 	const [loaded, setLoaded] = useState(false);
 	const [city, setCity] = useState(current_user?.city);
@@ -68,6 +71,14 @@ export default function EditProfilePage() {
 			.then(() => setAge(current_user.age));
 	}, [dispatch, loaded]);
 
+	async function handleDelete() {
+		const awaitedData = await dispatch(thunkDeleteUserProfile());
+		if (awaitedData) {
+			dispatch(logout());
+			history.push("/");
+		}
+	}
+
 	const genderChoices = ["", "Man", "Woman", "Nonbinary"];
 	const sexualOrientationChoices = [
 		"",
@@ -94,7 +105,7 @@ export default function EditProfilePage() {
 	];
 	const heightChoices = [
 		"",
-		"4'0",
+		"<4'0",
 		"4'1",
 		"4'2",
 		"4'3",
@@ -364,7 +375,7 @@ export default function EditProfilePage() {
 
 		const edited_profile = await dispatch(thunkEditProfile(data));
 
-		console.log("EDITED PROFILE---> SENDING TO THUNK", edited_profile);
+		// console.log("EDITED PROFILE---> SENDING TO THUNK", edited_profile);
 
 		if (edited_profile) history.push("/profile/current_user");
 		// 	if (data) {
@@ -378,269 +389,297 @@ export default function EditProfilePage() {
 	else {
 		return (
 			<>
-				<form onSubmit={handleSubmit}>
-					{/* <ul>
+				<div className="edit-form-container">
+					<fieldset>
+
+						<form className="edit-profile-form" onSubmit={handleSubmit}>
+							{/* <ul>
             {errors.map((error, idx) => (
               <li key={idx}>{error}</li>
             ))}
           </ul> */}
-					<label>
-						City:
-						<input
-							type='text'
-							value={city}
-							onChange={(e) => setCity(e.target.value)}
-							required
-						/>
-					</label>
-					<label>
-						State
-						<input
-							type='text'
-							value={state}
-							onChange={(e) => setState(e.target.value)}
-							required
-						/>
-					</label>
-					<label>
-						Occupation
-						<input
-							type='text'
-							value={occupation}
-							onChange={(e) => setOccupation(e.target.value)}
-							required
-						/>
-					</label>
-					<label>
-						Age
-						<input
-							type='number'
-							value={age}
-							onChange={(e) => setAge(e.target.value)}
-							required
-						/>
-					</label>
-					<label>
-						Bio
-						<textarea
-							type='text'
-							value={bio}
-							onChange={(e) => setBio(e.target.value)}
-							required
-						/>
-					</label>
+							<label className="edit-profile-field">
+								City:
+								<input
+									type='text'
+									value={city}
+									onChange={(e) => setCity(e.target.value)}
+									required
+									maxLength={50}
+								/>
+							</label>
+							<label className="edit-profile-field">
+								State
+								<input
+									type='text'
+									value={state}
+									onChange={(e) => setState(e.target.value)}
+									required
+									maxLength={20}
+								/>
+							</label>
+							<label className="edit-profile-field">
+								Occupation
+								<input
+									type='text'
+									value={occupation}
+									onChange={(e) => setOccupation(e.target.value)}
+									required
+									maxLength={20}
+								/>
+							</label>
+							<label className="edit-profile-field">
+								Age
+								<input
+									type='number'
+									value={age}
+									onChange={(e) => setAge(e.target.value)}
+									required
+									min={18}
+								/>
+							</label>
+							<label className="edit-profile-field">
+								Bio
+								<textarea
+									type='text'
+									value={bio}
+									onChange={(e) => setBio(e.target.value)}
+									required
+									maxLength={500}
+								/>
+							</label>
 
-					<label>
-						Gender
-						<select
-							type='text'
-							name='gender'
-							onChange={(e) => setGender(e.target.value)}
-							value={gender}
-						>
-							{genderChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Sexual Orientation
-						<select
-							type='text'
-							name='sexualOrientation'
-							onChange={(e) => setSexualOrientation(e.target.value)}
-							value={sexualOrientation}
-						>
-							{sexualOrientationChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Height
-						<select
-							type='text'
-							name='height'
-							onChange={(e) => setHeight(e.target.value)}
-							value={height}
-						>
-							{heightChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Religion
-						<select
-							type='text'
-							name='religion'
-							onChange={(e) => setReligion(e.target.value)}
-							value={religion}
-						>
-							{religionChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Political Affiliation
-						<select
-							type='text'
-							name='politicalAffiliation'
-							onChange={(e) => setPoliticalAffiliation(e.target.value)}
-							value={politicalAffiliation}
-						>
-							{politicalAffiliationChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Language
-						<select
-							type='text'
-							name='language'
-							onChange={(e) => setLanguage(e.target.value)}
-							value={language}
-						>
-							{languageChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Kids
-						<select
-							type='text'
-							name='kids'
-							onChange={(e) => setKids(e.target.value)}
-							value={kids}
-						>
-							{kidsChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Pets
-						<select
-							type='text'
-							name='pets'
-							onChange={(e) => setPets(e.target.value)}
-							value={pets}
-						>
-							{petsChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Diet
-						<select
-							type='text'
-							name='diet'
-							onChange={(e) => setDiet(e.target.value)}
-							value={diet}
-						>
-							{dietChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Smoker
-						<select
-							type='text'
-							name='smoker'
-							onChange={(e) => setSmoker(e.target.value)}
-							value={smoker}
-						>
-							{smokerChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Drinker
-						<select
-							type='text'
-							name='drinker'
-							onChange={(e) => setDrinker(e.target.value)}
-							value={drinker}
-						>
-							{drinkerChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Marijuana
-						<select
-							type='text'
-							name='marijuana'
-							onChange={(e) => setMarijuana(e.target.value)}
-							value={marijuana}
-						>
-							{marijuanaChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Zodiac
-						<select
-							type='text'
-							name='zodiac'
-							onChange={(e) => setZodiac(e.target.value)}
-							value={zodiac}
-						>
-							{zodiacChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Ethnicity
-						<select
-							type='text'
-							name='ethnicity'
-							onChange={(e) => setEthnicity(e.target.value)}
-							value={ethnicity}
-						>
-							{ethnicityChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Body Type
-						<select
-							type='text'
-							name='bodyType'
-							onChange={(e) => setBodyType(e.target.value)}
-							value={bodyType}
-						>
-							{bodyTypeChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-					<label>
-						Education Level
-						<select
-							type='text'
-							name='educationLevel'
-							onChange={(e) => setEducationLevel(e.target.value)}
-							value={educationLevel}
-						>
-							{educationLevelChoices.map((option) => (
-								<option key={option}>{option}</option>
-							))}
-						</select>
-					</label>
-
-					<button type='submit'>Edit Profile</button>
-				</form>
+							<label className="edit-profile-field">
+								Gender
+								<select
+									type='text'
+									name='gender'
+									onChange={(e) => setGender(e.target.value)}
+									value={gender}
+									required
+								>
+									{genderChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Sexual Orientation
+								<select
+									type='text'
+									name='sexualOrientation'
+									onChange={(e) => setSexualOrientation(e.target.value)}
+									value={sexualOrientation}
+									required
+								>
+									{sexualOrientationChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Height
+								<select
+									type='text'
+									name='height'
+									onChange={(e) => setHeight(e.target.value)}
+									value={height}
+									required
+								>
+									{heightChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Religion
+								<select
+									type='text'
+									name='religion'
+									onChange={(e) => setReligion(e.target.value)}
+									value={religion}
+									required
+								>
+									{religionChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Political Affiliation
+								<select
+									type='text'
+									name='politicalAffiliation'
+									onChange={(e) => setPoliticalAffiliation(e.target.value)}
+									value={politicalAffiliation}
+									required
+								>
+									{politicalAffiliationChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Language
+								<select
+									type='text'
+									name='language'
+									onChange={(e) => setLanguage(e.target.value)}
+									value={language}
+									required
+								>
+									{languageChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Kids
+								<select
+									type='text'
+									name='kids'
+									onChange={(e) => setKids(e.target.value)}
+									value={kids}
+									required
+								>
+									{kidsChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Pets
+								<select
+									type='text'
+									name='pets'
+									onChange={(e) => setPets(e.target.value)}
+									value={pets}
+									required
+								>
+									{petsChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Diet
+								<select
+									type='text'
+									name='diet'
+									onChange={(e) => setDiet(e.target.value)}
+									value={diet}
+									required
+								>
+									{dietChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Smoker
+								<select
+									type='text'
+									name='smoker'
+									onChange={(e) => setSmoker(e.target.value)}
+									value={smoker}
+									required
+								>
+									{smokerChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Drinker
+								<select
+									type='text'
+									name='drinker'
+									onChange={(e) => setDrinker(e.target.value)}
+									value={drinker}
+									required
+								>
+									{drinkerChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Marijuana
+								<select
+									type='text'
+									name='marijuana'
+									onChange={(e) => setMarijuana(e.target.value)}
+									value={marijuana}
+									required
+								>
+									{marijuanaChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Zodiac
+								<select
+									type='text'
+									name='zodiac'
+									onChange={(e) => setZodiac(e.target.value)}
+									value={zodiac}
+									required
+								>
+									{zodiacChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Ethnicity
+								<select
+									type='text'
+									name='ethnicity'
+									onChange={(e) => setEthnicity(e.target.value)}
+									value={ethnicity}
+									required
+								>
+									{ethnicityChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Body Type
+								<select
+									type='text'
+									name='bodyType'
+									onChange={(e) => setBodyType(e.target.value)}
+									value={bodyType}
+									required
+								>
+									{bodyTypeChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<label className="edit-profile-field">
+								Education Level
+								<select
+									type='text'
+									name='educationLevel'
+									onChange={(e) => setEducationLevel(e.target.value)}
+									value={educationLevel}
+									required
+								>
+									{educationLevelChoices.map((option) => (
+										<option key={option}>{option}</option>
+									))}
+								</select>
+							</label>
+							<div id='edit-button-container'>
+								<button className="like-button" type='submit'>Edit Profile</button>
+								<button className="dislike-button" onClick={handleDelete}>Delete Profile</button>
+							</div>
+						</form>
+					</fieldset>
+				</div>
 			</>
 		);
 	}

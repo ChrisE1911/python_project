@@ -1,0 +1,132 @@
+.discover_container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+.details {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	width: 260px;
+}
+
+.details-field {
+	display: flex;
+	flex-direction: row;
+	padding-left: 20px;
+	align-items: center;
+	justify-content: center;
+}
+
+.details-text {
+	padding-left: 10px;
+}
+
+.self_summary {
+	width: 400px;
+	height: fit-content;
+    min-height: 170px;
+}
+
+.bottom-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 75px;
+}
+.top_container {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	width: 800px;
+	max-width: 800px;
+	border-radius: 8px;
+  	background: rgb(255, 255, 255);
+  	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
+	padding: 10px;
+}
+.name-btn-container {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
+	align-items: center;
+}
+
+.discover_image {
+	display: flex;
+	flex-direction: row;
+	overflow: scroll;
+	overflow-y: hidden;
+	width: auto;
+
+	height: 300px;
+}
+
+.profile-img-container {
+	border-radius: 8px;
+	background: rgb(255, 255, 255);
+	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
+	margin: 3px;
+	height: 300px;
+	width: 300px;
+}
+
+.profile-img-container img {
+	/* /* height: 100%;
+	width: 100%; */
+
+	/* margin: 0; */
+	/* height: 100%;
+	width: 100%; */
+
+	object-fit: fill;
+	height: 300px;
+	width: 300px;
+}
+.right_buttons {
+	margin: 13px;
+	display: flex;
+	gap: 10%;
+	right: 40%;
+}
+
+.dislike-button {
+	height: 50px;
+	border: 2px solid black;
+	width: 150px;
+	border-radius: 50px;
+	background-color: white;
+	font-weight: bolder;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.dislike-button:hover {
+	background-color: black;
+	color: white;
+}
+
+.like-button {
+	height: 50px;
+	border: none;
+	width: 150px;
+	border-radius: 50px;
+	background-color: #e00095;
+	color: white;
+	font-weight: bolder;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.like-button:hover {
+	color: black;
+	background-color:#ffbff4;
+}
+
+.button-text {
+	margin-left: 10px;
+}

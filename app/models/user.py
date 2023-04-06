@@ -33,8 +33,10 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     # relationships
-    profile = db.relationship('Profile', back_populates='users')
-    answer = db.relationship('Answer', back_populates='user')
+    profile = db.relationship(
+        'Profile', back_populates='users', cascade='all, delete')
+    answer = db.relationship(
+        'Answer', back_populates='user', cascade='all, delete')
     # question = db.relationship(
     #     'Question', secondary='answers', back_populates='user')
     # Joint relationships

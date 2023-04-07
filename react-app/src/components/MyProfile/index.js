@@ -67,10 +67,11 @@ export default function MyProfile() {
 						</div>
 						<div className='bottom-container'>
 							<div className='self_summary'>
-								<h2>Self-Summary</h2>
-								<p>{user?.bio}</p>
+								<h2 className='self_summary-top'>Self-Summary</h2>
+								<p className='self_summary-bot'>{user?.bio}</p>
 							</div>
 							<div className='details'>
+								<h2 className='details-top'>Details</h2>
 								<div className="details-field">
 									<i class="fa-solid fa-shapes"></i>
 									<h5 className="details-text">{`${user?.gender}  |  ${user?.sexual_orientation}`}</h5>

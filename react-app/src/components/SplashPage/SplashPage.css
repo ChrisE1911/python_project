@@ -1,5 +1,5 @@
-.splashBody {
-	background: rgb(0, 0, 0);
+.splashBody1 {
+	background: rgb(94,163,255,255);
 	/* background: linear-gradient(
 		200deg,
 		rgba(0, 0, 0, 0.9598433123249299) 25%,
@@ -14,21 +14,31 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	animation: animate 5s ease infinite;
+	justify-content: center;
 	width: 100%;
 	height: 100vh;
 }
-@keyframes animate {
-	0% {
-		background-color: #9b59b6;
-	}
-	50% {
-		background-color: #3498db;
-	}
-	100% {
-		background-color: #16a085;
-	}
+
+.splashBody {
+	background: rgb(94,163,255,255);
+	/* background: linear-gradient(
+		200deg,
+		rgba(0, 0, 0, 0.9598433123249299) 25%,
+		rgba(224, 0, 149, 1) 100%
+	); */
+	/* background: rgb(0, 0, 0);
+	background: linear-gradient(
+		200deg,
+		rgba(0, 0, 0, 0.9598433123249299) 0%,
+		rgba(224, 0, 149, 1) 100%
+	); */
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: 70%;
+	/* height: 100vh; */
 }
+
 
 .splash-txt-container {
 	display: flex;
@@ -53,8 +63,7 @@
 }
 
 .splash-img-container img {
-	height: 400px;
-	mix-blend-mode: multiply;
+	height: 600px;
 }
 
 .each-txt-h2 {

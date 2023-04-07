@@ -4,11 +4,21 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.discover_center_container{
+	width: 50%;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
 .details {
 	display: flex;
 	flex-direction: column;
 	align-items: start;
-	width: 260px;
+	width: 35%;
 }
 
 .details-field {
@@ -24,10 +34,11 @@
 }
 
 .self_summary {
-	width: 400px;
+	width: 70%;
 	height: fit-content;
-    min-height: 170px;
+  min-height: 170px;
 }
+
 
 .bottom-container {
 	display: flex;
@@ -38,8 +49,7 @@
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
-	width: 800px;
-	max-width: 800px;
+	width: 100%;
 	border-radius: 8px;
   	background: rgb(255, 255, 255);
   	box-shadow: rgb(42 47 53 / 10%) 0px 1px 4px;
@@ -55,7 +65,7 @@
 .discover_image {
 	display: flex;
 	flex-direction: row;
-	overflow: scroll;
+	overflow: auto;
 	overflow-y: hidden;
 	width: auto;
 

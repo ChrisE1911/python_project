@@ -35,75 +35,77 @@ function Navigation({ isLoaded }) {
 
 	return (
 		path.pathname !== "/profile/create" && (
-			<ul className='NavBar'>
-				<li id='midcupid-logo'>
-					{sessionUser ? (
-						<NavLink exact to='/discover'>
-							MidCupid
-						</NavLink>
-					) : (
-						<NavLink exact to='/'>
-							MidCupid
-						</NavLink>
+			<div className="navBarContainer">
+				<div className='NavBar'>
+					<div id='midcupid-logo'>
+						{sessionUser ? (
+								<div id='nav-bar-buttons'>
+									<NavLink exact to='/discover'>
+										MidCupid
+									</NavLink>
+									<NavLink exact to='/discover'>
+										{sessionUser && (
+											<button>
+												<div className='discover-icon'>
+													<i class='fa-regular fa-address-book'></i>
+													Discover
+												</div>
+											</button>
+										)}
+									</NavLink>
+									<NavLink exact to='/questions'>
+										{sessionUser && (
+											<button>
+												<div className='discover-icon'>
+													<i class='fa-solid fa-magnifying-glass'></i>
+													Questions
+												</div>
+											</button>
+										)}
+									</NavLink>
+									<NavLink exact to='/likes-page'>
+										{sessionUser && (
+											<button>
+												<div className='discover-icon'>
+													<i class='fa-regular fa-heart'></i>
+													Likes
+												</div>
+											</button>
+										)}
+									</NavLink>
+								</div>
+						) : (
+							<NavLink exact to='/'>
+								MidCupid
+							</NavLink>
+						)}
+					</div>
+
+					{isLoaded && (
+						<>
+							<div id='nav-bar-left-side'>
+
+								<div id='nav-bar-right-side'>
+									<NavLink
+										className='nav-my-profile-container '
+										exact
+										to='/profile/current_user'
+									>
+										{sessionUser && (
+											<button className='logout-door-btn'>
+												<i className='fas fa-user-circle fa-2xl' />
+											</button>
+										)}
+									</NavLink>
+									<div>
+										<ProfileButton user={sessionUser} />
+									</div>
+								</div>
+							</div>
+						</>
 					)}
-				</li>
-
-				{isLoaded && (
-					<>
-						<div id='nav-bar-left-side'>
-							<div id='nav-bar-buttons'>
-								<NavLink exact to='/discover'>
-									{sessionUser && (
-										<button>
-											<div className='discover-icon'>
-												<i class='fa-regular fa-address-book'></i>
-												Discover
-											</div>
-										</button>
-									)}
-								</NavLink>
-								<NavLink exact to='/questions'>
-									{sessionUser && (
-										<button>
-											<div className='discover-icon'>
-												<i class='fa-solid fa-magnifying-glass'></i>
-												Questions
-											</div>
-										</button>
-									)}
-								</NavLink>
-								<NavLink exact to='/likes-page'>
-									{sessionUser && (
-										<button>
-											<div className='discover-icon'>
-												<i class='fa-regular fa-heart'></i>
-												Likes
-											</div>
-										</button>
-									)}
-								</NavLink>
-							</div>
-
-							<div id='nav-bar-right-side'>
-								<NavLink
-									className='nav-my-profile-container '
-									exact
-									to='/profile/current_user'
-								>
-									{sessionUser && (
-										<button className='logout-door-btn'>
-											<i className='fas fa-user-circle fa-2xl' />
-										</button>
-									)}
-								</NavLink>
-								<li>
-									<ProfileButton user={sessionUser} />
-								</li>
-							</div>
-						</div>
-					</>
-				)}
-			</ul>
+				</div>
+			</div>
 		)
 	);
 }

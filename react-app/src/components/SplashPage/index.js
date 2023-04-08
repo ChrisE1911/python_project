@@ -28,7 +28,7 @@ function SplashPage() {
 					></img>
 				</div>
 			</div>
-			<Footer />
+			<Footer className='splashFoot'/>
 		</div>
 	);
 }

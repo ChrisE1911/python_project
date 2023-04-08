@@ -81,6 +81,17 @@ function Navigation({ isLoaded, matchesLen }) {
 											</button>
 										)}
 									</NavLink>
+									<NavLink exact to='/matches'>
+									{sessionUser && (
+										<button>
+											<div className='discover-icon'>
+												<i class='fa-solid fa-hand-holding-heart'></i>
+												Matches
+											</div>
+											<span>{allMatches.length > 0 && allMatches.length}</span>
+										</button>
+									)}
+								</NavLink>
 								</div>
 						) : (
 							<NavLink exact to='/'>

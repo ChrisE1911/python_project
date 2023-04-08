@@ -1,7 +1,8 @@
 .footer-container {
     color: white;
     background-color: black;
-    padding-left: 20px;
+    width: 100%;
+    margin-bottom: 0;
 }
 
 .about-header {

@@ -26,6 +26,8 @@
     margin: 0px;
     padding-bottom: 10px;
     list-style-type: none;
+    display: flex;
+    justify-content: space-around;
 }
 
 .dev-link {

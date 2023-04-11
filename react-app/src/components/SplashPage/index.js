@@ -1,10 +1,31 @@
 import "./SplashPage.css";
 import Footer from "../Footer";
+import { login } from "../../store/session";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useModal } from "../../context/Modal";
 // import { useSelector } from "react-redux";
 // import HomePage from "../HomePage";
+import OKC from './videos/OKC.mp4'
 
 function SplashPage() {
 	// const sessionUser = useSelector((state) => state.session.user);
+	const dispatch = useDispatch();
+	const history = useHistory();
+	const { closeModal } = useModal();
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const email = "demo@aa.io"
+		const password = 'password'
+		const data = await dispatch(login(email, password));
+		if (data) {
+			alert('Under Maintanence, check again later!')
+		} else {
+			history.push("/discover");
+			closeModal();
+		}
+	};
 	return (
 		<div className="splashBody1">
 			<div className='splashBody'>
@@ -19,16 +40,19 @@ function SplashPage() {
 					<h5 className='each-txt'>
 						You deserve to find who you’re looking for.{" "}
 					</h5>
-					<h6 className='each-txt'>Meet them today!</h6>
-				</div>
-				<div className='splash-img-container'>
-					<img
-						src='https://cdn.okccdn.com/media/img/every_single_person/photos/pansexual.jpg'
-						alt='splash-img'
-					></img>
+					<h6 className='each-txt'>
+						Click below and meet them today! <button class="dislike-button" onClick={handleSubmit}>TRIAL USER</button>
+					</h6>
 				</div>
 			</div>
-			<Footer className='splashFoot'/>
+				<div className='splash-img-container'>
+
+					<video id="myVideo"  autoPlay muted loop preload='auto'>
+						<source src={OKC} type="video/mp4"/>
+      		</video>
+
+				</div>
+
 		</div>
 	);
 }

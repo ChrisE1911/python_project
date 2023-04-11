@@ -16,6 +16,7 @@ import QuestionsPage from "./components/QuestionsPage";
 import Gallery from "./components/Gallery";
 import MatchesPage from "./components/MatchesPage";
 import { thunkGetMatches } from "./store/match";
+import Footer from "./components/Footer";
 
 function App() {
 	const dispatch = useDispatch();
@@ -71,6 +72,7 @@ function App() {
 					</Route>
 				</Switch>
 			)}
+			<Footer className='splashFoot'/>
 		</>
 	);
 }

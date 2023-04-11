@@ -1,5 +1,5 @@
 .splashBody1 {
-	background: rgb(94,163,255,255);
+	/* background: rgb(94,163,255,255); */
 	/* background: linear-gradient(
 		200deg,
 		rgba(0, 0, 0, 0.9598433123249299) 25%,
@@ -20,7 +20,7 @@
 }
 
 .splashBody {
-	background: rgb(94,163,255,255);
+	/* background: rgb(94,163,255,255); */
 	/* background: linear-gradient(
 		200deg,
 		rgba(0, 0, 0, 0.9598433123249299) 25%,
@@ -43,14 +43,14 @@
 .splash-txt-container {
 	display: flex;
 	flex-direction: column;
-	padding: 30px;
+	/* padding: 30px; */
 	align-items: start;
 	justify-content: center;
 	gap: 30px;
 	height: 80%;
 	width: 70%;
 	position: absolute;
-	margin-left: 100px;
+	margin-bottom: 200px;
 }
 .splash-txt-container h2 {
 	margin: 0;
@@ -58,16 +58,76 @@
 	font-size: xxx-large;
 }
 .each-txt {
-	color: white;
+	/* color: white; */
 	font-size: x-large;
 	color: black;
 	padding: 5px;
+	max-width: 500px;
+	border-bottom: none;
+	margin-bottom: 0px;
+	margin-top: 25px;
 }
 
-.splash-img-container img {
-	height: 600px;
-	margin-left: 550px;
-  margin-top: 170px;
+.splash-img-container{
+	/* position: absolute;
+  height: 100%;
+	width: 100%;
+	z-index: -1;
+  background: rgba(0,0,0,0);
+  font-size: 100%; */
+	position: absolute;
+  /* top: 0; */
+	right: 0;
+  /* bottom: 0; */
+  left: 0;
+	z-index: -1;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/* background: rgba(0,0,0,0); */
+	outline: 0;
+	font-size: 100%;
+	/* background-color: #9dbaf2 !important; */
+	height: 100%;
+	/* background-image: url(https://cdn.okccdn.com/media/img/every_single_person/photos/pansexual.jpg); */
+	/* background-position: calc(50% + 375px) calc(100% + 10px);
+	background-image: url(https://cdn.okccdn.com/media/img/every_single_person/photos/pansexual.jpg);
+	background-size: 865px auto;
+	background-repeat: no-repeat; */
+	overflow: hidden;
+}
+
+.SplashImage.Image1 {
+	position: absolute;
+	/* top: 0; */
+	right: 0;
+	/* bottom: 0; */
+	left: 0;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.SplashImage {
+	opacity: 0;
+	transition: opacity 300ms linear;
+}
+
+.Image1 {
+	background-position: calc(50% + 375px) calc(100% + 10px);
+	background-image: url(https://cdn.okccdn.com/media/img/every_single_person/photos/pansexual.jpg);
+	background-size: 865px auto;
+	background-repeat: no-repeat;
+}
+
+#myVideo{
+	position: absolute;
+	/* height: 100vh; */
+	width: 100%;
+	margin-top: -100px;
+	margin-bottom: 20px;
+	z-index: -1;
+	clip: padding;
 }
 
 .each-txt-h2 {

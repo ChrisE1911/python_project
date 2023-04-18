@@ -140,7 +140,6 @@ export default function profileReducer(state = initialState, action) {
 			console.log("REDUCER EDITEDPROFILE", editedProfile);
 			copyNewState.current_user_profile.profile = { ...editedProfile };
 			return copyNewState;
-
 		case CURRENT_USER_PROFILE:
 			let currentProfile = action.payload;
 			newState.current_user_profile = { ...currentProfile };
